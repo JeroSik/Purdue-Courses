@@ -2,23 +2,26 @@ import java.util.ArrayList;
 
 /**
  * Created by Utkarsh on 8/30/18.
+ * Revised by George Adams on 09/02/18.
+ * Revised by Shivaram Gopal on 09/02/18.
  */
 /**
- * Program Name
+ * Project 01
  *
- * brief description of the program
+ * Implement a generic stack.
  *
  * @author Youngsik Yoon, yoon161@purdue.edu
  * @version date of completition
  *
  */
 
+
 public class Stack<T> {
     private int size;
     private T[] values;
 
     public Stack(int capacity) throws java.lang.IllegalArgumentException {
-        //Implement your stack here
+        // Initialize your stack here
         if (capacity < 0) {
             throw new IllegalArgumentException();
         } else {
@@ -27,31 +30,33 @@ public class Stack<T> {
         }
     }
 
-    public T top() throws IndexOutOfBoundsException {
-        // Similar to peek
-
-        // Method should return the top element of the stack
-        // This does not remove the element from the stack
-        // Incase the stack is empty, it should throw an error, 
-
-        // add your own return statement
-        return null;
+    public boolean IsEmpty() {
+        // Return whether the stack is empty or not
+        if (size == 0) {
+            return true;
+        }
+        return false;
     }
 
     public boolean push(T val){
-        //Write your code here
-        //Push the new element on the stack 
-        //If the element was added successfully, return true
-        //If the element was not added, return false
+        // Write your code here
+        // Push the new element on the stack
+        // If the element was added successfully, return true
+        // If the element was not added, return false
+        if (size()) {
+
+        }
         values[size()] = val;
         size++;
         return true;             //remove this line and return the appropriate answer
     }
 
-    public boolean pop(){
+    public T pop() throws IndexOutOfBoundsException{
         //Write your code here
-        //Return true if the top element was popped successfully 
-        //Return false if the element was not popped
+        // Method should return the top element of the stack
+        // This removes the element from the stack
+        // Incase the stack is empty, it should throw an error,
+        // with the message "Empty Stack"
         if (IsEmpty()) {
             return false;           //remove this line and return the appropriate answer
         } else {
@@ -59,6 +64,7 @@ public class Stack<T> {
             size--;
             return true;
         }
+        return null;    // add your own return statement
     }
 
     public void resize(boolean insert) {
@@ -81,20 +87,11 @@ public class Stack<T> {
         }
     }
 
-    public boolean IsEmpty(){
-        //Write your code here
-        if (size == 0) {
-            return true;
-        }
-
-        //Return the status of the stack
-        return false;             //remove this line and return the appropriate answer
-    }
-
     public int size()
     {
         //Write your code here
-        //Return the remaining size of your stack, i.e. the number of elements that can be added on.
+        //number of elements currently in the stack
+
         return size;               //remove this line and return the appropriate answer
     }
 }
