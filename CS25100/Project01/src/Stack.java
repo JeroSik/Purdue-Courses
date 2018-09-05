@@ -39,59 +39,34 @@ public class Stack<T> {
     }
 
     public boolean push(T val){
-        // Write your code here
         // Push the new element on the stack
         // If the element was added successfully, return true
         // If the element was not added, return false
-        if (size()) {
-
+        if (size() == values.length) {
+            return false;
         }
         values[size()] = val;
         size++;
         return true;             //remove this line and return the appropriate answer
     }
 
-    public T pop() throws IndexOutOfBoundsException{
-        //Write your code here
+    public T pop() throws IndexOutOfBoundsException {
         // Method should return the top element of the stack
         // This removes the element from the stack
         // Incase the stack is empty, it should throw an error,
         // with the message "Empty Stack"
         if (IsEmpty()) {
-            return false;           //remove this line and return the appropriate answer
+            throw new IndexOutOfBoundsException("Empty Stack");           //remove this line and return the appropriate answer
         } else {
+            T temp = values[size()];
             values[size()] = null;
             size--;
-            return true;
-        }
-        return null;    // add your own return statement
-    }
-
-    public void resize(boolean insert) {
-        if (insert) {
-            if (size() == values.length) {
-                T[] temp = (T[]) new Object[values.length * 2];
-                for (int i = 0; i < values.length; i++) {
-                    temp[i] = values[i];
-                }
-                values = temp;
-            }
-        } else {
-            if (size() > 0 || size() == values.length / 4) {
-                T[] temp = (T[]) new Object[values.length / 2];
-                for (int i = 0; i < values.length; i++) {
-                    temp[i] = values[i];
-                }
-                values = temp;
-            }
+            return temp;
         }
     }
 
-    public int size()
-    {
-        //Write your code here
-        //number of elements currently in the stack
-
-        return size;               //remove this line and return the appropriate answer
+    public int size() {
+        // Number of elements currently in the stack
+        return size;
     }
 }
