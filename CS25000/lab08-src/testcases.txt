@@ -1,0 +1,55 @@
+/*
+ * Testcase 1 
+ */
+Enter a string: A lot of different words, yup
+Enter the start index: 4
+Enter the end index: 11
+The substring of the given string is 'ot of di'
+
+/*
+ * Testcase 2
+ */
+Enter a string: beginning character
+Enter the start index: 1
+Enter the end index: 1
+The substring of the given string is 'b'
+
+/*
+ * Testcase 3
+ */
+Enter a string: end character
+Enter the start index: 13
+Enter the end index: 13
+The substring of the given string is 'r'
+
+/*
+ * Testcase 4
+ */
+Enter a string: entire string
+Enter the start index: 1
+Enter the end index: 13
+The substring of the given string is 'entire string'
+
+/*
+ * Testcase 5
+ */
+Enter a string: a
+Enter the start index: 1
+Enter the end index: 1
+The substring of the given string is 'a'
+
+/*
+ * Testcase 6 
+ */
+Enter a string: middle words of a string
+Enter the start index: 8
+Enter the end index: 17
+The substring of the given string is 'words of a'
+
+/*
+ * Testcase 7
+ */
+Enter a string: spaces     and !@#$%^&*(
+Enter the start index: 4
+Enter the end index: 20
+The substring of the given string is 'ces     and !@#$%'
