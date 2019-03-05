@@ -291,5 +291,3 @@ if __name__ == "__main__":
 
     accuracy = tree.calcAccuracy(test)
     print("Test set accuracy: %.4f" % accuracy)
-
-    print(tree.nodeCount())

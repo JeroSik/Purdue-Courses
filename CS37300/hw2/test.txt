@@ -1,0 +1,1398 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Sex
+Information gain: 0.1797372938606127
+Sample size: 312
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.05830168833421978
+Sample size: 206
+Split value: 13.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.27797546308024024
+Sample size: 106
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.8453509366224365
+Sample size: 11
+Split value: 4.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.02675720290860617
+Sample size: 195
+Split value: 1.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.09863794043827909
+Sample size: 52
+Split value: 3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.151073069815173
+Sample size: 54
+Split value: 29.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.1467931024360521
+Sample size: 40
+Split value: 37.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.020770218642255034
+Sample size: 155
+Split value: 1.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.04443953128771362
+Sample size: 51
+Split value: 14.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.10214518235075397
+Sample size: 45
+Split value: 3.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.09130503043715804
+Sample size: 20
+Split value: 33.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.07898214060026876
+Sample size: 20
+Split value: 48.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.01729552057796559
+Sample size: 138
+Split value: 43.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2576788051033316
+Sample size: 11
+Split value: 25.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.08745737852387192
+Sample size: 37
+Split value: 18.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.5435644431995964
+Sample size: 8
+Split value: 6.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.11629598989239365
+Sample size: 15
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 65.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3166890883150208
+Sample size: 12
+Split value: 53.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.02659623312924142
+Sample size: 134
+Split value: 13.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.31127812445913283
+Sample size: 4
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 1.0
+Sample size: 2
+Split value: 20.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.07234174904673485
+Sample size: 33
+Split value: 16.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.14269027946047563
+Sample size: 9
+Split value: 23.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.6500224216483541
+Sample size: 6
+Split value: 17.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 1.0
+Sample size: 2
+Split value: 295.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.31127812445913283
+Sample size: 4
+Split value: 51.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.015345053283762788
+Sample size: 116
+Split value: 46.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 30.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.11104651440078439
+Sample size: 31
+Split value: 14.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.20443400292496494
+Sample size: 8
+Split value: 27.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 50.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.02661556740865273
+Sample size: 108
+Split value: 28.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.08071443682599178
+Sample size: 27
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.19087450462110944
+Sample size: 6
+Split value: 29.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 1.0
+Sample size: 2
+Split value: 99.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.0382342490962026
+Sample size: 83
+Split value: 8.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.0648158371004736
+Sample size: 25
+Split value: 12.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.11271663672563392
+Sample size: 15
+Split value: 18.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.6174924611847552
+Sample size: 12
+Split value: 16.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.4199730940219749
+Sample size: 5
+Split value: 28.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.045099322011512455
+Sample size: 66
+Split value: 24.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.07580425539260671
+Sample size: 22
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 36.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.16958442967043919
+Sample size: 14
+Split value: 23.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.07033036433077033
+Sample size: 31
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.025264402379087503
+Sample size: 35
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.13536509514407452
+Sample size: 18
+Split value: 32.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 1.0
+Sample size: 2
+Split value: 40.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.3219280948873623
+Sample size: 10
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 1.0
+Sample size: 2
+Split value: 11.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.03600429138839564
+Sample size: 28
+Split value: 21.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.9182958340544896
+Sample size: 3
+Split value: 5.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.08190953486884653
+Sample size: 29
+Split value: 39.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.4199730940219749
+Sample size: 5
+Split value: 30.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.15462496545057786
+Sample size: 13
+Split value: 37.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.07376130822286725
+Sample size: 8
+Split value: 38.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.13447053550223065
+Sample size: 16
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.14339080881725613
+Sample size: 12
+Split value: 23.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.048415675908885514
+Sample size: 6
+Split value: 6.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.9182958340544896
+Sample size: 3
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.16958442967043919
+Sample size: 7
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 1.0
+Sample size: 2
+Split value: 27.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.07290559532005603
+Sample size: 15
+Split value: 17.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.12255624891826566
+Sample size: 4
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 43.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.06157292259666319
+Sample size: 12
+Split value: 19.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.31127812445913283
+Sample size: 4
+Split value: 39.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.4199730940219749
+Sample size: 5
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.19811742113040343
+Sample size: 7
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 18.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+0.768
+0.776
+PRUNED
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Sex
+Information gain: 0.1797372938606127
+Sample size: 312
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.05830168833421978
+Sample size: 206
+Split value: 13.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.27797546308024024
+Sample size: 106
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.8453509366224365
+Sample size: 11
+Split value: 4.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.02675720290860617
+Sample size: 195
+Split value: 1.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.09863794043827909
+Sample size: 52
+Split value: 3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.151073069815173
+Sample size: 54
+Split value: 29.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.1467931024360521
+Sample size: 40
+Split value: 37.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.020770218642255034
+Sample size: 155
+Split value: 1.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.04443953128771362
+Sample size: 51
+Split value: 14.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.10214518235075397
+Sample size: 45
+Split value: 3.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.09130503043715804
+Sample size: 20
+Split value: 33.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.07898214060026876
+Sample size: 20
+Split value: 48.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.01729552057796559
+Sample size: 138
+Split value: 43.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2576788051033316
+Sample size: 11
+Split value: 25.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.08745737852387192
+Sample size: 37
+Split value: 18.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.5435644431995964
+Sample size: 8
+Split value: 6.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.11629598989239365
+Sample size: 15
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 65.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3166890883150208
+Sample size: 12
+Split value: 53.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.02659623312924142
+Sample size: 134
+Split value: 13.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.31127812445913283
+Sample size: 4
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.07234174904673485
+Sample size: 33
+Split value: 16.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.14269027946047563
+Sample size: 9
+Split value: 23.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.6500224216483541
+Sample size: 6
+Split value: 17.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.31127812445913283
+Sample size: 4
+Split value: 51.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.015345053283762788
+Sample size: 116
+Split value: 46.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.11104651440078439
+Sample size: 31
+Split value: 14.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.20443400292496494
+Sample size: 8
+Split value: 27.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 50.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.02661556740865273
+Sample size: 108
+Split value: 28.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.08071443682599178
+Sample size: 27
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.19087450462110944
+Sample size: 6
+Split value: 29.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.0382342490962026
+Sample size: 83
+Split value: 8.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.0648158371004736
+Sample size: 25
+Split value: 12.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.11271663672563392
+Sample size: 15
+Split value: 18.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.6174924611847552
+Sample size: 12
+Split value: 16.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.045099322011512455
+Sample size: 66
+Split value: 24.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Pclass
+Information gain: 0.07580425539260671
+Sample size: 22
+Split value: 2.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.2516291673878229
+Sample size: 3
+Split value: 36.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.16958442967043919
+Sample size: 14
+Split value: 23.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.07033036433077033
+Sample size: 31
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.025264402379087503
+Sample size: 35
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.13536509514407452
+Sample size: 18
+Split value: 32.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.3219280948873623
+Sample size: 10
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.03600429138839564
+Sample size: 28
+Split value: 21.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.9182958340544896
+Sample size: 3
+Split value: 5.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.08190953486884653
+Sample size: 29
+Split value: 39.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.4199730940219749
+Sample size: 5
+Split value: 30.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.15462496545057786
+Sample size: 13
+Split value: 37.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Embarked
+Information gain: 0.07376130822286725
+Sample size: 8
+Split value: 38.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: relatives
+Information gain: 0.13447053550223065
+Sample size: 16
+Split value: 0.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.14339080881725613
+Sample size: 12
+Split value: 23.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.16958442967043919
+Sample size: 7
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.07290559532005603
+Sample size: 15
+Split value: 17.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.3219280948873623
+Sample size: 5
+Split value: 43.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: RIGHT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: LEFT TERMINAL
+Information gain: None
+Sample size: None
+Split value: None
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Age
+Information gain: 0.06157292259666319
+Sample size: 12
+Split value: 19.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.4199730940219749
+Sample size: 5
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ATTRIBUTE: Fare
+Information gain: 0.19811742113040343
+Sample size: 7
+Split value: 7.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Train set accuracy: 0.8363
+Test set accuracy: 0.7463
