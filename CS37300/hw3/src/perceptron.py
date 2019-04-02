@@ -31,7 +31,8 @@ class Perceptron(BinaryClassifier):
             return -1
         
     def fit(self, train_data):
-        random.seed(100)
+        random.seed(5)
+
         # Initialize weight vector and bias as zero
         self.w = np.zeros(self.f_dim)
         self.b = 0
@@ -63,7 +64,7 @@ class Perceptron(BinaryClassifier):
         # Initialize prediction list
         pred_y = []
 
-        # Get feature vector from training data
+        # Get feature vector from testing data
         feature = get_feature_vectors(test_x, self.bin_feats)
 
         # Go through each sample
@@ -97,7 +98,8 @@ class AveragedPerceptron(BinaryClassifier):
             return -1
                 
     def fit(self, train_data):
-        random.seed(100)
+        random.seed(5)
+
         # Initialize weight vector and bias as zero and survival counter as 1
         self.w = np.zeros(self.f_dim)
         self.b = 0
@@ -134,7 +136,7 @@ class AveragedPerceptron(BinaryClassifier):
         # Initialize prediction list
         pred_y = []
 
-        # Get feature vector from training data
+        # Get feature vector from testing data
         feature = get_feature_vectors(test_x, self.bin_feats)
 
         # Go through each sample

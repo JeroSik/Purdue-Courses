@@ -19,8 +19,8 @@ plt.savefig("4_2_accuracy_vs_num_of_iterations_avg_perceptron.png")
 plt.clf()
 
 # Question 3
-plt.plot([100, 500, 1000, 5000, 10000, 20000], [0, 0, 0, 0, 0, 0], label = "Naive Bayes")
-plt.plot([100, 500, 1000, 5000, 10000, 20000], [0, 0, 0, 0, 0, 0], label = "Averaged Perceptron")
+plt.plot([100, 500, 1000, 5000, 10000, 20000], [53.16, 61.46, 66.78, 74.42, 76.08, 77.41], label = "Naive Bayes")
+plt.plot([100, 500, 1000, 5000, 10000, 20000], [51.50, 52.16, 59.80, 78.07, 80.40, 78.41], label = "Averaged Perceptron")
 
 plt.title("4.3) Test Accuracy vs Vocabulary Size")
 plt.ylabel("Test Accuracy")
