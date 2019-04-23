@@ -102,26 +102,32 @@ class BGDLog(BinaryClassifier):
             g_b = 0
 
             # Iterate through all data samples
-            for i, x in enumerate(feature_vector):
+            for i, feature in enumerate(feature_vector):
+                x = np.asarray(feature)
                 y = train_data[1][i]
                 if train_data[1][i] == -1:
                     y = 0
 
                 # Find sigmoid function
-                z = np.dot(self.w, x) + self.b
+                z = np.add(np.dot(self.w, x), self.b)
+                # z = np.dot(self.w, x) + self.b
                 sigmoid = 1 / (1 + math.e ** -z)
 
                 # Update gradient weights and bias
-                g_w = g_w - np.multiply((y - sigmoid), x)
-                g_b = g_b - (y - sigmoid)
+                # g_w = g_w - np.multiply((y - sigmoid), x)
+                # g_b = g_b - (y - sigmoid)
+                g_w = np.subtract(g_w, np.multiply((y - sigmoid), x))
+                g_b = np.subtract(g_b, (y - sigmoid))
 
             # Break if local minimum is found
             if (np.sum(g_w) == 0):
                 break
 
             # Update weights and bias
-            self.w = self.w - self.lr_bgd * g_w
-            self.b = self.b - self.lr_bgd * g_b
+            # self.w = self.w - self.lr_bgd * g_w
+            # self.b = self.b - self.lr_bgd * g_b
+            self.w = np.subtract(self.w, self.lr_bgd * g_w)
+            self.b = np.subtract(self.b, self.lr_bgd * g_b)
             
     def predict(self, test_x):
         # Initialize prediction list
@@ -237,7 +243,8 @@ class BGDLogReg(BinaryClassifier):
             g_b = 0
 
             # Iterate through all data samples
-            for i, x in enumerate(feature_vector):
+            for i, feature in enumerate(feature_vector):
+                x = np.asarray(feature)
                 y = train_data[1][i]
                 if train_data[1][i] == -1:
                     y = 0
@@ -247,17 +254,22 @@ class BGDLogReg(BinaryClassifier):
                 sigmoid = 1 / (1 + math.e ** -z)
 
                 # Update gradient weights and bias
-                g_w = g_w - np.multiply((y - sigmoid), x)
-                g_b = g_b - (y - sigmoid)
+                # g_w = g_w - np.multiply((y - sigmoid), x)
+                # g_b = g_b - (y - sigmoid)
+                g_w = np.subtract(g_w, np.multiply((y - sigmoid), x))
+                g_b = np.subtract(g_b, (y - sigmoid))
 
             # Break if local minimum is found
             if (np.sum(g_w) == 0):
                 break
 
             # Update weights and bias
-            g_w = g_w + self.la * self.w
-            self.w = self.w - self.lr_bgd * g_w
-            self.b = self.b - self.lr_bgd * g_b
+            # self.w = self.w - self.lr_bgd * g_w
+            # self.b = self.b - self.lr_bgd * g_b
+            # g_w = g_w + self.la * self.w
+            g_w = np.add(g_w, self.la * self.w)
+            self.w = np.subtract(self.w, self.lr_bgd * g_w)
+            self.b = np.subtract(self.b, self.lr_bgd * g_b)            
         
     def predict(self, test_x):
         # Initialize prediction list
