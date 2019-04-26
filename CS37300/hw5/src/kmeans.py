@@ -17,87 +17,91 @@ class Kmeans(object):
     self.k = k
     self.distCalc = distCalc
 
-  def findDistance(self, point, centroid):
+  def findDistance(self, centroid, point):
     dist = 0
     if self.distCalc == "Euclidean":
-      dist = np.linalg.norm(centroid-point)
+      dist = np.sqrt(np.sum([np.power(centroid[0] - point[0],2), np.power(centroid[1] - point[1],2), np.power(centroid[2] - point[2],2), np.power(centroid[3] - point[3],2)]))
     elif self.distCalc == "Manhattan":
       for i in range(len(self.df.columns)):
         dist += abs(centroid[i] - point[i])
 
     return dist
-
-  def reassignPoints(self):
-    # Go through each row in dataframe
-    df_index = 0
-    for i, sample in self.df.iterrows():
-      # Calculate distance from each centroid to sample point
-      minDist = sys.maxint
-      centroid_index = 0
-      for j, centroid in self.c.iterrows():
-        tmpDist = self.findDistance(sample, centroid)
-        if (tmpDist < minDist):
-          self.m[df_index] = centroid_index
-          minDist = tmpDist
-        centroid_index += 1
-      df_index += 1
-
-  def relocateCentroids(self):
-    temp_c = self.c.copy()
+  
+  def findScore(self, centroids):
+    score = 0
     for c_ID in range(self.k):
-      # Get subset of columns corresponding to centroid ID
+      r_k = centroids[c_ID]
       c_index = np.where(self.m==c_ID)
       c_df = self.df.iloc[c_index]
-      # Go through each attribute and find mean
-      for att in self.c.columns:
-        temp_c.at[self.c.index[c_ID], att] = c_df[att].mean()
-    return temp_c
+      for i, x_i in c_df.iterrows():
+        score += self.findDistance(r_k, x_i) ** 2
+
+    return score
 
   def convergence(self, temp_c):
-    #TODO find better convergence
-    return self.c.equals(temp_c)
+    curr = self.findScore(temp_c)
+    prev = self.findScore(self.c)
+    print(curr)
+    print(prev)
+    return curr-prev > 100000
 
   def cluster(self):
     # Initialize centroids
-    self.c = self.df.sample(n=self.k)
+    self.c = np.array(self.df.sample(n=self.k, random_state=1))
+    print(self.c)
 
     # Initialize cluster membership vector m
     self.m = np.zeros(len(self.df.index))
     
     # Repeat until convergence
     while True:
-      print(self.c)
       # Data Assignment
-      self.reassignPoints()
-      print("Finished Reassigning Points")
+      # Go through each row in dataframe
+      df_index = 0
+      for i, sample in self.df.iterrows():
+        data_point = np.array([sample["latitude"], sample["longitude"], sample["reviewCount"], sample["checkins"]])
+
+        minDist = np.Inf
+        centroid_index = 0
+        for c_i, centroid in enumerate(self.c):
+          tmpDist = self.findDistance(centroid, sample)
+          if (tmpDist < minDist):
+            centroid_index = c_i
+            minDist = tmpDist
+
+        self.m[df_index] = centroid_index
+        df_index += 1
+      print("finished reassign")
 
       # Relocate the centroids
-      temp_c = self.relocateCentroids()
-      print("Finished Relocating Centroids")
+      for c_ID in range(self.k):
+        # Get subset of columns corresponding to centroid ID
+        c_index = np.where(self.m==c_ID)
+        c_df = self.df.iloc[c_index]
+
+        # Go through each attribute and find mean
+        self.c[c_ID][0] = c_df["latitude"].mean()
+        self.c[c_ID][1] = c_df["longitude"].mean()
+        self.c[c_ID][2] = c_df["reviewCount"].mean()
+        self.c[c_ID][3] = c_df["checkins"].mean()
+      print("finished relocating")
+      print(self.c)
 
       # Check for convergence
-      if self.convergence(temp_c):
-        print(self.c)
-        break
-      else:
-        self.c = temp_c
+      # if self.convergence(temp_c):
+      #   print(self.c)
+      #   break
+      # else:
+      #   self.c = temp_c
 
   def printScore(self):
-    score = 0
-    for c_ID in range(self.k):
-      r_k = self.c.iloc[c_ID]
-      c_index = np.where(self.m==c_ID)
-      c_df = self.df.iloc[c_index]
-      for i, x_i in c_df.iterrows():
-        score += self.findDistance(x_i, r_k) ** 2
-      
+    score = self.findScore(self.c)
     print("WC-SSE={}".format(score))
 
   def printClusters(self):
     for cluster_num in range(1, self.k + 1):
       row = self.c.iloc[cluster_num - 1]
       print("Centroid{}=[{},{},{},{}]".format(cluster_num, row["latitude"], row["longitude"], row["reviewCount"], row["checkins"]))
-
 
 if __name__ == "__main__":
   pd.options.mode.chained_assignment = None
