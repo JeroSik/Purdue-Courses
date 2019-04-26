@@ -20,9 +20,7 @@ class Kmeans(object):
   def findDistance(self, point, centroid):
     dist = 0
     if self.distCalc == "Euclidean":
-      for i in range(len(self.df.columns)):
-        dist += (centroid[i] - point[i]) ** 2
-      dist = math.sqrt(dist)
+      dist = np.linalg.norm(centroid-point)
     elif self.distCalc == "Manhattan":
       for i in range(len(self.df.columns)):
         dist += abs(centroid[i] - point[i])
@@ -60,7 +58,7 @@ class Kmeans(object):
     return self.c.equals(temp_c)
 
   def cluster(self):
-    # Initialize cluster representatives c by randomly choosing k data points
+    # Initialize centroids
     self.c = self.df.sample(n=self.k)
 
     # Initialize cluster membership vector m
@@ -69,12 +67,13 @@ class Kmeans(object):
     # Repeat until convergence
     while True:
       print(self.c)
-
       # Data Assignment
       self.reassignPoints()
+      print("Finished Reassigning Points")
 
       # Relocate the centroids
       temp_c = self.relocateCentroids()
+      print("Finished Relocating Centroids")
 
       # Check for convergence
       if self.convergence(temp_c):
@@ -132,7 +131,7 @@ if __name__ == "__main__":
   elif clusteringOption == 4:
     distCalc = "Manhattan"
   elif clusteringOption == 5:
-    df = df.sample(frac=0.03)
+    df = df.sample(frac=0.06)
   elif clusteringOption != 1:
     print("The clustering option is not valid. Please try again.")
     sys.exit()
