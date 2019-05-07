@@ -1,0 +1,52 @@
+Compare Count for Input Sequence Generated with N=40; RNG_Seed = 123456789 for Sequence 10
+
+Pivot-A: InputSequence1(N=40): CompareCount:774
+Pivot-B: InputSequence1(N=40): CompareCount:774
+Pivot-C: InputSequence1(N=40): CompareCount:134
+Pivot-D: InputSequence1(N=40): CompareCount:148
+Pivot-E: InputSequence1(N=40): CompareCount:162
+Pivot-A: InputSequence2(N=40): CompareCount:777
+Pivot-B: InputSequence2(N=40): CompareCount:780
+Pivot-C: InputSequence2(N=40): CompareCount:155
+Pivot-D: InputSequence2(N=40): CompareCount:211
+Pivot-E: InputSequence2(N=40): CompareCount:219
+Pivot-A: InputSequence3(N=40): CompareCount:420
+Pivot-B: InputSequence3(N=40): CompareCount:260
+Pivot-C: InputSequence3(N=40): CompareCount:401
+Pivot-D: InputSequence3(N=40): CompareCount:279
+Pivot-E: InputSequence3(N=40): CompareCount:220
+Pivot-A: InputSequence4(N=40): CompareCount:285
+Pivot-B: InputSequence4(N=40): CompareCount:265
+Pivot-C: InputSequence4(N=40): CompareCount:366
+Pivot-D: InputSequence4(N=40): CompareCount:256
+Pivot-E: InputSequence4(N=40): CompareCount:218
+Pivot-A: InputSequence5(N=40): CompareCount:302
+Pivot-B: InputSequence5(N=40): CompareCount:346
+Pivot-C: InputSequence5(N=40): CompareCount:160
+Pivot-D: InputSequence5(N=40): CompareCount:176
+Pivot-E: InputSequence5(N=40): CompareCount:198
+Pivot-A: InputSequence6(N=40): CompareCount:189
+Pivot-B: InputSequence6(N=40): CompareCount:230
+Pivot-C: InputSequence6(N=40): CompareCount:157
+Pivot-D: InputSequence6(N=40): CompareCount:175
+Pivot-E: InputSequence6(N=40): CompareCount:225
+Pivot-A: InputSequence7(N=40): CompareCount:165
+Pivot-B: InputSequence7(N=40): CompareCount:280
+Pivot-C: InputSequence7(N=40): CompareCount:199
+Pivot-D: InputSequence7(N=40): CompareCount:190
+Pivot-E: InputSequence7(N=40): CompareCount:237
+Pivot-A: InputSequence8(N=40): CompareCount:224
+Pivot-B: InputSequence8(N=40): CompareCount:313
+Pivot-C: InputSequence8(N=40): CompareCount:242
+Pivot-D: InputSequence8(N=40): CompareCount:266
+Pivot-E: InputSequence8(N=40): CompareCount:339
+Pivot-A: InputSequence9(N=40): CompareCount:243
+Pivot-B: InputSequence9(N=40): CompareCount:215
+Pivot-C: InputSequence9(N=40): CompareCount:216
+Pivot-D: InputSequence9(N=40): CompareCount:277
+Pivot-E: InputSequence9(N=40): CompareCount:299
+Pivot-A: InputSequence10(N=40, RNG_Seed = 123456789): CompareCount:196
+Pivot-B: InputSequence10(N=40, RNG_Seed = 123456789): CompareCount:205
+Pivot-C: InputSequence10(N=40, RNG_Seed = 123456789): CompareCount:199
+Pivot-D: InputSequence10(N=40, RNG_Seed = 123456789): CompareCount:186
+Pivot-E: InputSequence10(N=40, RNG_Seed = 123456789): CompareCount:213

@@ -1,0 +1,52 @@
+Compare Count for Input Sequence Generated with N=1000; RNG_Seed = 123456789 for Sequence 10
+
+Pivot-A: InputSequence1(N=1000): CompareCount:499494
+Pivot-B: InputSequence1(N=1000): CompareCount:499494
+Pivot-C: InputSequence1(N=1000): CompareCount:7987
+Pivot-D: InputSequence1(N=1000): CompareCount:8497
+Pivot-E: InputSequence1(N=1000): CompareCount:9007
+Pivot-A: InputSequence2(N=1000): CompareCount:499497
+Pivot-B: InputSequence2(N=1000): CompareCount:499500
+Pivot-C: InputSequence2(N=1000): CompareCount:8393
+Pivot-D: InputSequence2(N=1000): CompareCount:14326
+Pivot-E: InputSequence2(N=1000): CompareCount:10316
+Pivot-A: InputSequence3(N=1000): CompareCount:250500
+Pivot-B: InputSequence3(N=1000): CompareCount:25628
+Pivot-C: InputSequence3(N=1000): CompareCount:250001
+Pivot-D: InputSequence3(N=1000): CompareCount:23235
+Pivot-E: InputSequence3(N=1000): CompareCount:9994
+Pivot-A: InputSequence4(N=1000): CompareCount:85274
+Pivot-B: InputSequence4(N=1000): CompareCount:84989
+Pivot-C: InputSequence4(N=1000): CompareCount:46767
+Pivot-D: InputSequence4(N=1000): CompareCount:65880
+Pivot-E: InputSequence4(N=1000): CompareCount:10120
+Pivot-A: InputSequence5(N=1000): CompareCount:160410
+Pivot-B: InputSequence5(N=1000): CompareCount:161793
+Pivot-C: InputSequence5(N=1000): CompareCount:9847
+Pivot-D: InputSequence5(N=1000): CompareCount:10030
+Pivot-E: InputSequence5(N=1000): CompareCount:9899
+Pivot-A: InputSequence6(N=1000): CompareCount:73277
+Pivot-B: InputSequence6(N=1000): CompareCount:16144
+Pivot-C: InputSequence6(N=1000): CompareCount:9719
+Pivot-D: InputSequence6(N=1000): CompareCount:9763
+Pivot-E: InputSequence6(N=1000): CompareCount:10480
+Pivot-A: InputSequence7(N=1000): CompareCount:10459
+Pivot-B: InputSequence7(N=1000): CompareCount:15456
+Pivot-C: InputSequence7(N=1000): CompareCount:11122
+Pivot-D: InputSequence7(N=1000): CompareCount:10245
+Pivot-E: InputSequence7(N=1000): CompareCount:10488
+Pivot-A: InputSequence8(N=1000): CompareCount:11559
+Pivot-B: InputSequence8(N=1000): CompareCount:15095
+Pivot-C: InputSequence8(N=1000): CompareCount:11730
+Pivot-D: InputSequence8(N=1000): CompareCount:11924
+Pivot-E: InputSequence8(N=1000): CompareCount:13059
+Pivot-A: InputSequence9(N=1000): CompareCount:10826
+Pivot-B: InputSequence9(N=1000): CompareCount:13316
+Pivot-C: InputSequence9(N=1000): CompareCount:12400
+Pivot-D: InputSequence9(N=1000): CompareCount:12823
+Pivot-E: InputSequence9(N=1000): CompareCount:14032
+Pivot-A: InputSequence10(N=1000, RNG_Seed = 123456789): CompareCount:11450
+Pivot-B: InputSequence10(N=1000, RNG_Seed = 123456789): CompareCount:10398
+Pivot-C: InputSequence10(N=1000, RNG_Seed = 123456789): CompareCount:10961
+Pivot-D: InputSequence10(N=1000, RNG_Seed = 123456789): CompareCount:10161
+Pivot-E: InputSequence10(N=1000, RNG_Seed = 123456789): CompareCount:11584
