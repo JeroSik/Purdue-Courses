@@ -1,0 +1,38 @@
+# CS190 Lab2 Answer Sheet
+
+# ==========================
+# Directions
+# ==========================
+# Follow the format below to answer each numbered task.
+#
+# -----------------
+# Task 0 Answer
+# -----------------
+cat file.txt | wc -l
+
+
+# ==========================
+# Beginning of answer sheet.
+# ==========================
+
+
+# -----------------
+# Task 1 Answer
+# -----------------
+wget https://raw.githubusercontent.com/Purdue-CSUSB/CS-193-F2017/master/Labs/Lab4/answers.txt
+
+# -----------------
+# Task 2b Answer
+# -----------------
+bash madlib < input.txt > poem.txt
+
+# -----------------
+# Task 3 Answer
+# -----------------
+grep -n "horseman" The\ Young\ Engineers.txt
+
+# -----------------
+# Task 4 Answer
+# -----------------
+grep -nrw "Are you sure you want to quit DrJava?" 
+src/edu/rice/cs/drjava/ui/MainFrame.java:5331:      String message = "Are you sure you want to quit DrJava?";
