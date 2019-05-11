@@ -5,6 +5,7 @@ These are a list of unergraduate courses offered by Purdue University that I too
 ### Computer Science
 * CS 18000 - Problem Solving And Object-Oriented Programming (Fall 2017)
 * CS 18200 - Foundations Of Computer Science (Spring 2018)
+* CS 19300 - Tools (Fall 2017)
 * CS 24000 - Programming In C (Spring 2018)
 * CS 25000 - Computer Architecture (Fall 2018)
 * CS 25100 - Data Structures and Algorithms (Fall 2018)
