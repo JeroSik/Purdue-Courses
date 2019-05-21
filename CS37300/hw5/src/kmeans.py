@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import math
 import sys
+import time
 
 class Kmeans(object):
   def __init__(self, df, k, distCalc):
@@ -39,6 +40,7 @@ class Kmeans(object):
     return score
 
   def cluster(self):
+    start = time.time()
     prev_score = np.Inf
 
     while True:
@@ -73,7 +75,10 @@ class Kmeans(object):
         self.c[c_ID][3] = c_df["checkins"].mean()
 
       curr_score = self.findScore()
-      if prev_score - curr_score < 50000:
+      end = time.time()
+      if prev_score - curr_score < 1:
+        break
+      elif end - start > (7.25 * 60):
         break
       else:
         prev_score = curr_score

@@ -1,0 +1,14 @@
+fred: null, null, {george, betty, mildred}
+Mary: null, null, {george, betty, jenny}
+George: fred, Mary, {tyler, too}
+Betty: fred, Mary, {edna, bill}
+Henry: null, null, {Robert, jane}
+Martha: null, null, {Robert, jane}
+Robert: Henry, Martha, {edna, bill, jenny}
+jane: Henry, Martha, {tyler, too}
+tyler: George, jane, {}
+too: George, jane, {}
+edna: Robert, betty, {mildred}
+bill: Robert, betty, {}
+mildred: fred, edna, {}
+jenny: Robert, Mary, {}
