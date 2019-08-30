@@ -1,4 +1,21 @@
-img.navbar-image {
+/* img.navbar-image {
     width: 30px;
     height: 30px;
+} */
+
+.cover {
+    font-family: verdana;
+    font-size: 300%;
+}
+
+@include media-breakpoint-up(sm) {
+    .button1 {
+        background-color: #008CBA;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
 }
