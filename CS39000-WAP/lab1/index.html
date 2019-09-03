@@ -1,26 +1,3 @@
-<!-- Remember:
--No in-line styles 
--Code formatted correctly for HTML and CSS
-
-TODO:
--Add enough content to fill at least 100-200% of viewport height on desktop
--Use at ​least​ 3 custom styled elements
--Make your own custom CSS buttons
--Make sure your site is usable on all screen sizes using bootstrap grid
--Use at ​least​ 3 ​media-queries​ to style elements differently on mobile anddesktop
-
-DONE:
--Proper DOCTYPE declaration for HTML5
--Use ​html tag 
--Use head tag
--Use body tag
--Use div tag
--Use img tag
--Add title
--Add favicon
--Add viewport metatag
--Import Bootstrap -->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,7 +5,7 @@ DONE:
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- CSS-->
+        <!-- Important links -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
         <link rel="icon" type="image/png" href="images/favicon.ico">
@@ -36,57 +13,87 @@ DONE:
         <title>Purdue Boiler Breakers</title>
     </head>
     <body>
-        <!-- Navigation Bar
-        <nav>
-            <a class="navbar-brand" href="https://www.facebook.com/groups/AHHPS/">
-                <img src="images/TIcon.jpg" class="navbar-image">
-                Purdue Boiler Breakers
-            </a>
-        </nav> -->
-        <main>
-            <section class="jumbotron text-center">
+        <!-- Navigation Bar -->
+        <nav id="my-navbar" class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="https://www.facebook.com/groups/AHHPS/">Purdue Boiler Breakers</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <main role="main">
+            <!-- Cover Screen -->
+            <div id="cover-screen" class="jumbotron">
                 <div class="container">
-                    <h1 class="cover">Purdue Boiler Breakers</h1>
-                    <p>Association of Hip Hop Practitioners and Scholars (formerly Purdue Boiler Breakers) is a student organization at Purdue University that promotes Hip Hop culture and its various forms of expression.</p>
-                </div>
-            </section>
-            <div class="album py-5 bg-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Indiana Breaking Events
-                            
-                        </div>
-                        <div class="col-md-6">
-                            PURDUE boiler break practice times
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        Meet the team
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        reach out to us
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        Gallery
-                    </div>
+                    <h1 class="display-3">AHHPS</h1>
+                    <p>Association of Hip Hop Practitioners and Scholars (formerly Purdue Boiler Breakers) is a student organization at Purdue University that promotes Hip Hop culture and its various forms of expression. We spread awareness through performance, and discussion. Join our group to learn more about American popular culture, and opportunities to learn from practitioners and scholars!</p>
+                    <p><button type="button" class="DAObutton">Join today »</button></p>
                 </div>
             </div>
+        
+            <div class="container">
+                <div class="row">
+                    <!-- Practice Times -->
+                    <div class="col-md-6">
+                        <h2>Practice Times</h2>
+                        <h3>Open Dance Sessions</h3>
+                        <ul>
+                            <li>Monday 7:30PM to 9:30PM at Stewart Center</li>
+                            <li>Wednesday 7:30PM to 9:30PM at Corec MPR2</li>
+                        </ul>
+                        <h3>D.A.O Lessons</h3>
+                        <p>Friday at Corec MPR2</p>
+                        <ul>
+                            <li>Hip Hop: 6:00PM to 7:30PM</li>
+                            <li>Jazz: 7:30PM to 9:00PM</li>
+                            <li>Popping/Breaking: 9:00PM to 10:30PM</li>
+                        </ul>
+                    </div>
+
+                    <!-- Membership -->
+                    <div class="col-md-6">
+                        <h2>Membership</h2>
+                        <p>Practice is open to anyone regardless of membership. To join the performance team, pay membership dues <a href="http://bit.ly/ShopBoilerBreakers">here</a>!</p>
+                        <div class="row">
+                            <p class="aligncenter">
+                                <img src="images/boilerBreakerLogo.jpg" class="circle">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance -->
+                <div class="row top-buffer">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <p class="aligncenter">
+                                <img src="images/cypher.jpg" class="fit-div">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Performance Team</h2>
+                        <p>We do performances as well! Reach out to <a href="mailto:breakers@purdue.edu">breakers@purdue.edu.</a></p>
+                    </div>
+                </div>
+                <hr>
+            </div>
         </main>
-        <!-- <div class="container">
-            <h1>Purdue Boiler Breakers</h1>
-        </div>
-        <div>
-            <h2>bye world</h2>
-        </div>
-        <div>
-            <img src="https://purduewebdev.club/assets/image/logo-lg_1x.png">
-        </div> -->
+
+        <!-- Footer -->
+        <footer class="container">
+            <p>©Association of Hip Hop Practitioners and Scholars 2019</p>
+        </footer>
     </body>
 </html>
