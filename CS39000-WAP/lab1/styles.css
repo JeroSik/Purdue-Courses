@@ -1,16 +1,13 @@
 #my-navbar {
     overflow: hidden;
     background-color: #343a40;
-    position: fixed;
     top: 0;
     width: 100%;
 }
 
 #cover-screen {
     background-image: url(images/boilerBreakerBoom.png);
-    margin-top: 20px;
-    /* height: 100% */
-    /* opacity: 0.7; */
+    height: 100%
 }
 
 .top-buffer { 
@@ -21,6 +18,7 @@
     max-width: 100%;
     max-height: 100%;
 }
+
 .aligncenter {
     text-align: center;
 }
@@ -34,4 +32,24 @@
     color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 576px) { 
+    .phone {
+        color: red;
+        font-size: 150%;
+    }
+}
+
+@media (max-width: 768px) { 
+    .weirdButton {
+        border-radius: 50%; 
+        color:black;
+    }
+}
+
+@media (max-width: 992px) { 
+    .weirdImage {
+        transform: rotate(180deg);
+    }
 }
