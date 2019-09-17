@@ -1,11 +1,10 @@
-// let allNoteCards = new Map();
+// Global variables
 let allNoteCards = [];
 let selectedNoteCards = new Set([]);
 let hashID = 0;
 
 // User action when submit is pressed
-let submitPressed = document.getElementById("submitButton");
-submitPressed.addEventListener("click", () => {
+document.getElementById("submitButton").addEventListener("click", () => {
     // Get title and text values from input field
     let title = document.getElementById("titleInput").value;
     let text = document.getElementById("inputArea").value;
@@ -56,25 +55,14 @@ searchTyped.onkeyup = function() {
 
     // Display all cards that matched
     matchedCards.forEach(function(card) {
-        let displayCard = createNoteCardHTML(card.title, card.text, card.id)
-        displayCard.addEventListener("click", () => {
-            if (displayCard.getAttribute("class") == "card") {
-                displayCard.className = "card border border-danger";
-                selectedNoteCards.add(displayCard.getAttribute("id"));
-            } else {
-                displayCard.className = "card";
-                selectedNoteCards.delete(displayCard.getAttribute("id"));
-            }
-        })
-
-        noteCardList.appendChild(displayCard);
+        noteCardList.appendChild(createNoteCardHTML(card.title, card.text, card.id));
     })
 };
 
 // Helper function to check if card has search key
 function checkSearch(word) {
     return function(card) {
-        return (card.title.includes(word) || card.text.includes(word));
+        return card.title.includes(word);
     }
 }
 
@@ -87,26 +75,11 @@ function createNewNoteCard(newTitle, newText) {
         text: newText
     }
 
-    // Create HTML for note card
-    let noteCardHTML = createNoteCardHTML(newTitle, newText, hashID);
-
-    // Add event listener for selection
-    noteCardHTML.addEventListener("click", () => {
-        if (noteCardHTML.getAttribute("class") == "card") {
-            noteCardHTML.className = "card border border-danger";
-            selectedNoteCards.add(noteCardHTML.getAttribute("id"));
-        } else {
-            noteCardHTML.className = "card";
-            selectedNoteCards.delete(noteCardHTML.getAttribute("id"));
-        }
-    })
-
     // Add note card to list of all cards
     allNoteCards.push(noteCard);
 
     // Append note card to HTML
-    let noteCardList = document.getElementById("notecardList");
-    noteCardList.appendChild(noteCardHTML);
+    document.getElementById("notecardList").appendChild(createNoteCardHTML(newTitle, newText, hashID));
     
     // Increment hash ID
     hashID += 1;
@@ -114,25 +87,40 @@ function createNewNoteCard(newTitle, newText) {
 
 // Helper function to create HTML of note card
 function createNoteCardHTML(newTitle, newText, newID) {
+    // Create title element
     let cardTitle = document.createElement("h5");
     cardTitle.className = "card-title";
     let title = document.createTextNode(newTitle);
     cardTitle.appendChild(title);
 
+    // Create text element
     let cardText = document.createElement("p");
     cardText.className = "card-text";
     let text = document.createTextNode(newText);
     cardText.appendChild(text);
 
+    // Create body to contain title and text
     let cardBody = document.createElement("div");
     cardBody.className = "card-body";
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
 
+    // Create card div
     let card = document.createElement("div");
     card.className = "card";
     card.setAttribute("id", newID);
     card.appendChild(cardBody);
+
+    // Add event listener for selection
+    card.addEventListener("click", () => {
+        if (card.getAttribute("class") == "card") {
+            card.className = "card border border-danger";
+            selectedNoteCards.add(card.getAttribute("id"));
+        } else {
+            card.className = "card";
+            selectedNoteCards.delete(card.getAttribute("id"));
+        }
+    })
 
     return card;
 }
