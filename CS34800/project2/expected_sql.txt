@@ -1,6 +1,5 @@
 PhysicianID	Name	Position
 1007	Jacob	Surgical Attending Physician
-1008	Robert	Senior attending Physician
 Department	Dept head	Total hrs worked	Number of appointments
 Cardiology	Jimmy	10	4
 Department	Dept head	Total hrs worked	Number of appointments
