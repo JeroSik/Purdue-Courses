@@ -1,5 +1,4 @@
-
-USE "loginID";
+USE yoon161;
 
 CREATE TABLE Physician (   
   PhysicianID INTEGER PRIMARY KEY NOT NULL,   
@@ -50,5 +49,3 @@ CREATE TABLE Appointment (
   FOREIGN KEY(PrepNurse) REFERENCES Nurse(NurseID) ON DELETE CASCADE,
   FOREIGN KEY(Physician) REFERENCES Physician(PhysicianID) ON DELETE CASCADE
 );
-
-

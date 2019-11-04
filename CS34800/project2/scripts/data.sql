@@ -1,4 +1,5 @@
-USE "loginID"
+USE yoon161;
+
 #Physician
 INSERT INTO Physician VALUES(1001,'Jimmy','Cardiologist',284976513);
 INSERT INTO Physician VALUES(1002,'Brown','Dermatologist',145672789);

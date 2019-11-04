@@ -1,0 +1,12 @@
+Name is : Justin
+Number of Patients : 4
+
+
+Patient SSN is : 946752553
+Patient Name : Rebecca
+Patient Address : 5501 Yeager St
+Patient Phone : 843-168-7844
+Physician Name : Jason
+Physician Position : Pediatrician
+Nurse name : Justin
+Nurse Position : Nurse

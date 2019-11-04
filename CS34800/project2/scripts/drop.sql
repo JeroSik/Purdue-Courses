@@ -1,4 +1,5 @@
-USE "loginId";
+USE yoon161;
+
 drop table Appointment;
 drop table Affiliated_With;
 drop table Nurse;
