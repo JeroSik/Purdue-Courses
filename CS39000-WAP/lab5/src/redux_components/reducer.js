@@ -1,4 +1,5 @@
 import { HistoryRedux } from "./constants";
+import { saveHistory } from "./actions";
 
 /**
  * object:
@@ -26,4 +27,11 @@ export const reducer = (state = initialState, action) => {
    * This is where you update the history by adding an additional history object to the store.
    * Your switch case should have a default case where you return state.
    */
+  switch(action.type) {
+    case saveHistory:
+      //
+      break;
+    default:
+      return state;
+  } 
 };

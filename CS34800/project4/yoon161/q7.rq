@@ -1,0 +1,20 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://dbpedia.org/resource/>
+
+SELECT DISTINCT ?name ?state ?city ?mascot
+WHERE {
+  ?uri rdf:type dbo:University .
+  ?uri rdfs:label  ?name .
+  ?uri dbp:country  ?country .
+  ?uri dbo:numberOfStudents ?numOfStudents .
+  ?uri dbo:mascot ?mascot .
+  ?uri dbo:state ?state .
+  ?uri dbo:city ?city .
+  FILTER(lang(?name) = 'en')
+  FILTER(regex(?country, 'U.S.'))
+  FILTER(?numOfStudents > 35000)
+}
+ORDER BY(?name)

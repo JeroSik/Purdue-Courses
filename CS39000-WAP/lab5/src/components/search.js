@@ -15,7 +15,7 @@ class Search extends React.Component {
     // const { saveHistory } = this.props;
     return (
       <div>
-        <Navbar bg="light" expand="lg">
+        {/* <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Lab 5: Extra Credit</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -24,7 +24,7 @@ class Search extends React.Component {
               <Link to="/history">History</Link>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
         <div id="mainContent">
           <h1>Character Search</h1>
           <Form inline id="movieForm">

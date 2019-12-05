@@ -57,7 +57,7 @@ class History extends React.Component {
 
     return (
       <div>
-        <Navbar bg="light" expand="lg">
+        {/* <Navbar bg="light" expand="lg">
           <Navbar.Brand href="/">Lab 5: Extra Credit</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -66,7 +66,7 @@ class History extends React.Component {
               <Link to="/history">History</Link>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
         <div id="mainContent">
           <h1>Last Two Search History</h1>
           {/**

@@ -5,4 +5,5 @@
  *      ADD_VALUE: "ADD_VALUE"
  * }
  */
+
 export const HistoryRedux = {};

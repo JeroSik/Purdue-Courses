@@ -5,10 +5,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX : <http://dbpedia.org/resource/>
 
-SELECT ?city ?numOfUndergrads ?ranking ?homepage
+SELECT ?affiliation
 WHERE {
-  :Purdue_University dbo:city ?city .
-  :Purdue_University dbo:numberOfUndergraduateStudents ?numOfUndergrads .
-  :Purdue_University dbp:usnwrNu ?ranking .
-  :Purdue_University foaf:homepage ?homepage .
+  :Purdue_University dbo:affiliation ?affiliation .
+  FILTER(regex(?affiliation, 'Association', 'i'))
 }

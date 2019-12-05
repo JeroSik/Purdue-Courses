@@ -1,0 +1,21 @@
+PREFIX db: <http://dbpedia.org/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://dbpedia.org/resource/>
+
+SELECT ?affiliation ?formationYear ?leaderName
+WHERE {
+  :Purdue_University dbo:affiliation ?affiliation .
+  OPTIONAL {
+    SELECT ?affiliation ?formationYear ?leaderName
+    WHERE {
+      ?affiliation rdfs:label ?name .
+      OPTIONAL { ?affiliation dbo:formationYear ?formationYear . }
+      OPTIONAL { ?affiliation dbp:leaderName ?leaderName . }
+      FILTER(lang(?name) = 'en')
+    }
+  }
+}
+

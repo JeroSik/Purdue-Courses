@@ -1,0 +1,15 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://dbpedia.org/resource/>
+
+SELECT DISTINCT ?name ?date
+WHERE {
+  ?uri rdf:type dbo:University .
+  ?uri rdfs:label  ?name .
+  ?uri dbo:state  :Indiana .
+  OPTIONAL {?uri dbo:foundingDate  ?date . }
+  FILTER(lang(?name) = 'en')
+}
+ORDER BY DESC(?date)

@@ -10,29 +10,13 @@ import {
 } from "react-router-dom";
 
 // Pages
-import home from './home';
 import history from './history';
 import search from './search';
 
 class App extends React.Component {
   render() {
     return (
-      <Router>
         <div>
-          <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">Lab 5: Extra Credit</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Link to="/search">Search</Link>
-                <Link to="/history">History</Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-          <Switch>
-              <Route exact path='/search' component={search}/>
-              <Route exact path='/history' component={history}/>
-          </Switch>
           <div id="mainContent">
             <h1>Welcome to the Lab 5 Home Page</h1>
             <br></br>
@@ -47,7 +31,6 @@ class App extends React.Component {
             </h3>
           </div>
         </div>
-      </Router>
     );
   }
 }
