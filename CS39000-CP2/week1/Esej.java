@@ -8,25 +8,29 @@ public class Esej {
 
     int A = scan.nextInt();
     int B = scan.nextInt();
-    String[] ans = new String[B];
+    int count = Math.max(B / 2, A);
 
-    for (int i = 0; i < B; i++) {
-      ans[i] = generateWord(i);
-    }
+    for (int i = 0; i < count; i++) {
+      int n = i;
+      String word = "";
 
-    for (String word : ans) {
+      do {
+        word += alphabet[n % 26];
+        n = n / 26;
+      } while (n > 0);
+
       System.out.print(word + " ");
     }
   }
 
-  public static String generateWord(int n) {
-    String word = "";
+  // public static String generateWord(int n) {
+  //   String word = "";
 
-	  do {
-      word += alphabet[n % 26];
-      n = n / 26;
-    } while (n > 0);
+	//   do {
+  //     word += alphabet[n % 26];
+  //     n = n / 26;
+  //   } while (n > 0);
 
-	  return word;
-  }
+	//   return word;
+  // }
 }

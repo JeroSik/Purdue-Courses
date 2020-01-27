@@ -13,25 +13,25 @@ public class CentSavings {
         int d = scan.nextInt();
 
         int[] items = new int[n];
-        int[] total = new int[n];
-        int[][] opt = new int[n][d];
+        int[] total = new int[n + 1];
+        int[][] opt = new int[n + 1][d + 1];
         for (int i = 0; i < n; i++) {
             items[i] = scan.nextInt();
-            total[i] = i == 0 ? items[i] : total[i - 1] + items[i];
+            total[i + 1] = total[i] + items[i];
             
-            for (int j = 0; j < d; j++) {
-                opt[i][j] = roundTo10(total[i]);
+            for (int j = 0; j <= d; j++) {
+                opt[i + 1][j] = roundTo10(total[i + 1]);
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < d; j++) {
+        for (int j = 1; j <= d; j++) {
+            for (int i = 1; i <= n; i++) {
                 for (int k = 0; k < i; k++) {
-                    opt[i][j] = j == 0 ? opt[i][j] : Math.min(opt[i][j], opt[k][j - 1] + roundTo10(total[i] - total[k]));
+                    opt[i][j] = k == 0 ? opt[k][j - 1] + roundTo10(total[i] - total[k]) : Math.min(opt[i][j], opt[k][j - 1] + roundTo10(total[i] - total[k]));
                 }
             }
         }
-
-        System.out.println(opt[n - 1][d - 1]);
+        
+        System.out.println(opt[n][d]);
     }
 }
