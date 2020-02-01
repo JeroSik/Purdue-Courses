@@ -1,57 +1,83 @@
+#include <algorithm>
+#include <bits/stdc++.h>
 #include <cstdio>
 #include <cstring>
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <string.h>
 
 using namespace std;
 
-// void findLIS(int[] nums, int n) {
-//     int[] opt = new int[n];
-//     opt[0] = 1;
-//     int maxLIS = 0;
+void backtrackLIS(int opt[], int maxLIS, int n) {
+    int ans[maxLIS];
+    for (int i = n - 1; i >= 0; i--) {
+        if (opt[i] == maxLIS) {
+            ans[maxLIS - 1] = i;
+            
+            maxLIS--;
+            if (maxLIS == 0) {
+                break;
+            }
+        }
+    }
 
-//     for (int i = 1; i < n; i++) {
-//         opt[i] = 0;
+    for (int i = 0; i < maxLIS; i++) {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+}
 
-//         for (int j = 0; j < i; j++) {
-//             if (nums[i] > nums[j]) {
-//                 opt[i] = Math.max(opt[i], opt[j]);
-//             }
-//         }
-//         opt[i] = opt[i] + 1;
-//         maxLIS = Math.max(maxLIS, opt[i]);
-//     }
-
-//     System.out.println(maxLIS);
-//     backtrackLIS(opt, n);
-// }
-
-// void backtrackLIS(int[] opt, int n) {
-//     int max = 1;
-//     for (int i = 0; i < n; i++) {
-//         if (opt[i] == max) {
-//             System.out.print(i + " ");
-//             max++;
-//         }
-//     }
-//     System.out.println();
-// }
+int nums[100001];
+int opt[100001];
+int ans[100001];
 
 int main() {
     int n, num;
-    while(cin.eof()){
-        cin >> n;
-        vector<int> v;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
+    while(scanf("%d", &n) != EOF){
+        opt[0] = 1;
+        int maxLIS = 1;
+
+        // Recurrence
         for (int i = 0; i < n; i++) {
-            cin >> num;
-            v.push_back(num);
+            scanf("%d", &num);
+            nums[i] = num;
+
+            opt[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {
+                    opt[i] = max(opt[i], opt[j] + 1);
+                }
+            }
+            maxLIS = max(maxLIS, opt[i]);
         }
 
-        cout << "LMAO YETT" << endl;
+        cout << maxLIS << endl;
+        int k = maxLIS;
+        // Backtracking
+        for (int i = n - 1; i >= 0; i--) {
+            if (opt[i] == maxLIS) {
+                ans[maxLIS - 1] = i;
+
+                maxLIS--;
+                if (maxLIS == 0) {
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < k; i++) {
+            cout << ans[i] << " ";
+        }
+        cout << endl;
+
+        memset(nums, 0, sizeof(nums));
+        memset(opt, 0, sizeof(opt));
+        memset(ans, 0, sizeof(ans));
     }
-    
-            
+    exit(0);
     return 0;
 }

@@ -1,0 +1,33 @@
+5
+3
+4
+2
+5
+1
+
+5
+
+5
+5
+1
+4
+2
+3
+
+3
+
+
+        // for (int i = 1; i < n; i++) {
+        //     for (int j = 0; j < i; j++) {
+        //         if (nums[i] < nums[j]) {
+        //             lis[i] = Math.max(lis[i], lis[j]);
+        //         } else if (nums[i] > nums[j]) {
+        //             lds[i] = Math.max(lds[i], lds[j]);
+        //         }
+        //     }
+
+        //     lis[i] = lis[i] + 1;
+        //     lds[i] = lds[i] + 1;
+
+        //     maxTrains = Math.max(maxTrains, lis[i] + lds[i] - 1);
+        // }
