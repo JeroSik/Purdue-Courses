@@ -95,24 +95,25 @@ def depthFirstSearch(problem):
     startState = problem.getStartState()
     goalState = None
     dircounter[startState] = (None, None)
+    visited = set()
 
     stack.push(startState)
     while not stack.isEmpty():
         curState = stack.pop()
-        # time.sleep(1)
+
         if problem.isGoalState(curState):
             goalState = curState
             break
-        
-        successors = problem.getSuccessors(curState)
-        for sucTriple in successors:
-            sucState, action, cost = sucTriple
-            if dircounter[sucState] == 0:
-                dircounter[sucState] = (curState, action)
-                stack.push(sucState)
 
-    print(goalState)
-    print(dircounter)
+        if not curState in visited:
+            visited.add(curState)
+
+            successors = problem.getSuccessors(curState)
+            for sucTriple in successors:
+                sucState, action, cost = sucTriple
+                if not sucState in visited:
+                    dircounter[sucState] = (curState, action)
+                    stack.push(sucState)
         
     if not goalState:
         raise AssertionError("Can not find a valid solution")
@@ -135,6 +136,7 @@ def breadthFirstSearch(problem):
     startState = problem.getStartState()
     goalState = None
     dircounter[startState] = (None, None)
+
     queue.push(startState)
     while not queue.isEmpty():
         curState = queue.pop()
@@ -165,8 +167,43 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    dircounter = util.Counter()
+    pQueue = util.PriorityQueue()
 
+    startState = problem.getStartState()
+    goalState = None
+    dircounter[startState] = (None, None, 0)
+    visited = set()
+
+    pQueue.push((startState, 0), 0)
+    while not pQueue.isEmpty():
+        curState, curCost = pQueue.pop()
+
+        if problem.isGoalState(curState):
+            goalState = curState
+            break
+
+        if not curState in visited:
+            visited.add(curState)
+
+            successors = problem.getSuccessors(curState)
+            for sucTriple in successors:
+                sucState, action, cost = sucTriple
+                if not sucState in visited:
+                    if (dircounter[sucState] == 0 or dircounter[sucState][2] > curCost + cost):
+                        dircounter[sucState] = (curState, action, curCost + cost)
+                    pQueue.update((sucState, curCost + cost), curCost + cost)
+        
+    if not goalState:
+        raise AssertionError("Can not find a valid solution")
+    else:
+        actions = []
+        state = goalState
+        while state != startState:
+            prevState, action, cost = dircounter[state]
+            actions.append(action)
+            state = prevState
+        return actions[::-1]
 
 def nullHeuristic(state, problem=None):
     """
@@ -179,7 +216,48 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    dircounter = util.Counter()
+    pQueue = util.PriorityQueue()
+
+    startState = problem.getStartState()
+    goalState = None
+    dircounter[startState] = (None, None, 0)
+    visited = set()
+
+    pQueue.push((startState, 0), 0)
+    while not pQueue.isEmpty():
+        curState, curCost = pQueue.pop()
+
+        if problem.isGoalState(curState):
+            goalState = curState
+            break
+
+        if not curState in visited:
+            visited.add(curState)
+
+            successors = problem.getSuccessors(curState)
+            for sucTriple in successors:
+                sucState, action, cost = sucTriple
+                if not sucState in visited:
+                    g = curCost + cost
+                    h = heuristic(sucState, problem)
+
+                    if (dircounter[sucState] == 0 or g < dircounter[sucState][2]):
+                        dircounter[sucState] = (curState, action, g)
+                    pQueue.update((sucState, g), g + h)
+
+        # print(curState, dircounter)
+    
+    if not goalState:
+        raise AssertionError("Can not find a valid solution")
+    else:
+        actions = []
+        state = goalState
+        while state != startState:
+            prevState, action, cost = dircounter[state]
+            actions.append(action)
+            state = prevState
+        return actions[::-1]
 
 
 # Abbreviations

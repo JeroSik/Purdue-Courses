@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TrainSorting",
+            "request": "launch",
+            "mainClass": "TrainSorting"
+        }
+    ]
+}

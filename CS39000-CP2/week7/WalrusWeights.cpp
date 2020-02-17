@@ -26,7 +26,7 @@ int main() {
             if (weights[i] > w) {
                 opt[i][w] = opt[i-1][w];
             } else {
-                opt[i][2] = max(opt[i-1][w], opt[][w - weights[i]]);
+                opt[i][w] = max(opt[i-1][w], opt[i - 1][w - weights[i]]);
             }
         }
     }
