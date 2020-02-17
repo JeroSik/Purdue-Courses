@@ -288,6 +288,7 @@ class CornersProblem(search.SearchProblem):
         # Please add any code here which you would like to use
         # in initializing the problem
         "*** YOUR CODE HERE ***"
+        self.startingGameState = startingGameState
 
     def getStartState(self):
         """
@@ -365,7 +366,6 @@ class CornersProblem(search.SearchProblem):
             if self.walls[x][y]: return 999999
         return len(actions)
 
-
 def cornersHeuristic(state, problem):
     """
     A heuristic for the CornersProblem that you defined.
@@ -383,44 +383,28 @@ def cornersHeuristic(state, problem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
-    h = 0
+    heuristic = 0
     x, y, visited = state
     vList = list(visited)
 
-    while not problem.isGoalState(state):
+    while vList != [True, True, True, True]:
+        shortestDist = float("inf")
+        closestCorner = -1
+
+        for i in range(4):
+            if (vList[i] == False):
+                currDist = util.manhattanDistance((x, y), corners[i])
+                # currDist = mazeDistance((x, y), corners[i], problem.startingGameState)
+
+                if (shortestDist > currDist):
+                    shortestDist = currDist
+                    closestCorner = i
         
-    for i in range(4):
-        if (vList[i] == False):
-            dist += util.manhattanDistance((x, y), corners[i])
+        vList[closestCorner] = True
+        heuristic += shortestDist
+        x, y = corners[closestCorner]
 
-            if ()
-
-
-    return h
-
-    "*** SOLUTION ***"
-    # corners = problem.corners # These are the corner coordinates
-    # walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
-
-    # l = len(corners)
-    # c = state[-1]
-    # x, y = state[0], state[1]
-    # heuristic = 0
-    # while c != 15:
-    #     dis = float("inf")
-    #     updateInd = None
-    #     for i in range(l):
-    #         if (c >> i) & 1 == 0:
-    #             ind = l - i - 1
-    #             d = abs(corners[ind][0]-x)+abs(corners[ind][1]-y)
-    #             if dis > d:
-    #                 dis = d
-    #                 updateInd = ind
-    #     c += 1 << (l - updateInd - 1)
-    #     x, y = corners[updateInd]
-    #     heuristic += dis
-    # # print (dis)
-    # return heuristic # Default to trivial solution
+    return heuristic
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
@@ -514,7 +498,16 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    if state[1].count() == 0:
+        return 0
+
+    maxDist = 0
+    foodList = foodGrid.asList()
+    for food in foodList:
+        foodDist = mazeDistance(position, food, problem.startingGameState)
+        maxDist = foodDist if foodDist > maxDist else maxDist
+
+    return maxDist
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
