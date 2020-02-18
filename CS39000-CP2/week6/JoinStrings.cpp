@@ -6,30 +6,39 @@
 
 using namespace std;
 
-int main() {
-    int s, n;
-    scanf("%d %d", &s, &n);
+vector<string> words;
+vector<vector<int>> op;
 
-    vector<pair<int,int>> hands;
-    for (int i = 1; i <= n; i++) {
-        hands.push_back({i, 2});
+void printWords(int a) {
+    cout << words.at(a);
+
+    for (auto &x : op.at(a)) {
+        printWords(x);
+    }
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        string word;
+        cin >> word;
+        words.push_back(word);
+
+        vector<int> v;
+        op.push_back(v);
     }
     
-    int curr = 0;
-    while (hands.size() > 1) {
-        curr = (curr + s - 1) % hands.size();
+    int a, b;
+    for (int i = 0; i < N - 1; i++) {
+        scanf("%d %d", &a, &b);
+        a -= 1; b -= 1;
 
-        if (hands[curr].second == 2) {
-            hands[curr].second = 1;
-            hands.insert(hands.begin() + curr, {hands[curr].first, 1});
-        } else if (hands[curr].second == 1) {
-            hands[curr].second = 0;
-            curr++;
-        } else {
-            hands.erase(hands.begin() + curr);
-        }
+        op.at(a).push_back(b);
     }
 
-    printf("%d\n", hands[0].first);
+    printWords(a);
+
     return 0;
 }
