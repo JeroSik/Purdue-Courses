@@ -288,6 +288,7 @@ class CornersProblem(search.SearchProblem):
         # Please add any code here which you would like to use
         # in initializing the problem
         "*** YOUR CODE HERE ***"
+        # startingGameState variable for mazeDistance() method
         self.startingGameState = startingGameState
 
     def getStartState(self):
@@ -296,6 +297,7 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
+        # Return the x coordinate, y coordinate, and a boolean tuple denoting which corners have been visited 
         return (self.startingPosition[0], self.startingPosition[1], (False, False, False, False))
 
     def isGoalState(self, state):
@@ -304,6 +306,8 @@ class CornersProblem(search.SearchProblem):
         """
         "*** YOUR CODE HERE ***"
         x, y, visited = state
+
+        # Check to see if all corners have been visited
         if (visited == (True, True, True, True)):
             return True
 
@@ -332,10 +336,14 @@ class CornersProblem(search.SearchProblem):
             x,y, visited = state
             dx, dy = Actions.directionToVector(action)
             nextx, nexty = int(x + dx), int(y + dy)
+
+            # Check if successor is a wall
             if not self.walls[nextx][nexty]:
                 nextCord = (nextx, nexty)
                 top, right = self.walls.height-2, self.walls.width-2
                 temp = list(visited)
+
+                # If successor is a corner, then change boolean tuple accordingly
                 if (nextCord in self.corners):
                     if (nextCord == (1, 1)):
                         temp[0] = True
@@ -346,6 +354,7 @@ class CornersProblem(search.SearchProblem):
                     if (nextCord == (right, top)):
                         temp[3] = True
                 
+                # Append successor to list
                 nextVisited = tuple(temp)
                 nextState = (nextx, nexty, nextVisited)
                 successors.append( ( nextState, action, 1) )
@@ -387,19 +396,23 @@ def cornersHeuristic(state, problem):
     x, y, visited = state
     vList = list(visited)
 
+    # Continue until distance to all corners are found
     while vList != [True, True, True, True]:
         shortestDist = float("inf")
         closestCorner = -1
 
+        # Iterate through all corners
         for i in range(4):
+            # Find the closest corner to current position
             if (vList[i] == False):
                 currDist = util.manhattanDistance((x, y), corners[i])
-                # currDist = mazeDistance((x, y), corners[i], problem.startingGameState)
+                # currDist = mazeDistance((x, y), corners[i], problem.startingGameState) # mazeDistance() doesn't work?
 
                 if (shortestDist > currDist):
                     shortestDist = currDist
                     closestCorner = i
         
+        # Add distance to closest to heuristic score and update current position
         vList[closestCorner] = True
         heuristic += shortestDist
         x, y = corners[closestCorner]
@@ -498,15 +511,19 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
+    # If there is no food, then goal state is reached
     if state[1].count() == 0:
         return 0
 
     maxDist = 0
     foodList = foodGrid.asList()
+
+    # Iterate through all food in foodList
     for food in foodList:
         foodDist = mazeDistance(position, food, problem.startingGameState)
         maxDist = foodDist if foodDist > maxDist else maxDist
 
+    # Return distance from furthest food
     return maxDist
 
 class ClosestDotSearchAgent(SearchAgent):

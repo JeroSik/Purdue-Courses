@@ -89,22 +89,27 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
+    # Initialize direction counter for backtracking and stack for DFS
     dircounter = util.Counter()
     stack = util.Stack()
 
+    # Initialize start of DFS
     startState = problem.getStartState()
     goalState = None
     dircounter[startState] = (None, None)
     visited = set()
 
+    # Begin DFS with startState
     stack.push(startState)
     while not stack.isEmpty():
         curState = stack.pop()
 
+        # If state is goalState then stop DFS
         if problem.isGoalState(curState):
             goalState = curState
             break
 
+        # If state has not already been visited, run DFS on successors
         if not curState in visited:
             visited.add(curState)
 
@@ -114,7 +119,8 @@ def depthFirstSearch(problem):
                 if not sucState in visited:
                     dircounter[sucState] = (curState, action)
                     stack.push(sucState)
-        
+    
+    # Backtrack to find path
     if not goalState:
         raise AssertionError("Can not find a valid solution")
     else:
@@ -167,22 +173,27 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
+    # Initialize direction counter for backtracking and priority queue for UCS
     dircounter = util.Counter()
     pQueue = util.PriorityQueue()
 
+    # Initialize start of UCS
     startState = problem.getStartState()
     goalState = None
     dircounter[startState] = (None, None, 0)
     visited = set()
 
+    # Begin UCS with startState at cost 0
     pQueue.push((startState, 0), 0)
     while not pQueue.isEmpty():
         curState, curCost = pQueue.pop()
 
+        # If state is goalState then stop UCS
         if problem.isGoalState(curState):
             goalState = curState
             break
 
+        # If state has not already been visited, add successors to the priority queue with the cumulative cost
         if not curState in visited:
             visited.add(curState)
 
@@ -193,7 +204,8 @@ def uniformCostSearch(problem):
                     if (dircounter[sucState] == 0 or dircounter[sucState][2] > curCost + cost):
                         dircounter[sucState] = (curState, action, curCost + cost)
                     pQueue.update((sucState, curCost + cost), curCost + cost)
-        
+    
+    # Backtrack to find path
     if not goalState:
         raise AssertionError("Can not find a valid solution")
     else:
@@ -204,6 +216,9 @@ def uniformCostSearch(problem):
             actions.append(action)
             state = prevState
         return actions[::-1]
+
+
+        
 
 def nullHeuristic(state, problem=None):
     """
@@ -216,22 +231,27 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
+    # Initialize direction counter for backtracking and priority queue for A*
     dircounter = util.Counter()
     pQueue = util.PriorityQueue()
 
+    # Initialize start of A*
     startState = problem.getStartState()
     goalState = None
     dircounter[startState] = (None, None, 0)
     visited = set()
 
+    # Begin A* with startState at cost 0
     pQueue.push((startState, 0), 0)
     while not pQueue.isEmpty():
         curState, curCost = pQueue.pop()
 
+        # If state is goalState then stop A*
         if problem.isGoalState(curState):
             goalState = curState
             break
 
+        # If state has not already been visited, add successors to the priority queue with the cumulative cost
         if not curState in visited:
             visited.add(curState)
 
@@ -245,9 +265,8 @@ def aStarSearch(problem, heuristic=nullHeuristic):
                     if (dircounter[sucState] == 0 or g < dircounter[sucState][2]):
                         dircounter[sucState] = (curState, action, g)
                     pQueue.update((sucState, g), g + h)
-
-        # print(curState, dircounter)
     
+    # Backtrack to find path
     if not goalState:
         raise AssertionError("Can not find a valid solution")
     else:
