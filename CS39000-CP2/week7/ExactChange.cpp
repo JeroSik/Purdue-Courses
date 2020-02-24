@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 #include <iostream>
 #include <stdio.h>
@@ -6,25 +7,44 @@
 
 using namespace std;
 
-int main() {
-    int t, price, n, val;
-    scanf("%d", &t);
+int T, price, n, x;
+int denom[101];
+int opt[10001];
 
-    while (t-- > 0) {
-        scanf("d", &price);
-        scanf("d", &n);
-        int demon[n];
+int main() {
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(0);
+
+    scanf("%d", &T);
+
+    for (int t = 0; t < T; t++) {
+        scanf("%d", &price);
+        scanf("%d", &n);
 
         for (int i = 0; i < n; i++) {
-            scanf("d", &val);
-            demon[j] = val;
+            scanf("%d", &x);
+            denom[i] = x;
+        }
+        
+        opt[0] = 0;
+        for (int i = 1; i < 10001; i++) {
+            opt[i] = 10001;
         }
 
-        // Start dp
-        int dp[price + 1];
         for (int i = 0; i < n; i++) {
-            scanf("d", &val);
-            demon[j] = val;
+            for (int j = 10001; j >= 0; j--) {
+                if (denom[i] <= j) {
+                    opt[j] = min(opt[j], opt[j - denom[i]] + 1);
+                }
+            }
+        }
+
+        for (int i = price; i < 10001; i++) {
+            if (opt[i] != 10001) {
+                printf("%d %d\n", i, opt[i]);
+                break;
+            }
         }
     }
 

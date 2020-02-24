@@ -18,7 +18,6 @@ void DFS(int curr) {
             visited.insert(next);
             // cout << next << endl;
 
-
             color[next] = color[curr] == 0 ? 1 : 0;
             DFS(next);
         }
