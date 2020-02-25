@@ -6,12 +6,8 @@
 
 using namespace std;
 
-// inline int readint(){
-//     int c=getchar_unlocked(), x=0;
-//     for(;c<48||c>57;c=getchar_unlocked());
-//     for(;c>47&&c<58;c=getchar_unlocked()) x=(x<<3)+(x<<1)+c-48;
-//     return x;
-// }
+int N, a, b;
+string word;
 
 vector<string> words;
 vector<vector<int>> op;
@@ -28,13 +24,11 @@ int main() {
     // added the two lines below 
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
+    cout.tie(0);
 
-    int N;
-    // int x = scanf("%d", &N);
     cin >> N;
 
     for (int i = 0; i < N; i++) {
-        string word;
         cin >> word;
         words.push_back(word);
 
@@ -42,13 +36,9 @@ int main() {
         op.push_back(v);
     }
     
-    int a, b;
     for (int i = 0; i < N - 1; i++) {
-        // int a = readint() - 1;
-        // int b = readint() - 1;
-        // int y = scanf("%d %d", &a, &b);
         cin >> a >> b;
-        a -= 1; b -= 1;
+        a--; b--;
 
         op.at(a).push_back(b);
     }

@@ -6,11 +6,17 @@
 
 using namespace std;
 
+int s, n;
+
+vector<pair<int,int>> hands;
+
 int main() {
-    int s, n;
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(0);
+
     scanf("%d %d", &s, &n);
 
-    vector<pair<int,int>> hands;
     for (int i = 1; i <= n; i++) {
         hands.push_back({i, 2});
     }
@@ -31,5 +37,6 @@ int main() {
     }
 
     printf("%d\n", hands[0].first);
+    
     return 0;
 }

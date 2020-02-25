@@ -7,47 +7,68 @@
 
 using namespace std;
 
-int H, B, h, b;
-int W, temp;
+int H, B, maxH, maxB, maxS, ans;
+int hotdogs[101];
+int buns[101];
+int optH[100001];
+int optB[100001];
 
 int main() {
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
+    cout.tie(0);
 
     cin >> H;
-    int hotdogs[H];
-    W = 0;
+    maxH = 0;
     for (int i = 0; i < H; i++) {
-        scanf("%d", &h);
-        hotdogs[i] = h;
-        W += h;
+        cin >> hotdogs[i];
+        maxH += hotdogs[i];
+    }
+
+    cin >> B;
+    maxB = 0;
+    for (int i = 0; i < B; i++) {
+        cin >> buns[i];
+        maxB += buns[i];
     }
     
-    cin >> B;
-    int buns[B];
-    temp = 0;
-    for (int i = 0; i < B; i++) {
-        cin >> b;
-        buns[i] = b;
-        temp += b;
+    maxS = min(maxH, maxB);
+    optH[0] = 0; optB[0] = 0;
+    for (int w = 1; w < maxS; w++) {
+        optH[w] = 100001;
+        optB[w] = 100001;
     }
 
-    W = W > temp ? temp : W;
-
-    int optH[H + 1][W + 1];
-    int optB[B + 1][W + 1];
-
-    for(int i = 1; i < H + 1; i++) {
-            for(int j = 0; j < W + 1; j++) {
-                if(i == 0 || j == 0) {
-                    optH[i][j] = 0;
-                } else if (j - hotdogs[i - 1] >= 0) {
-                    optH[i][j] = Math.max(DP[i-1][j], DP[i-1][j - w[i-1]] + v[i-1]);
-                } else {
-                    DP[i][j] = DP[i-1][j];
-                }
+    for (int i = 0; i < H; i++) {
+        for (int w = maxS; w >= 0; w--) {
+        // for (int w = 0; w < maxS; w++) {
+            if (hotdogs[i] <= w) {
+                optH[w] = min(optH[w], optH[w - hotdogs[i]] + 1);
             }
         }
+    }
+
+    for (int i = 0; i < B; i++) {
+        for (int w = maxS; w >= 0; w--) {
+        // for (int w = 0; w < maxS; w++) {
+            if (buns[i] <= w) {
+                optB[w] = min(optB[w], optB[w - buns[i]] + 1);
+            }
+        }
+    }
+
+    ans = 100001;
+    for (int i = 1; i < maxS; i++) {
+        if (optH[i] != 100001 && optB[i] != 100001) {
+            ans = min(ans, optH[i] + optB[i]);
+        }
+    }
+
+    if (ans == 100001) {
+        cout << "impossible";
+    } else {
+        cout << ans;
+    }
 
     return 0;
 }

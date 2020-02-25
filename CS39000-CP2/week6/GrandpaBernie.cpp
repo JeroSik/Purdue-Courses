@@ -16,7 +16,11 @@ unordered_map<string, vector<int>> trips;
 unordered_set<string> sorted;
 
 int main() {
-    scanf("%d", &n);
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL);
+    cout.tie(0);
+
+    cin >> n;
 
     for (int i = 0; i < n; i++) {
         cin >> country >> year;
@@ -30,8 +34,7 @@ int main() {
         }
     }
 
-    scanf("%d", &q);
-
+    cin >> q;
     for (int i = 0; i < q; i++) {
         cin >> country >> k;
 
@@ -40,7 +43,7 @@ int main() {
             sorted.insert(country);
         }
 
-        cout << trips.at(country).at(k - 1) << endl;
+        cout << trips.at(country).at(k - 1) << "\n";
     }
 
     return 0;
