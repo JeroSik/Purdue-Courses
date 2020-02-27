@@ -63,7 +63,6 @@ int main() {
         } else if (opt[o] == -1) {
             printf("Impossible\n");
         } else {
-            // printf("%d\n", o);
             vector<int> ans(n, 0);
             int x = o;
             while (opt[x] != -3) {

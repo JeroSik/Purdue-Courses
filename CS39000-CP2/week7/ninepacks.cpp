@@ -32,7 +32,7 @@ int main() {
         maxB += buns[i];
     }
     
-    maxS = min(maxH, maxB);
+    maxS = min(maxH, maxB) + 1;
     optH[0] = 0; optB[0] = 0;
     for (int w = 1; w < maxS; w++) {
         optH[w] = 100001;
@@ -41,7 +41,6 @@ int main() {
 
     for (int i = 0; i < H; i++) {
         for (int w = maxS; w >= 0; w--) {
-        // for (int w = 0; w < maxS; w++) {
             if (hotdogs[i] <= w) {
                 optH[w] = min(optH[w], optH[w - hotdogs[i]] + 1);
             }
@@ -50,7 +49,6 @@ int main() {
 
     for (int i = 0; i < B; i++) {
         for (int w = maxS; w >= 0; w--) {
-        // for (int w = 0; w < maxS; w++) {
             if (buns[i] <= w) {
                 optB[w] = min(optB[w], optB[w - buns[i]] + 1);
             }

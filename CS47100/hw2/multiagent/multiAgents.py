@@ -21,7 +21,7 @@ from game import Agent
 class ReflexAgent(Agent):
     """
       A reflex agent chooses an action at each choice point by examining
-      its alternatives via a state evaluation function.
+      its alterevaluationFunctionnatives via a state evaluation function.
 
       The code below is provided as a guide.  You are welcome to change
       it in any way you see fit, so long as you don't touch our method
@@ -74,7 +74,38 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        return successorGameState.getScore()
+        score = 0
+
+        # Get useful information for current game state
+        currPos = currentGameState.getPacmanPosition()
+        currFood = currentGameState.getFood()
+        currGhostStates = currentGameState.getGhostStates()
+        currScaredTimes = [ghostState.scaredTimer for ghostState in currGhostStates]
+
+        # Compare food score (manhattan distance to each food)
+        currFoodList = currFood.asList()
+        newFoodList = newFood.asList()
+        currDist = 0
+        newDist = 0
+
+        for food in currFoodList:
+            currDist += manhattanDistance(currPos, food)
+        for food in newFoodList:
+            newDist += manhattanDistance(newPos, food)
+
+        score += newDist - currDist
+
+        # Compare ghost score (manhattan distance to each ghost)
+        currTime = 0
+        newTime = 0
+        for time in currScaredTimes:
+            currTime += time
+        for time in newScaredTimes:
+            newTime += time
+
+        score += newTime - currTime
+
+        return score
 
 def scoreEvaluationFunction(currentGameState):
     """
