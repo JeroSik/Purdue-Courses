@@ -29,31 +29,24 @@ int main() {
     }
     
     // opt[c] last menu item to reach cost c, -1 if impossible, -2 if ambiguous
-    for (int i = 0; i < n; i++) {
-        for (int w = 0; w < 30001; w++) {
-            if (costs[i] + w < 30001) {
-                if (opt[w] != -1) {
-                    if (opt[w] == -2) {
-                        opt[w + costs[i]] = -2;
-                    } else if (opt[w + costs[i]] >= 0) {
-                        opt[w + costs[i]] = -2;
-                    } else {
-                        opt[w + costs[i]] = i;
-                    }
+    for (int i = 0; i < n; i++) { // go through all coins
+        for (int w = costs[i]; w < 30001; w++) {   // all values
+            if (opt[w - costs[i]] >= 0 || opt[w - costs[i]] == -3) {
+                if (opt[w] >= 0) {
+                    opt[w] = -2;
+                } else if (opt[w] == -1) {
+                    opt[w] = i;
                 }
+            } else if (opt[w - costs[i]] == -2) {
+                opt[w] = -2;
             }
         }
 
-        // printf("****** FINISHED %d ******\n", i);
         // for (int a = 0; a < 15; a++) {
         //     printf("%d: %d\n",a, opt[a]);
         // }
     }
-    // for (int a = 0; a < 15; a++) {
-    //     printf("%d: %d\n",a, opt[a]);
-    // }
 
-    // Print output
     scanf("%d", &m);
     for (int i = 0; i < m; i++) {
         scanf("%d", &o);
