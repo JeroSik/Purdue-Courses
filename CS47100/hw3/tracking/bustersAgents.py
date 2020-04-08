@@ -162,5 +162,37 @@ class GreedyBustersAgent(BustersAgent):
         livingGhostPositionDistributions = \
             [beliefs for i, beliefs in enumerate(self.ghostBeliefs)
              if livingGhosts[i+1]]
+
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        # Initialize variables to store action and ghost distance
+        nextAction = None
+        closestGhostDistance = float("inf")
+
+        # Iterate through Pacman's legal actions
+        for action in legal:
+            # Find the successor position to Pacman after action
+            successorPosition = Actions.getSuccessor(pacmanPosition, action)
+
+            # Iterate through all ghost's position distributions
+            for currentGhostPositionDistributions in livingGhostPositionDistributions:
+                # Initialize variables to store most likely position and probability
+                currentGhostPosition = None
+                currentGhostPositionProbability = -1
+
+                # Iterate through the ghost's possible positions with their probability
+                for ghostPosition, positionProbability in currentGhostPositionDistributions.items():
+                    # Check if ghost's position is the most probable and update position accordingly
+                    if positionProbability > currentGhostPositionProbability:
+                        currentGhostPositionProbability = positionProbability
+                        currentGhostPosition = ghostPosition
+
+                # Find the maze distance from Pacman's successor position to ghost's position
+                currentGhostDistance = self.distancer.getDistance(successorPosition, currentGhostPosition)
+
+                # Check if current ghost's distance is the closest and update action accordingly
+                if currentGhostDistance < closestGhostDistance:
+                    closestGhostDistance = currentGhostDistance
+                    nextAction = action
+
+        # Return the next best action
+        return nextAction
