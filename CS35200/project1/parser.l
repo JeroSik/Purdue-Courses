@@ -1,0 +1,60 @@
+%{
+    #include "y.tab.h"
+    #include <stdio.h>
+    #include <stdlib.h>
+    void    yyerror(char *);
+%}
+
+%option yylineno
+
+%%
+
+boolean                             { return BOOLEAN;               }
+class                               { return CLASS;                 }
+else                                { return ELSE;                  }
+extends                             { return EXTENDS;               }
+false                               { return FALSE;                 }
+if                                  { return IF;                    }
+int                                 { return INT;                   }
+length                              { return LENGTH;                }
+main                                { return MAIN;                  }
+new                                 { return NEW;                   }
+public                              { return PUBLIC;                }
+return                              { return RETURN;                }
+static                              { return STATIC;                }
+String                              { return STRING;                }
+System\.out\.print                  { return SYSTEM_OUT_PRINT;      }
+System\.out\.println                { return SYSTEM_OUT_PRINTLN;    }
+this                                { return THIS;                  }
+true                                { return TRUE;                  }
+void                                { return VOID;                  }
+while                               { return WHILE;                 }
+\]                                  { return CLOSED_BRACKET;        }
+\}                                  { return CLOSED_CURLY;          }
+\)                                  { return CLOSED_PARENTHESES;    }
+\,                                  { return COMMA;                 }
+\.                                  { return DOT;                   }
+\=                                  { return EQUALS;                }
+\!                                  { return EXCLAMATION;           }
+\-                                  { return MINUS;                 }
+\[                                  { return OPEN_BRACKET;          }
+\{                                  { return OPEN_CURLY;            } 
+\(                                  { return OPEN_PARENTHESES;      }
+\+                                  { return PLUS;                  }
+\;                                  { return SEMICOLON;             }
+[0-9]+                              { return INTEGER_LITERAL;       }
+[a-zA-Z][a-zA-Z0-9\_]*              { return ID;                    }
+"&&"|"||"|<|>|<=|>=|==|"!="         { return OP;                    }
+\"([^"\\]|\\.)*\"                   { return STRING_LITERAL;        }
+"//"[^\n]*                          { }
+"/*"([^*]|\*+[^/*])*\*+"/"          { } /*comments */
+
+[ \t\n]                               { } /* skip whitespace */
+
+
+%%
+
+
+int yywrap(void) {
+    return 1;
+}

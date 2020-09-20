@@ -1,0 +1,1923 @@
+State 17 conflicts: 4 shift/reduce
+State 24 conflicts: 4 shift/reduce
+State 62 conflicts: 1 shift/reduce
+State 63 conflicts: 1 shift/reduce
+State 67 conflicts: 1 shift/reduce
+State 73 conflicts: 1 shift/reduce
+State 84 conflicts: 1 shift/reduce
+State 111 conflicts: 1 reduce/reduce
+
+
+Grammar
+
+    0 $accept: Program $end
+
+    1 Program: MainClass ClassDeclList
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    3 ClassDeclList: %empty
+    4              | ClassDecl ClassDeclList
+
+    5 ClassDecl: CLASS ID OptionalExtends OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY
+
+    6 VarDeclList: %empty
+    7            | VarDecl VarDeclList
+
+    8 MethodDeclList: %empty
+    9               | MethodDecl MethodDeclList
+
+   10 OptionalExtends: %empty
+   11                | EXTENDS ID
+
+   12 VarDecl: Type ID VarInit VarDeclTail SEMICOLON
+
+   13 VarInit: %empty
+   14        | EQUALS Exp
+
+   15 VarDeclTail: %empty
+   16            | COMMA ID VarInit VarDeclTail
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+
+   18 OptionalFormatList: %empty
+   19                   | FormalList
+
+   20 OptionalPublic: %empty
+   21               | PUBLIC
+
+   22 FormalList: Type ID FormalsTail
+
+   23 FormalsTail: %empty
+   24            | COMMA Type ID FormalsTail
+
+   25 PrimeType: INT
+   26          | BOOLEAN
+   27          | ID
+   28          | STRING
+
+   29 Type: PrimeType
+   30     | Type OPEN_BRACKET CLOSED_BRACKET
+
+   31 StatementList: %empty
+   32              | Statement StatementList
+
+   33 Statement: VarDecl
+   34          | OPEN_CURLY StatementList CLOSED_CURLY
+   35          | IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE Statement
+   36          | WHILE OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement
+   37          | SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+   38          | SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+   39          | LeftValue EQUALS Exp SEMICOLON
+   40          | RETURN Exp SEMICOLON
+   41          | MethodCall SEMICOLON
+
+   42 MethodCall: LeftValue OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES
+
+   43 OptionalExpList: %empty
+   44                | ExpList
+
+   45 Exp: Exp OP Exp
+   46    | EXCLAMATION Exp
+   47    | PLUS Exp
+   48    | MINUS Exp
+   49    | OPEN_PARENTHESES Exp CLOSED_PARENTHESES
+   50    | LeftValue
+   51    | LeftValue DOT LENGTH
+   52    | INTEGER_LITERAL
+   53    | STRING_LITERAL
+   54    | TRUE
+   55    | FALSE
+   56    | MethodCall
+   57    | NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES
+   58    | NEW PrimeType Index
+
+   59 Index: OPEN_BRACKET Exp CLOSED_BRACKET
+   60      | Index OPEN_BRACKET Exp CLOSED_BRACKET
+
+   61 ExpList: Exp ExpTail
+
+   62 ExpTail: %empty
+   63        | COMMA Exp
+
+   64 LeftValue: ID
+   65          | LeftValue Index
+   66          | LeftValue DOT ID
+   67          | NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+   68          | THIS DOT ID
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+BOOLEAN (258) 26
+CLASS (259) 2 5
+CLOSED_BRACKET (260) 2 30 59 60
+CLOSED_CURLY (261) 2 5 17 34
+CLOSED_PARENTHESES (262) 2 17 35 36 37 38 42 49 57 67
+COMMA (263) 16 24 63
+DOT (264) 51 66 67 68
+ELSE (265) 35
+EQUALS (266) 14 39
+EXCLAMATION (267) 46
+EXTENDS (268) 11
+FALSE (269) 55
+ID (270) 2 5 11 12 16 17 22 24 27 57 64 66 67 68
+IF (271) 35
+INT (272) 25
+INTEGER_LITERAL (273) 52
+LENGTH (274) 51
+MAIN (275) 2
+MINUS (276) 48
+NEW (277) 57 58 67
+OP (278) 45
+OPEN_BRACKET (279) 2 30 59 60
+OPEN_CURLY (280) 2 5 17 34
+OPEN_PARENTHESES (281) 2 17 35 36 37 38 42 49 57 67
+PLUS (282) 47
+PUBLIC (283) 2 21
+RETURN (284) 40
+SEMICOLON (285) 12 37 38 39 40 41
+STATIC (286) 2
+STRING (287) 2 28
+STRING_LITERAL (288) 53
+SYSTEM_OUT_PRINT (289) 38
+SYSTEM_OUT_PRINTLN (290) 37
+THIS (291) 68
+TRUE (292) 54
+VOID (293) 2
+WHILE (294) 36
+
+
+Nonterminals, with rules where they appear
+
+$accept (40)
+    on left: 0
+Program (41)
+    on left: 1, on right: 0
+MainClass (42)
+    on left: 2, on right: 1
+ClassDeclList (43)
+    on left: 3 4, on right: 1 4
+ClassDecl (44)
+    on left: 5, on right: 4
+VarDeclList (45)
+    on left: 6 7, on right: 5 7
+MethodDeclList (46)
+    on left: 8 9, on right: 5 9
+OptionalExtends (47)
+    on left: 10 11, on right: 5
+VarDecl (48)
+    on left: 12, on right: 7 33
+VarInit (49)
+    on left: 13 14, on right: 12 16
+VarDeclTail (50)
+    on left: 15 16, on right: 12 16
+MethodDecl (51)
+    on left: 17, on right: 9
+OptionalFormatList (52)
+    on left: 18 19, on right: 17
+OptionalPublic (53)
+    on left: 20 21, on right: 17
+FormalList (54)
+    on left: 22, on right: 19
+FormalsTail (55)
+    on left: 23 24, on right: 22 24
+PrimeType (56)
+    on left: 25 26 27 28, on right: 29 58
+Type (57)
+    on left: 29 30, on right: 12 17 22 24 30
+StatementList (58)
+    on left: 31 32, on right: 2 17 32 34
+Statement (59)
+    on left: 33 34 35 36 37 38 39 40 41, on right: 32 35 36
+MethodCall (60)
+    on left: 42, on right: 41 56
+OptionalExpList (61)
+    on left: 43 44, on right: 42
+Exp (62)
+    on left: 45 46 47 48 49 50 51 52 53 54 55 56 57 58, on right: 14
+    35 36 37 38 39 40 45 46 47 48 49 59 60 61 63
+Index (63)
+    on left: 59 60, on right: 58 60 65
+ExpList (64)
+    on left: 61, on right: 44
+ExpTail (65)
+    on left: 62 63, on right: 61
+LeftValue (66)
+    on left: 64 65 66 67 68, on right: 39 42 50 51 65 66
+
+
+State 0
+
+    0 $accept: . Program $end
+
+    CLASS  shift, and go to state 1
+
+    Program    go to state 2
+    MainClass  go to state 3
+
+
+State 1
+
+    2 MainClass: CLASS . ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    ID  shift, and go to state 4
+
+
+State 2
+
+    0 $accept: Program . $end
+
+    $end  shift, and go to state 5
+
+
+State 3
+
+    1 Program: MainClass . ClassDeclList
+
+    CLASS  shift, and go to state 6
+
+    $default  reduce using rule 3 (ClassDeclList)
+
+    ClassDeclList  go to state 7
+    ClassDecl      go to state 8
+
+
+State 4
+
+    2 MainClass: CLASS ID . OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    OPEN_CURLY  shift, and go to state 9
+
+
+State 5
+
+    0 $accept: Program $end .
+
+    $default  accept
+
+
+State 6
+
+    5 ClassDecl: CLASS . ID OptionalExtends OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY
+
+    ID  shift, and go to state 10
+
+
+State 7
+
+    1 Program: MainClass ClassDeclList .
+
+    $default  reduce using rule 1 (Program)
+
+
+State 8
+
+    4 ClassDeclList: ClassDecl . ClassDeclList
+
+    CLASS  shift, and go to state 6
+
+    $default  reduce using rule 3 (ClassDeclList)
+
+    ClassDeclList  go to state 11
+    ClassDecl      go to state 8
+
+
+State 9
+
+    2 MainClass: CLASS ID OPEN_CURLY . PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    PUBLIC  shift, and go to state 12
+
+
+State 10
+
+    5 ClassDecl: CLASS ID . OptionalExtends OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY
+
+    EXTENDS  shift, and go to state 13
+
+    $default  reduce using rule 10 (OptionalExtends)
+
+    OptionalExtends  go to state 14
+
+
+State 11
+
+    4 ClassDeclList: ClassDecl ClassDeclList .
+
+    $default  reduce using rule 4 (ClassDeclList)
+
+
+State 12
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC . STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    STATIC  shift, and go to state 15
+
+
+State 13
+
+   11 OptionalExtends: EXTENDS . ID
+
+    ID  shift, and go to state 16
+
+
+State 14
+
+    5 ClassDecl: CLASS ID OptionalExtends . OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY
+
+    OPEN_CURLY  shift, and go to state 17
+
+
+State 15
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC . VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    VOID  shift, and go to state 18
+
+
+State 16
+
+   11 OptionalExtends: EXTENDS ID .
+
+    $default  reduce using rule 11 (OptionalExtends)
+
+
+State 17
+
+    5 ClassDecl: CLASS ID OptionalExtends OPEN_CURLY . VarDeclList MethodDeclList CLOSED_CURLY
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 20
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    BOOLEAN   [reduce using rule 6 (VarDeclList)]
+    ID        [reduce using rule 6 (VarDeclList)]
+    INT       [reduce using rule 6 (VarDeclList)]
+    STRING    [reduce using rule 6 (VarDeclList)]
+    $default  reduce using rule 6 (VarDeclList)
+
+    VarDeclList  go to state 23
+    VarDecl      go to state 24
+    PrimeType    go to state 25
+    Type         go to state 26
+
+
+State 18
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID . MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    MAIN  shift, and go to state 27
+
+
+State 19
+
+   26 PrimeType: BOOLEAN .
+
+    $default  reduce using rule 26 (PrimeType)
+
+
+State 20
+
+   27 PrimeType: ID .
+
+    $default  reduce using rule 27 (PrimeType)
+
+
+State 21
+
+   25 PrimeType: INT .
+
+    $default  reduce using rule 25 (PrimeType)
+
+
+State 22
+
+   28 PrimeType: STRING .
+
+    $default  reduce using rule 28 (PrimeType)
+
+
+State 23
+
+    5 ClassDecl: CLASS ID OptionalExtends OPEN_CURLY VarDeclList . MethodDeclList CLOSED_CURLY
+
+    PUBLIC  shift, and go to state 28
+
+    CLOSED_CURLY  reduce using rule 8 (MethodDeclList)
+    $default      reduce using rule 20 (OptionalPublic)
+
+    MethodDeclList  go to state 29
+    MethodDecl      go to state 30
+    OptionalPublic  go to state 31
+
+
+State 24
+
+    7 VarDeclList: VarDecl . VarDeclList
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 20
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    BOOLEAN   [reduce using rule 6 (VarDeclList)]
+    ID        [reduce using rule 6 (VarDeclList)]
+    INT       [reduce using rule 6 (VarDeclList)]
+    STRING    [reduce using rule 6 (VarDeclList)]
+    $default  reduce using rule 6 (VarDeclList)
+
+    VarDeclList  go to state 32
+    VarDecl      go to state 24
+    PrimeType    go to state 25
+    Type         go to state 26
+
+
+State 25
+
+   29 Type: PrimeType .
+
+    $default  reduce using rule 29 (Type)
+
+
+State 26
+
+   12 VarDecl: Type . ID VarInit VarDeclTail SEMICOLON
+   30 Type: Type . OPEN_BRACKET CLOSED_BRACKET
+
+    ID            shift, and go to state 33
+    OPEN_BRACKET  shift, and go to state 34
+
+
+State 27
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN . OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    OPEN_PARENTHESES  shift, and go to state 35
+
+
+State 28
+
+   21 OptionalPublic: PUBLIC .
+
+    $default  reduce using rule 21 (OptionalPublic)
+
+
+State 29
+
+    5 ClassDecl: CLASS ID OptionalExtends OPEN_CURLY VarDeclList MethodDeclList . CLOSED_CURLY
+
+    CLOSED_CURLY  shift, and go to state 36
+
+
+State 30
+
+    9 MethodDeclList: MethodDecl . MethodDeclList
+
+    PUBLIC  shift, and go to state 28
+
+    CLOSED_CURLY  reduce using rule 8 (MethodDeclList)
+    $default      reduce using rule 20 (OptionalPublic)
+
+    MethodDeclList  go to state 37
+    MethodDecl      go to state 30
+    OptionalPublic  go to state 31
+
+
+State 31
+
+   17 MethodDecl: OptionalPublic . Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 20
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    PrimeType  go to state 25
+    Type       go to state 38
+
+
+State 32
+
+    7 VarDeclList: VarDecl VarDeclList .
+
+    $default  reduce using rule 7 (VarDeclList)
+
+
+State 33
+
+   12 VarDecl: Type ID . VarInit VarDeclTail SEMICOLON
+
+    EQUALS  shift, and go to state 39
+
+    $default  reduce using rule 13 (VarInit)
+
+    VarInit  go to state 40
+
+
+State 34
+
+   30 Type: Type OPEN_BRACKET . CLOSED_BRACKET
+
+    CLOSED_BRACKET  shift, and go to state 41
+
+
+State 35
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES . STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    STRING  shift, and go to state 42
+
+
+State 36
+
+    5 ClassDecl: CLASS ID OptionalExtends OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY .
+
+    $default  reduce using rule 5 (ClassDecl)
+
+
+State 37
+
+    9 MethodDeclList: MethodDecl MethodDeclList .
+
+    $default  reduce using rule 9 (MethodDeclList)
+
+
+State 38
+
+   17 MethodDecl: OptionalPublic Type . ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+   30 Type: Type . OPEN_BRACKET CLOSED_BRACKET
+
+    ID            shift, and go to state 43
+    OPEN_BRACKET  shift, and go to state 34
+
+
+State 39
+
+   14 VarInit: EQUALS . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 56
+    LeftValue   go to state 57
+
+
+State 40
+
+   12 VarDecl: Type ID VarInit . VarDeclTail SEMICOLON
+
+    COMMA  shift, and go to state 58
+
+    $default  reduce using rule 15 (VarDeclTail)
+
+    VarDeclTail  go to state 59
+
+
+State 41
+
+   30 Type: Type OPEN_BRACKET CLOSED_BRACKET .
+
+    $default  reduce using rule 30 (Type)
+
+
+State 42
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING . OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    OPEN_BRACKET  shift, and go to state 60
+
+
+State 43
+
+   17 MethodDecl: OptionalPublic Type ID . OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+
+    OPEN_PARENTHESES  shift, and go to state 61
+
+
+State 44
+
+   46 Exp: EXCLAMATION . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 62
+    LeftValue   go to state 57
+
+
+State 45
+
+   55 Exp: FALSE .
+
+    $default  reduce using rule 55 (Exp)
+
+
+State 46
+
+   64 LeftValue: ID .
+
+    $default  reduce using rule 64 (LeftValue)
+
+
+State 47
+
+   52 Exp: INTEGER_LITERAL .
+
+    $default  reduce using rule 52 (Exp)
+
+
+State 48
+
+   48 Exp: MINUS . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 63
+    LeftValue   go to state 57
+
+
+State 49
+
+   57 Exp: NEW . ID OPEN_PARENTHESES CLOSED_PARENTHESES
+   58    | NEW . PrimeType Index
+   67 LeftValue: NEW . ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 64
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    PrimeType  go to state 65
+
+
+State 50
+
+   49 Exp: OPEN_PARENTHESES . Exp CLOSED_PARENTHESES
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 66
+    LeftValue   go to state 57
+
+
+State 51
+
+   47 Exp: PLUS . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 67
+    LeftValue   go to state 57
+
+
+State 52
+
+   53 Exp: STRING_LITERAL .
+
+    $default  reduce using rule 53 (Exp)
+
+
+State 53
+
+   68 LeftValue: THIS . DOT ID
+
+    DOT  shift, and go to state 68
+
+
+State 54
+
+   54 Exp: TRUE .
+
+    $default  reduce using rule 54 (Exp)
+
+
+State 55
+
+   56 Exp: MethodCall .
+
+    $default  reduce using rule 56 (Exp)
+
+
+State 56
+
+   14 VarInit: EQUALS Exp .
+   45 Exp: Exp . OP Exp
+
+    OP  shift, and go to state 69
+
+    $default  reduce using rule 14 (VarInit)
+
+
+State 57
+
+   42 MethodCall: LeftValue . OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES
+   50 Exp: LeftValue .
+   51    | LeftValue . DOT LENGTH
+   65 LeftValue: LeftValue . Index
+   66          | LeftValue . DOT ID
+
+    DOT               shift, and go to state 70
+    OPEN_BRACKET      shift, and go to state 71
+    OPEN_PARENTHESES  shift, and go to state 72
+
+    $default  reduce using rule 50 (Exp)
+
+    Index  go to state 73
+
+
+State 58
+
+   16 VarDeclTail: COMMA . ID VarInit VarDeclTail
+
+    ID  shift, and go to state 74
+
+
+State 59
+
+   12 VarDecl: Type ID VarInit VarDeclTail . SEMICOLON
+
+    SEMICOLON  shift, and go to state 75
+
+
+State 60
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET . CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    CLOSED_BRACKET  shift, and go to state 76
+
+
+State 61
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES . OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 20
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    $default  reduce using rule 18 (OptionalFormatList)
+
+    OptionalFormatList  go to state 77
+    FormalList          go to state 78
+    PrimeType           go to state 25
+    Type                go to state 79
+
+
+State 62
+
+   45 Exp: Exp . OP Exp
+   46    | EXCLAMATION Exp .
+
+    OP  shift, and go to state 69
+
+    OP        [reduce using rule 46 (Exp)]
+    $default  reduce using rule 46 (Exp)
+
+
+State 63
+
+   45 Exp: Exp . OP Exp
+   48    | MINUS Exp .
+
+    OP  shift, and go to state 69
+
+    OP        [reduce using rule 48 (Exp)]
+    $default  reduce using rule 48 (Exp)
+
+
+State 64
+
+   27 PrimeType: ID .
+   57 Exp: NEW ID . OPEN_PARENTHESES CLOSED_PARENTHESES
+   67 LeftValue: NEW ID . OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+
+    OPEN_PARENTHESES  shift, and go to state 80
+
+    $default  reduce using rule 27 (PrimeType)
+
+
+State 65
+
+   58 Exp: NEW PrimeType . Index
+
+    OPEN_BRACKET  shift, and go to state 71
+
+    Index  go to state 81
+
+
+State 66
+
+   45 Exp: Exp . OP Exp
+   49    | OPEN_PARENTHESES Exp . CLOSED_PARENTHESES
+
+    CLOSED_PARENTHESES  shift, and go to state 82
+    OP                  shift, and go to state 69
+
+
+State 67
+
+   45 Exp: Exp . OP Exp
+   47    | PLUS Exp .
+
+    OP  shift, and go to state 69
+
+    OP        [reduce using rule 47 (Exp)]
+    $default  reduce using rule 47 (Exp)
+
+
+State 68
+
+   68 LeftValue: THIS DOT . ID
+
+    ID  shift, and go to state 83
+
+
+State 69
+
+   45 Exp: Exp OP . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 84
+    LeftValue   go to state 57
+
+
+State 70
+
+   51 Exp: LeftValue DOT . LENGTH
+   66 LeftValue: LeftValue DOT . ID
+
+    ID      shift, and go to state 85
+    LENGTH  shift, and go to state 86
+
+
+State 71
+
+   59 Index: OPEN_BRACKET . Exp CLOSED_BRACKET
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 87
+    LeftValue   go to state 57
+
+
+State 72
+
+   42 MethodCall: LeftValue OPEN_PARENTHESES . OptionalExpList CLOSED_PARENTHESES
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    $default  reduce using rule 43 (OptionalExpList)
+
+    MethodCall       go to state 55
+    OptionalExpList  go to state 88
+    Exp              go to state 89
+    ExpList          go to state 90
+    LeftValue        go to state 57
+
+
+State 73
+
+   60 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
+   65 LeftValue: LeftValue Index .
+
+    OPEN_BRACKET  shift, and go to state 91
+
+    OPEN_BRACKET  [reduce using rule 65 (LeftValue)]
+    $default      reduce using rule 65 (LeftValue)
+
+
+State 74
+
+   16 VarDeclTail: COMMA ID . VarInit VarDeclTail
+
+    EQUALS  shift, and go to state 39
+
+    $default  reduce using rule 13 (VarInit)
+
+    VarInit  go to state 92
+
+
+State 75
+
+   12 VarDecl: Type ID VarInit VarDeclTail SEMICOLON .
+
+    $default  reduce using rule 12 (VarDecl)
+
+
+State 76
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET . ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    ID  shift, and go to state 93
+
+
+State 77
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList . CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+
+    CLOSED_PARENTHESES  shift, and go to state 94
+
+
+State 78
+
+   19 OptionalFormatList: FormalList .
+
+    $default  reduce using rule 19 (OptionalFormatList)
+
+
+State 79
+
+   22 FormalList: Type . ID FormalsTail
+   30 Type: Type . OPEN_BRACKET CLOSED_BRACKET
+
+    ID            shift, and go to state 95
+    OPEN_BRACKET  shift, and go to state 34
+
+
+State 80
+
+   57 Exp: NEW ID OPEN_PARENTHESES . CLOSED_PARENTHESES
+   67 LeftValue: NEW ID OPEN_PARENTHESES . CLOSED_PARENTHESES DOT ID
+
+    CLOSED_PARENTHESES  shift, and go to state 96
+
+
+State 81
+
+   58 Exp: NEW PrimeType Index .
+   60 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
+
+    OPEN_BRACKET  shift, and go to state 91
+
+    $default  reduce using rule 58 (Exp)
+
+
+State 82
+
+   49 Exp: OPEN_PARENTHESES Exp CLOSED_PARENTHESES .
+
+    $default  reduce using rule 49 (Exp)
+
+
+State 83
+
+   68 LeftValue: THIS DOT ID .
+
+    $default  reduce using rule 68 (LeftValue)
+
+
+State 84
+
+   45 Exp: Exp . OP Exp
+   45    | Exp OP Exp .
+
+    OP  shift, and go to state 69
+
+    OP        [reduce using rule 45 (Exp)]
+    $default  reduce using rule 45 (Exp)
+
+
+State 85
+
+   66 LeftValue: LeftValue DOT ID .
+
+    $default  reduce using rule 66 (LeftValue)
+
+
+State 86
+
+   51 Exp: LeftValue DOT LENGTH .
+
+    $default  reduce using rule 51 (Exp)
+
+
+State 87
+
+   45 Exp: Exp . OP Exp
+   59 Index: OPEN_BRACKET Exp . CLOSED_BRACKET
+
+    CLOSED_BRACKET  shift, and go to state 97
+    OP              shift, and go to state 69
+
+
+State 88
+
+   42 MethodCall: LeftValue OPEN_PARENTHESES OptionalExpList . CLOSED_PARENTHESES
+
+    CLOSED_PARENTHESES  shift, and go to state 98
+
+
+State 89
+
+   45 Exp: Exp . OP Exp
+   61 ExpList: Exp . ExpTail
+
+    COMMA  shift, and go to state 99
+    OP     shift, and go to state 69
+
+    $default  reduce using rule 62 (ExpTail)
+
+    ExpTail  go to state 100
+
+
+State 90
+
+   44 OptionalExpList: ExpList .
+
+    $default  reduce using rule 44 (OptionalExpList)
+
+
+State 91
+
+   60 Index: Index OPEN_BRACKET . Exp CLOSED_BRACKET
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 101
+    LeftValue   go to state 57
+
+
+State 92
+
+   16 VarDeclTail: COMMA ID VarInit . VarDeclTail
+
+    COMMA  shift, and go to state 58
+
+    $default  reduce using rule 15 (VarDeclTail)
+
+    VarDeclTail  go to state 102
+
+
+State 93
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID . CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    CLOSED_PARENTHESES  shift, and go to state 103
+
+
+State 94
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES . OPEN_CURLY StatementList CLOSED_CURLY
+
+    OPEN_CURLY  shift, and go to state 104
+
+
+State 95
+
+   22 FormalList: Type ID . FormalsTail
+
+    COMMA  shift, and go to state 105
+
+    $default  reduce using rule 23 (FormalsTail)
+
+    FormalsTail  go to state 106
+
+
+State 96
+
+   57 Exp: NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES .
+   67 LeftValue: NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES . DOT ID
+
+    DOT  shift, and go to state 107
+
+    $default  reduce using rule 57 (Exp)
+
+
+State 97
+
+   59 Index: OPEN_BRACKET Exp CLOSED_BRACKET .
+
+    $default  reduce using rule 59 (Index)
+
+
+State 98
+
+   42 MethodCall: LeftValue OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES .
+
+    $default  reduce using rule 42 (MethodCall)
+
+
+State 99
+
+   63 ExpTail: COMMA . Exp
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 108
+    LeftValue   go to state 57
+
+
+State 100
+
+   61 ExpList: Exp ExpTail .
+
+    $default  reduce using rule 61 (ExpList)
+
+
+State 101
+
+   45 Exp: Exp . OP Exp
+   60 Index: Index OPEN_BRACKET Exp . CLOSED_BRACKET
+
+    CLOSED_BRACKET  shift, and go to state 109
+    OP              shift, and go to state 69
+
+
+State 102
+
+   16 VarDeclTail: COMMA ID VarInit VarDeclTail .
+
+    $default  reduce using rule 16 (VarDeclTail)
+
+
+State 103
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES . OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY
+
+    OPEN_CURLY  shift, and go to state 110
+
+
+State 104
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY . StatementList CLOSED_CURLY
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    $default  reduce using rule 31 (StatementList)
+
+    VarDecl        go to state 119
+    PrimeType      go to state 25
+    Type           go to state 26
+    StatementList  go to state 120
+    Statement      go to state 121
+    MethodCall     go to state 122
+    LeftValue      go to state 123
+
+
+State 105
+
+   24 FormalsTail: COMMA . Type ID FormalsTail
+
+    BOOLEAN  shift, and go to state 19
+    ID       shift, and go to state 20
+    INT      shift, and go to state 21
+    STRING   shift, and go to state 22
+
+    PrimeType  go to state 25
+    Type       go to state 124
+
+
+State 106
+
+   22 FormalList: Type ID FormalsTail .
+
+    $default  reduce using rule 22 (FormalList)
+
+
+State 107
+
+   67 LeftValue: NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT . ID
+
+    ID  shift, and go to state 125
+
+
+State 108
+
+   45 Exp: Exp . OP Exp
+   63 ExpTail: COMMA Exp .
+
+    OP  shift, and go to state 69
+
+    $default  reduce using rule 63 (ExpTail)
+
+
+State 109
+
+   60 Index: Index OPEN_BRACKET Exp CLOSED_BRACKET .
+
+    $default  reduce using rule 60 (Index)
+
+
+State 110
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY . StatementList CLOSED_CURLY CLOSED_CURLY
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    $default  reduce using rule 31 (StatementList)
+
+    VarDecl        go to state 119
+    PrimeType      go to state 25
+    Type           go to state 26
+    StatementList  go to state 126
+    Statement      go to state 121
+    MethodCall     go to state 122
+    LeftValue      go to state 123
+
+
+State 111
+
+   27 PrimeType: ID .
+   64 LeftValue: ID .
+
+    ID            reduce using rule 27 (PrimeType)
+    OPEN_BRACKET  reduce using rule 27 (PrimeType)
+    OPEN_BRACKET  [reduce using rule 64 (LeftValue)]
+    $default      reduce using rule 64 (LeftValue)
+
+
+State 112
+
+   35 Statement: IF . OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE Statement
+
+    OPEN_PARENTHESES  shift, and go to state 127
+
+
+State 113
+
+   67 LeftValue: NEW . ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+
+    ID  shift, and go to state 128
+
+
+State 114
+
+   34 Statement: OPEN_CURLY . StatementList CLOSED_CURLY
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    $default  reduce using rule 31 (StatementList)
+
+    VarDecl        go to state 119
+    PrimeType      go to state 25
+    Type           go to state 26
+    StatementList  go to state 129
+    Statement      go to state 121
+    MethodCall     go to state 122
+    LeftValue      go to state 123
+
+
+State 115
+
+   40 Statement: RETURN . Exp SEMICOLON
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 130
+    LeftValue   go to state 57
+
+
+State 116
+
+   38 Statement: SYSTEM_OUT_PRINT . OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+
+    OPEN_PARENTHESES  shift, and go to state 131
+
+
+State 117
+
+   37 Statement: SYSTEM_OUT_PRINTLN . OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+
+    OPEN_PARENTHESES  shift, and go to state 132
+
+
+State 118
+
+   36 Statement: WHILE . OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement
+
+    OPEN_PARENTHESES  shift, and go to state 133
+
+
+State 119
+
+   33 Statement: VarDecl .
+
+    $default  reduce using rule 33 (Statement)
+
+
+State 120
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList . CLOSED_CURLY
+
+    CLOSED_CURLY  shift, and go to state 134
+
+
+State 121
+
+   32 StatementList: Statement . StatementList
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    $default  reduce using rule 31 (StatementList)
+
+    VarDecl        go to state 119
+    PrimeType      go to state 25
+    Type           go to state 26
+    StatementList  go to state 135
+    Statement      go to state 121
+    MethodCall     go to state 122
+    LeftValue      go to state 123
+
+
+State 122
+
+   41 Statement: MethodCall . SEMICOLON
+
+    SEMICOLON  shift, and go to state 136
+
+
+State 123
+
+   39 Statement: LeftValue . EQUALS Exp SEMICOLON
+   42 MethodCall: LeftValue . OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES
+   65 LeftValue: LeftValue . Index
+   66          | LeftValue . DOT ID
+
+    DOT               shift, and go to state 137
+    EQUALS            shift, and go to state 138
+    OPEN_BRACKET      shift, and go to state 71
+    OPEN_PARENTHESES  shift, and go to state 72
+
+    Index  go to state 73
+
+
+State 124
+
+   24 FormalsTail: COMMA Type . ID FormalsTail
+   30 Type: Type . OPEN_BRACKET CLOSED_BRACKET
+
+    ID            shift, and go to state 139
+    OPEN_BRACKET  shift, and go to state 34
+
+
+State 125
+
+   67 LeftValue: NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID .
+
+    $default  reduce using rule 67 (LeftValue)
+
+
+State 126
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList . CLOSED_CURLY CLOSED_CURLY
+
+    CLOSED_CURLY  shift, and go to state 140
+
+
+State 127
+
+   35 Statement: IF OPEN_PARENTHESES . Exp CLOSED_PARENTHESES Statement ELSE Statement
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 141
+    LeftValue   go to state 57
+
+
+State 128
+
+   67 LeftValue: NEW ID . OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+
+    OPEN_PARENTHESES  shift, and go to state 142
+
+
+State 129
+
+   34 Statement: OPEN_CURLY StatementList . CLOSED_CURLY
+
+    CLOSED_CURLY  shift, and go to state 143
+
+
+State 130
+
+   40 Statement: RETURN Exp . SEMICOLON
+   45 Exp: Exp . OP Exp
+
+    OP         shift, and go to state 69
+    SEMICOLON  shift, and go to state 144
+
+
+State 131
+
+   38 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES . Exp CLOSED_PARENTHESES SEMICOLON
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 145
+    LeftValue   go to state 57
+
+
+State 132
+
+   37 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES . Exp CLOSED_PARENTHESES SEMICOLON
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 146
+    LeftValue   go to state 57
+
+
+State 133
+
+   36 Statement: WHILE OPEN_PARENTHESES . Exp CLOSED_PARENTHESES Statement
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 147
+    LeftValue   go to state 57
+
+
+State 134
+
+   17 MethodDecl: OptionalPublic Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY .
+
+    $default  reduce using rule 17 (MethodDecl)
+
+
+State 135
+
+   32 StatementList: Statement StatementList .
+
+    $default  reduce using rule 32 (StatementList)
+
+
+State 136
+
+   41 Statement: MethodCall SEMICOLON .
+
+    $default  reduce using rule 41 (Statement)
+
+
+State 137
+
+   66 LeftValue: LeftValue DOT . ID
+
+    ID  shift, and go to state 85
+
+
+State 138
+
+   39 Statement: LeftValue EQUALS . Exp SEMICOLON
+
+    EXCLAMATION       shift, and go to state 44
+    FALSE             shift, and go to state 45
+    ID                shift, and go to state 46
+    INTEGER_LITERAL   shift, and go to state 47
+    MINUS             shift, and go to state 48
+    NEW               shift, and go to state 49
+    OPEN_PARENTHESES  shift, and go to state 50
+    PLUS              shift, and go to state 51
+    STRING_LITERAL    shift, and go to state 52
+    THIS              shift, and go to state 53
+    TRUE              shift, and go to state 54
+
+    MethodCall  go to state 55
+    Exp         go to state 148
+    LeftValue   go to state 57
+
+
+State 139
+
+   24 FormalsTail: COMMA Type ID . FormalsTail
+
+    COMMA  shift, and go to state 105
+
+    $default  reduce using rule 23 (FormalsTail)
+
+    FormalsTail  go to state 149
+
+
+State 140
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY . CLOSED_CURLY
+
+    CLOSED_CURLY  shift, and go to state 150
+
+
+State 141
+
+   35 Statement: IF OPEN_PARENTHESES Exp . CLOSED_PARENTHESES Statement ELSE Statement
+   45 Exp: Exp . OP Exp
+
+    CLOSED_PARENTHESES  shift, and go to state 151
+    OP                  shift, and go to state 69
+
+
+State 142
+
+   67 LeftValue: NEW ID OPEN_PARENTHESES . CLOSED_PARENTHESES DOT ID
+
+    CLOSED_PARENTHESES  shift, and go to state 152
+
+
+State 143
+
+   34 Statement: OPEN_CURLY StatementList CLOSED_CURLY .
+
+    $default  reduce using rule 34 (Statement)
+
+
+State 144
+
+   40 Statement: RETURN Exp SEMICOLON .
+
+    $default  reduce using rule 40 (Statement)
+
+
+State 145
+
+   38 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp . CLOSED_PARENTHESES SEMICOLON
+   45 Exp: Exp . OP Exp
+
+    CLOSED_PARENTHESES  shift, and go to state 153
+    OP                  shift, and go to state 69
+
+
+State 146
+
+   37 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp . CLOSED_PARENTHESES SEMICOLON
+   45 Exp: Exp . OP Exp
+
+    CLOSED_PARENTHESES  shift, and go to state 154
+    OP                  shift, and go to state 69
+
+
+State 147
+
+   36 Statement: WHILE OPEN_PARENTHESES Exp . CLOSED_PARENTHESES Statement
+   45 Exp: Exp . OP Exp
+
+    CLOSED_PARENTHESES  shift, and go to state 155
+    OP                  shift, and go to state 69
+
+
+State 148
+
+   39 Statement: LeftValue EQUALS Exp . SEMICOLON
+   45 Exp: Exp . OP Exp
+
+    OP         shift, and go to state 69
+    SEMICOLON  shift, and go to state 156
+
+
+State 149
+
+   24 FormalsTail: COMMA Type ID FormalsTail .
+
+    $default  reduce using rule 24 (FormalsTail)
+
+
+State 150
+
+    2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY .
+
+    $default  reduce using rule 2 (MainClass)
+
+
+State 151
+
+   35 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES . Statement ELSE Statement
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    VarDecl     go to state 119
+    PrimeType   go to state 25
+    Type        go to state 26
+    Statement   go to state 157
+    MethodCall  go to state 122
+    LeftValue   go to state 123
+
+
+State 152
+
+   67 LeftValue: NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES . DOT ID
+
+    DOT  shift, and go to state 107
+
+
+State 153
+
+   38 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
+
+    SEMICOLON  shift, and go to state 158
+
+
+State 154
+
+   37 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
+
+    SEMICOLON  shift, and go to state 159
+
+
+State 155
+
+   36 Statement: WHILE OPEN_PARENTHESES Exp CLOSED_PARENTHESES . Statement
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    VarDecl     go to state 119
+    PrimeType   go to state 25
+    Type        go to state 26
+    Statement   go to state 160
+    MethodCall  go to state 122
+    LeftValue   go to state 123
+
+
+State 156
+
+   39 Statement: LeftValue EQUALS Exp SEMICOLON .
+
+    $default  reduce using rule 39 (Statement)
+
+
+State 157
+
+   35 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement . ELSE Statement
+
+    ELSE  shift, and go to state 161
+
+
+State 158
+
+   38 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON .
+
+    $default  reduce using rule 38 (Statement)
+
+
+State 159
+
+   37 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON .
+
+    $default  reduce using rule 37 (Statement)
+
+
+State 160
+
+   36 Statement: WHILE OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement .
+
+    $default  reduce using rule 36 (Statement)
+
+
+State 161
+
+   35 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE . Statement
+
+    BOOLEAN             shift, and go to state 19
+    ID                  shift, and go to state 111
+    IF                  shift, and go to state 112
+    INT                 shift, and go to state 21
+    NEW                 shift, and go to state 113
+    OPEN_CURLY          shift, and go to state 114
+    RETURN              shift, and go to state 115
+    STRING              shift, and go to state 22
+    SYSTEM_OUT_PRINT    shift, and go to state 116
+    SYSTEM_OUT_PRINTLN  shift, and go to state 117
+    THIS                shift, and go to state 53
+    WHILE               shift, and go to state 118
+
+    VarDecl     go to state 119
+    PrimeType   go to state 25
+    Type        go to state 26
+    Statement   go to state 162
+    MethodCall  go to state 122
+    LeftValue   go to state 123
+
+
+State 162
+
+   35 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE Statement .
+
+    $default  reduce using rule 35 (Statement)
