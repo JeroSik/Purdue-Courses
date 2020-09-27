@@ -44,14 +44,15 @@ while                                               { return WHILE;             
 \<                                                  { return LESS;                  }
 \<\=                                                { return LESS_EQUAL;            }
 \-                                                  { return MINUS;                 }
+\-\-                                                { return MINUS_MINUS;           }
 \*                                                  { return MULTIPLY;              }
 \!\=                                                { return NOT_EQUAL;             }
 \[                                                  { return OPEN_BRACKET;          }
 \{                                                  { return OPEN_CURLY;            } 
 \(                                                  { return OPEN_PARENTHESES;      }
 \|\|                                                { return OR;                    }
-\+\+                                                { return PLUS_PLUS;             }
 \+                                                  { return PLUS;                  }
+\+\+                                                { return PLUS_PLUS;             }
 \;                                                  { return SEMICOLON;             }
 
 [0-9]+                                              { return INTEGER_LITERAL;       }
