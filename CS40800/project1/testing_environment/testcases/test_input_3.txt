@@ -1,0 +1,4 @@
+bftpd.conf
+1:user wrong
+1:pass cs408
+1:quit
