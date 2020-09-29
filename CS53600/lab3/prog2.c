@@ -50,8 +50,7 @@ int ntolayer3;     /* number sent into layer 3 */
 int nlost;         /* number lost in media */
 int ncorrupt;      /* number corrupted by media*/
 
-int main()
-{
+int main() {
   struct event * eventptr;
   struct msg msg2give;
   struct pkt pkt2give;
@@ -263,8 +262,7 @@ void printevlist()
 /********************** Student-callable ROUTINES ***********************/
 
 /* called by students routine to cancel a previously-started timer */
-void stoptimer(int AorB)
-{
+void stoptimer(int AorB) {
   struct event * q;
 
   if (TRACE > 2) {
@@ -292,8 +290,7 @@ void stoptimer(int AorB)
   printf("Warning: unable to cancel your timer. It wasn't running.\n");
 }
 
-void starttimer(int AorB, float increment)
-{
+void starttimer(int AorB, float increment) {
   struct event * q;
   struct event * evptr;
 
@@ -318,8 +315,7 @@ void starttimer(int AorB, float increment)
 }
 
 /************************** TOLAYER3 ***************/
-void tolayer3(int AorB, struct pkt packet)
-{
+void tolayer3(int AorB, struct pkt packet) {
   struct pkt * mypktptr;
   struct event * evptr, * q;
   float lastime, x;
@@ -399,8 +395,7 @@ void tolayer3(int AorB, struct pkt packet)
   insertevent(evptr);
 }
 
-void tolayer5(int AorB, const char * datasent)
-{
+void tolayer5(int AorB, const char * datasent) {
   (void)AorB;
   int i;
   if (TRACE > 2) {
