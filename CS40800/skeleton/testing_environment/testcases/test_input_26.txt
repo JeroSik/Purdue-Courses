@@ -1,0 +1,7 @@
+bftpd.conf
+1:user cs408
+1:pass cs408
+1:pasv
+2:
+1:stor dir_contains_file/cannot_open.txt
+1:quit

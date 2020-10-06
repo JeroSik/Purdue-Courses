@@ -1,0 +1,3 @@
+bftpd.conf
+1:pass
+1:quit

@@ -1,5 +1,8 @@
 bftpd.conf
 1:user cs408
-1:user cs408
 1:pass cs408
+1:rest 6
+1:pasv
+2:
+1:retr password_list
 1:quit

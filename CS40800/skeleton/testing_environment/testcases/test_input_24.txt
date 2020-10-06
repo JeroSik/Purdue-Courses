@@ -1,0 +1,10 @@
+bftpd.conf
+1:user cs408
+1:pass cs408
+1:pasv
+2:
+1:stor increment.txt
+1:pasv
+2:
+1:retr increment.txt
+1:quit

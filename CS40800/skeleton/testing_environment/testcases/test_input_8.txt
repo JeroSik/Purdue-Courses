@@ -1,0 +1,8 @@
+bftpd.conf
+1:user cs408
+1:pass cs408
+1:cwd ../
+1:pwd
+1:cwd testing_environment/
+1:pwd
+1:quit

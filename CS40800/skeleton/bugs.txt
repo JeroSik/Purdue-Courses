@@ -1,0 +1,55 @@
+bftpd_1: RETR returns incorrect response code and message for finished transfer
+    - Fails test_input_24
+bftpd_2: LIST returns incorrect response code for finished transfer
+    - Fails test_input_21
+bftpd_3: PWD returns incorrect response code
+    - Fails test_input_7
+bftpd_4: CDUP doesn't actually change directory
+    - Fails test_input_10
+bftpd_5: MKD adds a "d" to the end of the file name
+    - Fails test_input_11
+bftpd_6: SIZE returns incorrect number
+    - Fails test_input_17
+bftpd_7: The QUIT command message does not follow the configuration files QUIT message.
+    - Fails test_input_1
+bftpd_8: Disabling QUIT also disabled USER command.
+    - Fails test_input_29
+bftpd_9: The HELLO_STRING message is all lowercased regardless of expected value.
+    - Fails test_input_33
+bftpd_10:
+
+Testcase Descriptions:
+1 - Basic user login
+2 - Incorrect password
+3 - Incorrect username
+4 - Username already provided
+5 - Username expected (no password)
+6 - Username expected (pass with no argument)
+7 - PWD
+8 - CWD Correct
+9 - CWD Incorrect
+10 - CDUP Correct
+11 - MKD and RMD
+12 - MKD existing
+13 - RMD nonexisting
+14 - RMD directory is not empty
+15 - STAT Correct
+16 - STAT Incorrect
+17 - SIZE Correct
+18 - SIZE Incorrect
+19 - NLST Correct
+20 - NLST No connection
+21 - LIST empty
+22 - LIST back one directory
+23 - LIST No connection
+24 - STOR and RETR Correct
+25 - STOR No connection
+26 - STOR permission error
+27 - RETR nonexisting
+28 - Deny Login
+29 - QUIT disabled
+30 - STOR disabled
+31 - User limit set to 1
+32 - REST and RETR
+33 - Change Hello message
+34 - Anonymous users allowed

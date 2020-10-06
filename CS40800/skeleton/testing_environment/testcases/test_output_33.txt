@@ -1,0 +1,4 @@
+220 WOWOW!
+331 Password please.
+230 User logged in.
+221 PEACE goodbye

@@ -1,0 +1,4 @@
+bftpd_anonymous_user.conf
+1:user asdf
+1:pass asdf
+1:quit
