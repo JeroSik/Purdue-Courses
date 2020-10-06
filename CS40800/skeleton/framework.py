@@ -452,18 +452,22 @@ if __name__ == '__main__':
     exit_status = -1
     if args.file == None:
         # Iterate through all test inputs
-        for file_num in range(1,35):
-            print('Running test on test_input_{num}'.format(num=file_num))
+        for file_num in range(1,37):
+            if isVerbose:
+                print('Running test on test_input_{num}'.format(num=file_num))
             filename = './testing_environment/testcases/test_input_' + str(file_num) + '.txt'
             exit_status = run_testcase(args.binary, filename, filename.replace('input', 'output'), isVerbose)
             if exit_status == 1:
                 break
     else:
-        print('Running test on {input}'.format(input=args.file))
+        if isVerbose:
+            print('Running test on {input}'.format(input=args.file))
         exit_status = run_testcase(args.binary, args.file, args.file.replace('input', 'output'), isVerbose)
     
-    # if exit_status == 0:
-    #     print('\033[92m' + 'PASS' + '\033[0m')
-    # elif exit_status == 1:
-    #     print('\033[91m' + 'FAIL' + '\033[0m')
+    if isVerbose:
+        if exit_status == 0:
+            print('\033[92m' + 'PASS' + '\033[0m')
+        elif exit_status == 1:
+            print('\033[91m' + 'FAIL' + '\033[0m')
+    
     sys.exit(exit_status)

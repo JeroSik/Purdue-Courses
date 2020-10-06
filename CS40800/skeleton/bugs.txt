@@ -16,7 +16,8 @@ bftpd_8: Disabling QUIT also disabled USER command.
     - Fails test_input_29
 bftpd_9: The HELLO_STRING message is all lowercased regardless of expected value.
     - Fails test_input_33
-bftpd_10:
+bftpd_10: Disabling QUIT only disables first usage.
+    - Fails test_input_36
 
 Testcase Descriptions:
 1 - Basic user login
@@ -53,3 +54,5 @@ Testcase Descriptions:
 32 - REST and RETR
 33 - Change Hello message
 34 - Anonymous users allowed
+35 - Deny Login message
+36 - QUIT disable, double quit
