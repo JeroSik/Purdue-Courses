@@ -9,6 +9,7 @@ char *signatures[] = {"sys_open_ports", "sys_module", "write_binaries"};
 
 int is_virus(int argc, char ** argv)
 {
+        
         char traffic[80];
         int i, j, len;
 

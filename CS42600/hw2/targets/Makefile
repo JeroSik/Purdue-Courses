@@ -7,6 +7,4 @@ targets := target1 target2 target3
 
 all: $(targets)
 
-clean:
-        $(RM) $(targets) $(source:.c=.o)
-
+clean: $(RM) $(targets) $(source:.c=.o)
