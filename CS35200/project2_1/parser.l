@@ -1,7 +1,9 @@
 %{
+    #include "node.cc"
     #include "y.tab.h"
     #include <stdio.h>
     #include <stdlib.h>
+    extern "C" int yylex();
     void    yyerror(char *);
 %}
 
@@ -55,9 +57,18 @@ while                                               { return WHILE;             
 \+\+                                                { return PLUS_PLUS;             }
 \;                                                  { return SEMICOLON;             }
 
-[0-9]+                                              { return INTEGER_LITERAL;       }
-[a-zA-Z][a-zA-Z0-9_]*                               { return ID;                    }
-\"([^"\\]|\\.)*\"                                   { return STRING_LITERAL;        }
+[0-9]+                                              {
+                                                        yylval.integer = atoi(strdup(yytext));
+                                                        return INTEGER_LITERAL;
+                                                    }
+[a-zA-Z][a-zA-Z0-9_]*                               {
+                                                        yylval.string = strdup(yytext);
+                                                        return ID;
+                                                    }
+\"([^"\\]|\\.)*\"                                   {
+                                                        yylval.string = strdup(yytext);
+                                                        return STRING_LITERAL;
+                                                    }
 
 "//"[^\n]*                                          { } /* Single line comments */
 "/*"([^*]|\*+[^/*])*\*+"/"                          { } /* Multiline comments */
