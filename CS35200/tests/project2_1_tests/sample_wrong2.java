@@ -1,6 +1,6 @@
 class Foo{
     public static void main(String[] args){
-        int a = false;
-        String b = 3;
+        int a = "Hello";
+        System.out.println(a);
     }
 }

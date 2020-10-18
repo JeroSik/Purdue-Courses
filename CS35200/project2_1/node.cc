@@ -14,6 +14,7 @@ struct data {
         int intValue;
         bool booleanValue;
     } value;
+    bool isCorrect;
 };
 
 class node{
@@ -22,16 +23,22 @@ class node{
         vector<node*> children;
         string nodeType;
         data data;
+        int line_no;
 
         // Constructor 
         node(string nodeType) {
             this->nodeType = nodeType;
+            this->data.isCorrect = true;
         }
 
         // Methods 
         void addChild(node* child) {
             children.push_back(child);
-        }   
+        }
+
+        void setLineNumber(int x) {
+            line_no = x;
+        }
 
         void setStringValue(char * s) {
             data.value.stringValue = s;

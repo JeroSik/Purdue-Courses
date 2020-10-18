@@ -33,7 +33,7 @@
 }
 
 // Left hand non-terminals
-%type <node> Program MainClass VarDecl VarInit VarDeclTail Statement StatementList Exp Type
+%type <node> Program MainClass VarDecl VarInit VarDeclTail Type StatementList Statement Exp EqualityExp RelationalExp AdditiveExp MultiplicativeExp UnaryExp Factor
 
 // Terminal symbols
 %token <node> AND BOOLEAN CLASS CLOSED_BRACKET CLOSED_CURLY CLOSED_PARENTHESES COMMA
@@ -118,46 +118,161 @@ StatementList:          %empty
                     |   Statement StatementList
                         {
                             $$ = new node("StatementList");
-                            $$ -> addChild($1);
-                            $$ -> addChild($2);
+                            $$->addChild($1);
+                            $$->addChild($2);
                         }
                     ;
-Statement:              VarDecl
-                        {
-                            $$ = new node("Statement - VarDecl");
-                            $$ -> addChild($1);
-                        }
-                    |   SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+Statement:              SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
                         {
                             $$ = new node("Statement - println");
-                            $$ -> addChild($3);
+                            $$->addChild($3);
+                            $$->setLineNumber(yylineno);
                         }
                     |   SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
                         {
                             $$ = new node("Statement - print");
-                            $$ -> addChild($3);
+                            $$->addChild($3);
+                            $$->setLineNumber(yylineno);
+                        }
+                    |   VarDecl
+                        {
+                            $$ = new node("Statement - VarDecl");
+                            $$->addChild($1);
+                            $$->setLineNumber(yylineno);
                         }
                     |   ID EQUALS Exp SEMICOLON
                         {
                             $$ = new node("Statement - id_equals_exp");
                             $$->setStringValue($1);
                             $$->addChild($3);
+                            $$->setLineNumber(yylineno);
                         }
                     ;
-Exp:                    Exp Op Exp
-                    |   EXCLAMATION Exp
-                    |   PLUS Exp
-                    |   MINUS Exp
-                    |   ID
-                    |   INTEGER_LITERAL
+Exp:                    EqualityExp
                         {
-                            $$ = new node("INTEGER_LITERAL");
-                            $$->setIntValue($1);
+                            $$ = new node("Exp - EqualityExp");
+                            $$->addChild($1);
+                        }
+                    ;
+EqualityExp:            EqualityExp EQUAL_EQUAL RelationalExp
+                        {
+                            $$ = new node("EqualityExp - EQUAL_EQUAL");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   EqualityExp NOT_EQUAL RelationalExp
+                        {
+                            $$ = new node("EqualityExp - NOT_EQUAL");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   RelationalExp
+                        {
+                            $$ = new node("RelationalExp");
+                            $$->addChild($1);
+                        }
+                    ;
+RelationalExp:          RelationalExp GREATER AdditiveExp
+                        {
+                            $$ = new node("RelationalExp - GREATER");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   RelationalExp GREATER_EQUAL AdditiveExp
+                        {
+                            $$ = new node("RelationalExp - GREATER_EQUAL");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   RelationalExp LESS AdditiveExp
+                        {
+                            $$ = new node("RelationalExp - LESS");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   RelationalExp LESS_EQUAL AdditiveExp
+                        {
+                            $$ = new node("RelationalExp - LESS_EQUAL");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   AdditiveExp
+                        {
+                            $$ = new node("AdditiveExp");
+                            $$->addChild($1);
+                        }
+                    ;
+AdditiveExp:            AdditiveExp PLUS MultiplicativeExp
+                        {
+                            $$ = new node("AdditiveExp - PLUS");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   AdditiveExp MINUS MultiplicativeExp
+                        {
+                            $$ = new node("AdditiveExp - MINUS");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   MultiplicativeExp
+                        {
+                            $$ = new node("MultiplicativeExp");
+                            $$->addChild($1);
+                        }
+                    ;
+MultiplicativeExp:      MultiplicativeExp MULTIPLY UnaryExp
+                        {
+                            $$ = new node("MultiplicativeExp - MULTIPLY");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   MultiplicativeExp DIVIDE UnaryExp
+                        {
+                            $$ = new node("MultiplicativeExp - DIVIDE");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   UnaryExp
+                        {
+                            $$ = new node("UnaryExp");
+                            $$->addChild($1);
+                        }
+                    ;
+UnaryExp:               PLUS Factor
+                        {
+                            $$ = new node("UnaryExp - PLUS");
+                            $$->addChild($2);
+                        }
+                    |   MINUS Factor
+                        {
+                            $$ = new node("UnaryExp - MINUS");
+                            $$->addChild($2);
+                        }
+                    |   Factor
+                        {
+                            $$ = new node("Factor");
+                            $$->addChild($1);
+                        }
+                    ;
+Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
+                        {
+                            $$ = new node("Factor - PARENTHESES");
+                            $$->addChild($2);
+                        }
+                    |   ID
+                        {
+                            $$ = new node("ID");
+                            $$->setStringValue($1);
                         }
                     |   STRING_LITERAL
                         {
                             $$ = new node("STRING_LITERAL");
                             $$->setStringValue($1);
+                        }
+                    |   INTEGER_LITERAL
+                        {
+                            $$ = new node("INTEGER_LITERAL");
+                            $$->setIntValue($1);
                         }
                     |   TRUE
                         {
@@ -168,27 +283,7 @@ Exp:                    Exp Op Exp
                         {
                             $$ = new node("BOOLEAN_LITERAL");
                             $$->setBooleanValue(false);
-                        }
-                    ;
-AdditiveExp:            AdditiveExp PLUS MultiplicativeExp
-                    |   AdditiveExp MINUS MultiplicativeExp
-                    |   MultiplicativeExp
-                    ;
-MultiplicativeExp:      MultiplicativeExp MULTIPLY FactorExp
-                    |   MultiplicativeExp DIVIDE FactorExp
-                    |   FactorExp
-                    ;
-FactorExp:              OPEN_PARENTHESES AdditiveExp CLOSED_PARENTHESES
-                    |   INTEGER_LITERAL
-                    ;
-Op:                     AND
-                    |   OR
-                    |   LESS
-                    |   GREATER
-                    |   LESS_EQUAL
-                    |   GREATER_EQUAL
-                    |   EQUAL_EQUAL
-                    |   NOT_EQUAL
+                        }       
                     ;
 
 %%
@@ -215,9 +310,8 @@ int main(int argc, char ** argv) {
 
     // Traverse the AST again to interpret the program if no semantic errors
     if(tc->numErrors == 0){
-        printf("No type check errors\n");
-        // interpret * ic = new interpret();
-        // ic->interpretProgram(root);
+        interpret * ic = new interpret();
+        ic->interpretProgram(root);
     }
     return 0;
 }
