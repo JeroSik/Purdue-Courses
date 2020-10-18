@@ -98,9 +98,9 @@ class interpret{
         // Iterate through varDeclTail and check potential multi-declarations
         node * varDeclTail = varDecl->children.at(2);
         while (varDeclTail->nodeType != "Empty") {
-            string id = varDecl->data.value.stringValue;
-            node * varInit = varDecl->children.at(1);
-            struct data d = {.type = lhs_type};
+            id = varDeclTail->data.value.stringValue;
+            varInit = varDeclTail->children.at(0);
+            d = {.type = lhs_type};
             if (varInit->nodeType != "Empty") {
                 d = interpretExp(varInit->children.at(0));
             }
