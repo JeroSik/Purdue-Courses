@@ -3,6 +3,10 @@
         "iostream": "cpp",
         "istream": "cpp",
         "ostream": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp"
     }
 }

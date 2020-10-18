@@ -13,6 +13,6 @@ lex.yy.o:   lex.yy.c
 lexParser: 	lex.yy.o
 			gcc lex.yy.o -o lexParser
 clean:
-	rm -f lex.yy.c lex.yy.o parser.dot parser.output parser.tab.c parser.tab.h y.dot y.output y.tab.c y.tab.h
+	rm -f interpret lex.yy.c lex.yy.o parser parser.dot parser.output parser.tab.c parser.tab.h y.dot y.output y.tab.c y.tab.h
 # clean:
 # 	rm -f lex.yy.c y.tab.c y.tab.h y.dot y.output interpret lex.yy.o
