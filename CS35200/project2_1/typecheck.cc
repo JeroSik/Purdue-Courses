@@ -31,7 +31,7 @@ class typecheck {
         
         // Iterate through statement list and check each statement
         node * currStatementList = mainClass->children.at(0);
-        while (currStatementList->children.size() == 2) {
+        while (currStatementList->nodeType != "Empty") {
             checkStatement(currStatementList->children.at(0));
             currStatementList = currStatementList->children.at(1);
         }
@@ -43,11 +43,11 @@ class typecheck {
     void checkStatement(node * statement){
         // Get statement type
         string statementType = statement->nodeType;
+        cout << statementType << "\n";
 
         // SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
         // SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
         if (statementType == "Statement - println" || statementType == "Statement - print") {
-            // cout << "Print\n";
             data exp_data = checkAndGetExpType(statement->children.at(0));
             if (!exp_data.isCorrect) {
                 numErrors++;
@@ -56,7 +56,6 @@ class typecheck {
 
         // VarDecl
         } else if (statementType == "Statement - VarDecl") {
-            // cout << "Declaration\n";
             bool isCorrect = checkVarDecl(statement->children.at(0));
             if (!isCorrect) {
                 numErrors++;
@@ -65,7 +64,6 @@ class typecheck {
             
         // ID EQUALS Exp SEMICOLON
         } else if (statementType == "Statement - id_equals_exp") {
-            // cout << "Assignment\n";
             bool isCorrect = checkVarAssignment(statement->data.value.stringValue, statement->children.at(0));
             if (!isCorrect) {
                 numErrors++;
@@ -97,7 +95,11 @@ class typecheck {
                 result = false;
             }
         } else {
-            addToScope(id, lhs_type, 0);
+            if (isUniqueVariableName(id)) {
+                addToScope(id, lhs_type, 0);
+            } else {
+                result = false;
+            }
         }
 
         // Iterate through varDeclTail and check potential multi-declarations
@@ -113,7 +115,11 @@ class typecheck {
                     result = false;
                 }
             } else {
-                addToScope(id, lhs_type, 0);
+                if (isUniqueVariableName(id)) {
+                    addToScope(id, lhs_type, 0);
+                } else {
+                    result = false;
+                }
             }
 
             varDeclTail = varDeclTail->children.at(1);
@@ -144,10 +150,6 @@ class typecheck {
 
     bool checkAndComputeRHS(data::type_t lhs_type, string id, node * rhs_exp) {
         data rhs = checkAndGetExpType(rhs_exp);
-
-        // cout << "   checkAndComputeRHS\n";
-        // cout << "       lhs_type: " << lhs_type << "\n";
-        // cout << "       rhs.type: " << rhs.type << "\n";
 
         if (isUniqueVariableName(id) && lhs_type == rhs.type && rhs.isCorrect) {
             addToScope(id, lhs_type, 1);
@@ -186,7 +188,7 @@ class typecheck {
             exp->nodeType == "EqualityExp - NOT_EQUAL") {
             val1 = checkAndGetExpType_recurse(exp->children.at(0));
             val2 = checkAndGetExpType_recurse(exp->children.at(1));
-            if (!val1.isCorrect || !val1.isCorrect ||
+            if (!val1.isCorrect || !val2.isCorrect ||
                 val1.type == data::type_t::str || val2.type == data::type_t::str ||
                 val1.type != val2.type) {
                 struct data d = {.type = data::type_t::boolean, .isCorrect = false};
@@ -200,7 +202,7 @@ class typecheck {
                     exp->nodeType == "RelationalExp - LESS_EQUAL") {
             val1 = checkAndGetExpType_recurse(exp->children.at(0));
             val2 = checkAndGetExpType_recurse(exp->children.at(1));
-            if (!val1.isCorrect || !val1.isCorrect ||
+            if (!val1.isCorrect || !val2.isCorrect ||
                 val1.type != data::type_t::integer || val2.type != data::type_t::integer) {
                 struct data d = {.type = data::type_t::boolean, .isCorrect = false};
                 return d;
@@ -213,7 +215,7 @@ class typecheck {
                     exp->nodeType == "MultiplicativeExp - DIVIDE") {
             val1 = checkAndGetExpType_recurse(exp->children.at(0));
             val2 = checkAndGetExpType_recurse(exp->children.at(1));
-            if (!val1.isCorrect || !val1.isCorrect ||
+            if (!val1.isCorrect || !val2.isCorrect ||
                 val1.type != data::type_t::integer || val2.type != data::type_t::integer) {
                 struct data d = {.type = data::type_t::integer, .isCorrect = false};
                 return d;
@@ -239,8 +241,8 @@ class typecheck {
 
     data getDataFromID(node * id) {
         map<string, int>::iterator it = integer_values.find(id->data.value.stringValue);
-        if (it != integer_values.end()) {
-            int flag = it->second;
+        if (integer_values.find(id->data.value.stringValue) != integer_values.end()) {
+            int flag = integer_values.find(id->data.value.stringValue)->second;
             
             if (flag == -1) {
                 struct data d = {.type = data::type_t::integer, .isCorrect = true};

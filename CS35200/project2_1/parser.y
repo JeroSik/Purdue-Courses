@@ -122,7 +122,13 @@ StatementList:          %empty
                             $$->addChild($2);
                         }
                     ;
-Statement:              SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
+Statement:              VarDecl
+                        {
+                            $$ = new node("Statement - VarDecl");
+                            $$->addChild($1);
+                            $$->setLineNumber(yylineno);
+                        }
+                    |    SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
                         {
                             $$ = new node("Statement - println");
                             $$->addChild($3);
@@ -132,12 +138,6 @@ Statement:              SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHES
                         {
                             $$ = new node("Statement - print");
                             $$->addChild($3);
-                            $$->setLineNumber(yylineno);
-                        }
-                    |   VarDecl
-                        {
-                            $$ = new node("Statement - VarDecl");
-                            $$->addChild($1);
                             $$->setLineNumber(yylineno);
                         }
                     |   ID EQUALS Exp SEMICOLON
