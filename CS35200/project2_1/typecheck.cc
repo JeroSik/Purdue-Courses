@@ -43,7 +43,6 @@ class typecheck {
     void checkStatement(node * statement){
         // Get statement type
         string statementType = statement->nodeType;
-        cout << statementType << "\n";
 
         // SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
         // SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
