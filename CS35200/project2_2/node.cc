@@ -7,14 +7,14 @@ using namespace std;
 
 struct data {
     enum type_t{
-        stringType, intType, booleanType
+        stringType, intType, booleanType, arrayType, multiArrayType
     } type;
     union value_t{
         char * stringValue;
         int intValue;
         bool booleanValue;
     } value;
-    // vector<data*> arrayValue;
+    vector<data> arrayValue;
     int flag;
     bool isCorrect;
 };

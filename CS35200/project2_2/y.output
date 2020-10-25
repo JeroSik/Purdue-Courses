@@ -1,9 +1,7 @@
 Terminals unused in grammar
 
-   DOT
    EXCLAMATION
    EXTENDS
-   LENGTH
    MINUS_MINUS
    PLUS_PLUS
    RETURN
@@ -11,8 +9,6 @@ Terminals unused in grammar
 
 
 State 26 conflicts: 1 shift/reduce
-State 40 conflicts: 1 shift/reduce
-State 46 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -85,16 +81,17 @@ Grammar
    47       | ID
    48       | LeftValue
    49       | NEW PrimeType Index
-   50       | STRING_LITERAL
-   51       | INTEGER_LITERAL
-   52       | TRUE
-   53       | FALSE
+   50       | LeftValue DOT LENGTH
+   51       | ID DOT LENGTH
+   52       | STRING_LITERAL
+   53       | INTEGER_LITERAL
+   54       | TRUE
+   55       | FALSE
 
-   54 LeftValue: LeftValue Index
-   55          | ID Index
+   56 LeftValue: ID Index
 
-   56 Index: OPEN_BRACKET Exp CLOSED_BRACKET
-   57      | Index OPEN_BRACKET Exp CLOSED_BRACKET
+   57 Index: OPEN_BRACKET Exp CLOSED_BRACKET
+   58      | Index OPEN_BRACKET Exp CLOSED_BRACKET
 
 
 Terminals, with rules where they appear
@@ -104,23 +101,23 @@ error (256)
 AND (258) 27
 BOOLEAN (259) 9
 CLASS (260) 2
-CLOSED_BRACKET (261) 2 13 56 57
+CLOSED_BRACKET (261) 2 13 57 58
 CLOSED_CURLY (262) 2 23
 CLOSED_PARENTHESES (263) 2 16 17 21 22 46
 COMMA (264) 7
 DIVIDE (265) 41
-DOT (266)
+DOT (266) 50 51
 ELSE (267) 21
 EQUALS (268) 5 19 20
 EQUAL_EQUAL (269) 29
 EXCLAMATION (270)
 EXTENDS (271)
-FALSE (272) 53
+FALSE (272) 55
 GREATER (273) 32
 GREATER_EQUAL (274) 33
 IF (275) 21
 INT (276) 8
-LENGTH (277)
+LENGTH (277) 50 51
 LESS (278) 34
 LESS_EQUAL (279) 35
 MAIN (280) 2
@@ -129,7 +126,7 @@ MINUS_MINUS (282)
 MULTIPLY (283) 40
 NEW (284) 49
 NOT_EQUAL (285) 30
-OPEN_BRACKET (286) 2 13 56 57
+OPEN_BRACKET (286) 2 13 57 58
 OPEN_CURLY (287) 2 23
 OPEN_PARENTHESES (288) 2 16 17 21 22 46
 OR (289) 25
@@ -143,12 +140,12 @@ STRING (296) 2 10
 SYSTEM_OUT_PRINT (297) 17
 SYSTEM_OUT_PRINTLN (298) 16
 THIS (299)
-TRUE (300) 52
+TRUE (300) 54
 VOID (301) 2
 WHILE (302) 22
-INTEGER_LITERAL (303) 51
-STRING_LITERAL (304) 50
-ID (305) 2 3 7 12 19 47 55
+INTEGER_LITERAL (303) 53
+STRING_LITERAL (304) 52
+ID (305) 2 3 7 12 19 47 51 56
 
 
 Nonterminals, with rules where they appear
@@ -174,7 +171,7 @@ StatementList (59)
 Statement (60)
     on left: 16 17 18 19 20 21 22 23, on right: 15 21 22
 Exp (61)
-    on left: 24, on right: 5 16 17 19 20 21 22 46 56 57
+    on left: 24, on right: 5 16 17 19 20 21 22 46 57 58
 LogicalOrExp (62)
     on left: 25 26, on right: 24 25
 LogicalAndExp (63)
@@ -190,11 +187,11 @@ MultiplicativeExp (67)
 UnaryExp (68)
     on left: 43 44 45, on right: 40 41 42
 Factor (69)
-    on left: 46 47 48 49 50 51 52 53, on right: 43 44 45
+    on left: 46 47 48 49 50 51 52 53 54 55, on right: 43 44 45
 LeftValue (70)
-    on left: 54 55, on right: 20 48 54
+    on left: 56, on right: 20 48 50
 Index (71)
-    on left: 56 57, on right: 49 54 55 57
+    on left: 57 58, on right: 49 56 58
 
 
 State 0
@@ -420,7 +417,7 @@ State 26
 
    12 Type: ID .
    19 Statement: ID . EQUALS Exp SEMICOLON
-   55 LeftValue: ID . Index
+   56 LeftValue: ID . Index
 
     EQUALS        shift, and go to state 38
     OPEN_BRACKET  shift, and go to state 39
@@ -488,211 +485,206 @@ State 31
 State 32
 
    20 Statement: LeftValue . EQUALS Exp SEMICOLON
-   54 LeftValue: LeftValue . Index
 
-    EQUALS        shift, and go to state 45
-    OPEN_BRACKET  shift, and go to state 39
-
-    Index  go to state 46
+    EQUALS  shift, and go to state 45
 
 
 State 33
 
    21 Statement: IF OPEN_PARENTHESES . Exp CLOSED_PARENTHESES Statement ELSE Statement
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 56
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 55
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 34
 
    23 Statement: OPEN_CURLY StatementList . CLOSED_CURLY
 
-    CLOSED_CURLY  shift, and go to state 66
+    CLOSED_CURLY  shift, and go to state 65
 
 
 State 35
 
    17 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES . Exp CLOSED_PARENTHESES SEMICOLON
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 67
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 66
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 36
 
    16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES . Exp CLOSED_PARENTHESES SEMICOLON
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 68
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 67
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 37
 
    22 Statement: WHILE OPEN_PARENTHESES . Exp CLOSED_PARENTHESES Statement
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 69
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 68
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 38
 
    19 Statement: ID EQUALS . Exp SEMICOLON
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 70
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 69
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 39
 
-   56 Index: OPEN_BRACKET . Exp CLOSED_BRACKET
+   57 Index: OPEN_BRACKET . Exp CLOSED_BRACKET
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 71
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 70
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 40
 
-   55 LeftValue: ID Index .
-   57 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
+   56 LeftValue: ID Index .
+   58 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
 
-    OPEN_BRACKET  shift, and go to state 72
+    OPEN_BRACKET  shift, and go to state 71
 
-    OPEN_BRACKET  [reduce using rule 55 (LeftValue)]
-    $default      reduce using rule 55 (LeftValue)
+    $default  reduce using rule 56 (LeftValue)
 
 
 State 41
 
    13 Type: Type OPEN_BRACKET . CLOSED_BRACKET
 
-    CLOSED_BRACKET  shift, and go to state 73
+    CLOSED_BRACKET  shift, and go to state 72
 
 
 State 42
 
     3 VarDecl: Type ID . VarInit VarDeclTail SEMICOLON
 
-    EQUALS  shift, and go to state 74
+    EQUALS  shift, and go to state 73
 
     $default  reduce using rule 4 (VarInit)
 
-    VarInit  go to state 75
+    VarInit  go to state 74
 
 
 State 43
 
     2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY . CLOSED_CURLY
 
-    CLOSED_CURLY  shift, and go to state 76
+    CLOSED_CURLY  shift, and go to state 75
 
 
 State 44
@@ -706,63 +698,52 @@ State 45
 
    20 Statement: LeftValue EQUALS . Exp SEMICOLON
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 77
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 76
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 46
 
-   54 LeftValue: LeftValue Index .
-   57 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
+   55 Factor: FALSE .
 
-    OPEN_BRACKET  shift, and go to state 72
-
-    OPEN_BRACKET  [reduce using rule 54 (LeftValue)]
-    $default      reduce using rule 54 (LeftValue)
+    $default  reduce using rule 55 (Factor)
 
 
 State 47
 
-   53 Factor: FALSE .
+   44 UnaryExp: MINUS . Factor
 
-    $default  reduce using rule 53 (Factor)
+    FALSE             shift, and go to state 46
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
+
+    Factor     go to state 77
+    LeftValue  go to state 64
 
 
 State 48
-
-   44 UnaryExp: MINUS . Factor
-
-    FALSE             shift, and go to state 47
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
-
-    Factor     go to state 78
-    LeftValue  go to state 65
-
-
-State 49
 
    49 Factor: NEW . PrimeType Index
 
@@ -770,77 +751,79 @@ State 49
     INT      shift, and go to state 20
     STRING   shift, and go to state 22
 
-    PrimeType  go to state 79
+    PrimeType  go to state 78
+
+
+State 49
+
+   46 Factor: OPEN_PARENTHESES . Exp CLOSED_PARENTHESES
+
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
+
+    Exp                go to state 79
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 50
 
-   46 Factor: OPEN_PARENTHESES . Exp CLOSED_PARENTHESES
+   43 UnaryExp: PLUS . Factor
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 80
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Factor     go to state 80
+    LeftValue  go to state 64
 
 
 State 51
 
-   43 UnaryExp: PLUS . Factor
+   54 Factor: TRUE .
 
-    FALSE             shift, and go to state 47
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
-
-    Factor     go to state 81
-    LeftValue  go to state 65
+    $default  reduce using rule 54 (Factor)
 
 
 State 52
 
-   52 Factor: TRUE .
+   53 Factor: INTEGER_LITERAL .
 
-    $default  reduce using rule 52 (Factor)
+    $default  reduce using rule 53 (Factor)
 
 
 State 53
 
-   51 Factor: INTEGER_LITERAL .
+   52 Factor: STRING_LITERAL .
 
-    $default  reduce using rule 51 (Factor)
+    $default  reduce using rule 52 (Factor)
 
 
 State 54
 
-   50 Factor: STRING_LITERAL .
-
-    $default  reduce using rule 50 (Factor)
-
-
-State 55
-
    47 Factor: ID .
-   55 LeftValue: ID . Index
+   51       | ID . DOT LENGTH
+   56 LeftValue: ID . Index
 
+    DOT           shift, and go to state 81
     OPEN_BRACKET  shift, and go to state 39
 
     $default  reduce using rule 47 (Factor)
@@ -848,14 +831,14 @@ State 55
     Index  go to state 40
 
 
-State 56
+State 55
 
    21 Statement: IF OPEN_PARENTHESES Exp . CLOSED_PARENTHESES Statement ELSE Statement
 
     CLOSED_PARENTHESES  shift, and go to state 82
 
 
-State 57
+State 56
 
    24 Exp: LogicalOrExp .
    25 LogicalOrExp: LogicalOrExp . OR LogicalAndExp
@@ -865,7 +848,7 @@ State 57
     $default  reduce using rule 24 (Exp)
 
 
-State 58
+State 57
 
    26 LogicalOrExp: LogicalAndExp .
    27 LogicalAndExp: LogicalAndExp . AND EqualityExp
@@ -875,7 +858,7 @@ State 58
     $default  reduce using rule 26 (LogicalOrExp)
 
 
-State 59
+State 58
 
    28 LogicalAndExp: EqualityExp .
    29 EqualityExp: EqualityExp . EQUAL_EQUAL RelationalExp
@@ -887,7 +870,7 @@ State 59
     $default  reduce using rule 28 (LogicalAndExp)
 
 
-State 60
+State 59
 
    31 EqualityExp: RelationalExp .
    32 RelationalExp: RelationalExp . GREATER AdditiveExp
@@ -903,7 +886,7 @@ State 60
     $default  reduce using rule 31 (EqualityExp)
 
 
-State 61
+State 60
 
    36 RelationalExp: AdditiveExp .
    37 AdditiveExp: AdditiveExp . PLUS MultiplicativeExp
@@ -915,7 +898,7 @@ State 61
     $default  reduce using rule 36 (RelationalExp)
 
 
-State 62
+State 61
 
    39 AdditiveExp: MultiplicativeExp .
    40 MultiplicativeExp: MultiplicativeExp . MULTIPLY UnaryExp
@@ -927,186 +910,191 @@ State 62
     $default  reduce using rule 39 (AdditiveExp)
 
 
-State 63
+State 62
 
    42 MultiplicativeExp: UnaryExp .
 
     $default  reduce using rule 42 (MultiplicativeExp)
 
 
-State 64
+State 63
 
    45 UnaryExp: Factor .
 
     $default  reduce using rule 45 (UnaryExp)
 
 
-State 65
+State 64
 
    48 Factor: LeftValue .
-   54 LeftValue: LeftValue . Index
+   50       | LeftValue . DOT LENGTH
 
-    OPEN_BRACKET  shift, and go to state 39
+    DOT  shift, and go to state 95
 
     $default  reduce using rule 48 (Factor)
 
-    Index  go to state 46
 
-
-State 66
+State 65
 
    23 Statement: OPEN_CURLY StatementList CLOSED_CURLY .
 
     $default  reduce using rule 23 (Statement)
 
 
-State 67
+State 66
 
    17 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp . CLOSED_PARENTHESES SEMICOLON
-
-    CLOSED_PARENTHESES  shift, and go to state 95
-
-
-State 68
-
-   16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp . CLOSED_PARENTHESES SEMICOLON
 
     CLOSED_PARENTHESES  shift, and go to state 96
 
 
-State 69
+State 67
 
-   22 Statement: WHILE OPEN_PARENTHESES Exp . CLOSED_PARENTHESES Statement
+   16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp . CLOSED_PARENTHESES SEMICOLON
 
     CLOSED_PARENTHESES  shift, and go to state 97
 
 
-State 70
+State 68
+
+   22 Statement: WHILE OPEN_PARENTHESES Exp . CLOSED_PARENTHESES Statement
+
+    CLOSED_PARENTHESES  shift, and go to state 98
+
+
+State 69
 
    19 Statement: ID EQUALS Exp . SEMICOLON
 
-    SEMICOLON  shift, and go to state 98
+    SEMICOLON  shift, and go to state 99
+
+
+State 70
+
+   57 Index: OPEN_BRACKET Exp . CLOSED_BRACKET
+
+    CLOSED_BRACKET  shift, and go to state 100
 
 
 State 71
 
-   56 Index: OPEN_BRACKET Exp . CLOSED_BRACKET
+   58 Index: Index OPEN_BRACKET . Exp CLOSED_BRACKET
 
-    CLOSED_BRACKET  shift, and go to state 99
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
+
+    Exp                go to state 101
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 72
-
-   57 Index: Index OPEN_BRACKET . Exp CLOSED_BRACKET
-
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
-
-    Exp                go to state 100
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
-
-
-State 73
 
    13 Type: Type OPEN_BRACKET CLOSED_BRACKET .
 
     $default  reduce using rule 13 (Type)
 
 
-State 74
+State 73
 
     5 VarInit: EQUALS . Exp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    Exp                go to state 101
-    LogicalOrExp       go to state 57
-    LogicalAndExp      go to state 58
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    Exp                go to state 102
+    LogicalOrExp       go to state 56
+    LogicalAndExp      go to state 57
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
-State 75
+State 74
 
     3 VarDecl: Type ID VarInit . VarDeclTail SEMICOLON
 
-    COMMA  shift, and go to state 102
+    COMMA  shift, and go to state 103
 
     $default  reduce using rule 6 (VarDeclTail)
 
-    VarDeclTail  go to state 103
+    VarDeclTail  go to state 104
 
 
-State 76
+State 75
 
     2 MainClass: CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTHESES STRING OPEN_BRACKET CLOSED_BRACKET ID CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY CLOSED_CURLY .
 
     $default  reduce using rule 2 (MainClass)
 
 
-State 77
+State 76
 
    20 Statement: LeftValue EQUALS Exp . SEMICOLON
 
-    SEMICOLON  shift, and go to state 104
+    SEMICOLON  shift, and go to state 105
 
 
-State 78
+State 77
 
    44 UnaryExp: MINUS Factor .
 
     $default  reduce using rule 44 (UnaryExp)
 
 
-State 79
+State 78
 
    49 Factor: NEW PrimeType . Index
 
     OPEN_BRACKET  shift, and go to state 39
 
-    Index  go to state 105
+    Index  go to state 106
+
+
+State 79
+
+   46 Factor: OPEN_PARENTHESES Exp . CLOSED_PARENTHESES
+
+    CLOSED_PARENTHESES  shift, and go to state 107
 
 
 State 80
 
-   46 Factor: OPEN_PARENTHESES Exp . CLOSED_PARENTHESES
+   43 UnaryExp: PLUS Factor .
 
-    CLOSED_PARENTHESES  shift, and go to state 106
+    $default  reduce using rule 43 (UnaryExp)
 
 
 State 81
 
-   43 UnaryExp: PLUS Factor .
+   51 Factor: ID DOT . LENGTH
 
-    $default  reduce using rule 43 (UnaryExp)
+    LENGTH  shift, and go to state 108
 
 
 State 82
@@ -1126,7 +1114,7 @@ State 82
     VarDecl    go to state 27
     PrimeType  go to state 28
     Type       go to state 29
-    Statement  go to state 107
+    Statement  go to state 109
     LeftValue  go to state 32
 
 
@@ -1134,270 +1122,277 @@ State 83
 
    25 LogicalOrExp: LogicalOrExp OR . LogicalAndExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    LogicalAndExp      go to state 108
-    EqualityExp        go to state 59
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    LogicalAndExp      go to state 110
+    EqualityExp        go to state 58
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 84
 
    27 LogicalAndExp: LogicalAndExp AND . EqualityExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    EqualityExp        go to state 109
-    RelationalExp      go to state 60
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    EqualityExp        go to state 111
+    RelationalExp      go to state 59
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 85
 
    29 EqualityExp: EqualityExp EQUAL_EQUAL . RelationalExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    RelationalExp      go to state 110
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    RelationalExp      go to state 112
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 86
 
    30 EqualityExp: EqualityExp NOT_EQUAL . RelationalExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    RelationalExp      go to state 111
-    AdditiveExp        go to state 61
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    RelationalExp      go to state 113
+    AdditiveExp        go to state 60
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 87
 
    32 RelationalExp: RelationalExp GREATER . AdditiveExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    AdditiveExp        go to state 112
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    AdditiveExp        go to state 114
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 88
 
    33 RelationalExp: RelationalExp GREATER_EQUAL . AdditiveExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    AdditiveExp        go to state 113
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    AdditiveExp        go to state 115
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 89
 
    34 RelationalExp: RelationalExp LESS . AdditiveExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    AdditiveExp        go to state 114
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    AdditiveExp        go to state 116
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 90
 
    35 RelationalExp: RelationalExp LESS_EQUAL . AdditiveExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    AdditiveExp        go to state 115
-    MultiplicativeExp  go to state 62
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    AdditiveExp        go to state 117
+    MultiplicativeExp  go to state 61
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 91
 
    38 AdditiveExp: AdditiveExp MINUS . MultiplicativeExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    MultiplicativeExp  go to state 116
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    MultiplicativeExp  go to state 118
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 92
 
    37 AdditiveExp: AdditiveExp PLUS . MultiplicativeExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    MultiplicativeExp  go to state 117
-    UnaryExp           go to state 63
-    Factor             go to state 64
-    LeftValue          go to state 65
+    MultiplicativeExp  go to state 119
+    UnaryExp           go to state 62
+    Factor             go to state 63
+    LeftValue          go to state 64
 
 
 State 93
 
    41 MultiplicativeExp: MultiplicativeExp DIVIDE . UnaryExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    UnaryExp   go to state 118
-    Factor     go to state 64
-    LeftValue  go to state 65
+    UnaryExp   go to state 120
+    Factor     go to state 63
+    LeftValue  go to state 64
 
 
 State 94
 
    40 MultiplicativeExp: MultiplicativeExp MULTIPLY . UnaryExp
 
-    FALSE             shift, and go to state 47
-    MINUS             shift, and go to state 48
-    NEW               shift, and go to state 49
-    OPEN_PARENTHESES  shift, and go to state 50
-    PLUS              shift, and go to state 51
-    TRUE              shift, and go to state 52
-    INTEGER_LITERAL   shift, and go to state 53
-    STRING_LITERAL    shift, and go to state 54
-    ID                shift, and go to state 55
+    FALSE             shift, and go to state 46
+    MINUS             shift, and go to state 47
+    NEW               shift, and go to state 48
+    OPEN_PARENTHESES  shift, and go to state 49
+    PLUS              shift, and go to state 50
+    TRUE              shift, and go to state 51
+    INTEGER_LITERAL   shift, and go to state 52
+    STRING_LITERAL    shift, and go to state 53
+    ID                shift, and go to state 54
 
-    UnaryExp   go to state 119
-    Factor     go to state 64
-    LeftValue  go to state 65
+    UnaryExp   go to state 121
+    Factor     go to state 63
+    LeftValue  go to state 64
 
 
 State 95
 
-   17 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
+   50 Factor: LeftValue DOT . LENGTH
 
-    SEMICOLON  shift, and go to state 120
+    LENGTH  shift, and go to state 122
 
 
 State 96
 
-   16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
+   17 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
 
-    SEMICOLON  shift, and go to state 121
+    SEMICOLON  shift, and go to state 123
 
 
 State 97
+
+   16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES . SEMICOLON
+
+    SEMICOLON  shift, and go to state 124
+
+
+State 98
 
    22 Statement: WHILE OPEN_PARENTHESES Exp CLOSED_PARENTHESES . Statement
 
@@ -1414,84 +1409,91 @@ State 97
     VarDecl    go to state 27
     PrimeType  go to state 28
     Type       go to state 29
-    Statement  go to state 122
+    Statement  go to state 125
     LeftValue  go to state 32
 
 
-State 98
+State 99
 
    19 Statement: ID EQUALS Exp SEMICOLON .
 
     $default  reduce using rule 19 (Statement)
 
 
-State 99
-
-   56 Index: OPEN_BRACKET Exp CLOSED_BRACKET .
-
-    $default  reduce using rule 56 (Index)
-
-
 State 100
 
-   57 Index: Index OPEN_BRACKET Exp . CLOSED_BRACKET
+   57 Index: OPEN_BRACKET Exp CLOSED_BRACKET .
 
-    CLOSED_BRACKET  shift, and go to state 123
+    $default  reduce using rule 57 (Index)
 
 
 State 101
+
+   58 Index: Index OPEN_BRACKET Exp . CLOSED_BRACKET
+
+    CLOSED_BRACKET  shift, and go to state 126
+
+
+State 102
 
     5 VarInit: EQUALS Exp .
 
     $default  reduce using rule 5 (VarInit)
 
 
-State 102
+State 103
 
     7 VarDeclTail: COMMA . ID VarInit VarDeclTail
 
-    ID  shift, and go to state 124
-
-
-State 103
-
-    3 VarDecl: Type ID VarInit VarDeclTail . SEMICOLON
-
-    SEMICOLON  shift, and go to state 125
+    ID  shift, and go to state 127
 
 
 State 104
+
+    3 VarDecl: Type ID VarInit VarDeclTail . SEMICOLON
+
+    SEMICOLON  shift, and go to state 128
+
+
+State 105
 
    20 Statement: LeftValue EQUALS Exp SEMICOLON .
 
     $default  reduce using rule 20 (Statement)
 
 
-State 105
+State 106
 
    49 Factor: NEW PrimeType Index .
-   57 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
+   58 Index: Index . OPEN_BRACKET Exp CLOSED_BRACKET
 
-    OPEN_BRACKET  shift, and go to state 72
+    OPEN_BRACKET  shift, and go to state 71
 
     $default  reduce using rule 49 (Factor)
 
 
-State 106
+State 107
 
    46 Factor: OPEN_PARENTHESES Exp CLOSED_PARENTHESES .
 
     $default  reduce using rule 46 (Factor)
 
 
-State 107
+State 108
+
+   51 Factor: ID DOT LENGTH .
+
+    $default  reduce using rule 51 (Factor)
+
+
+State 109
 
    21 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement . ELSE Statement
 
-    ELSE  shift, and go to state 126
+    ELSE  shift, and go to state 129
 
 
-State 108
+State 110
 
    25 LogicalOrExp: LogicalOrExp OR LogicalAndExp .
    27 LogicalAndExp: LogicalAndExp . AND EqualityExp
@@ -1501,7 +1503,7 @@ State 108
     $default  reduce using rule 25 (LogicalOrExp)
 
 
-State 109
+State 111
 
    27 LogicalAndExp: LogicalAndExp AND EqualityExp .
    29 EqualityExp: EqualityExp . EQUAL_EQUAL RelationalExp
@@ -1513,7 +1515,7 @@ State 109
     $default  reduce using rule 27 (LogicalAndExp)
 
 
-State 110
+State 112
 
    29 EqualityExp: EqualityExp EQUAL_EQUAL RelationalExp .
    32 RelationalExp: RelationalExp . GREATER AdditiveExp
@@ -1529,7 +1531,7 @@ State 110
     $default  reduce using rule 29 (EqualityExp)
 
 
-State 111
+State 113
 
    30 EqualityExp: EqualityExp NOT_EQUAL RelationalExp .
    32 RelationalExp: RelationalExp . GREATER AdditiveExp
@@ -1545,7 +1547,7 @@ State 111
     $default  reduce using rule 30 (EqualityExp)
 
 
-State 112
+State 114
 
    32 RelationalExp: RelationalExp GREATER AdditiveExp .
    37 AdditiveExp: AdditiveExp . PLUS MultiplicativeExp
@@ -1557,7 +1559,7 @@ State 112
     $default  reduce using rule 32 (RelationalExp)
 
 
-State 113
+State 115
 
    33 RelationalExp: RelationalExp GREATER_EQUAL AdditiveExp .
    37 AdditiveExp: AdditiveExp . PLUS MultiplicativeExp
@@ -1569,7 +1571,7 @@ State 113
     $default  reduce using rule 33 (RelationalExp)
 
 
-State 114
+State 116
 
    34 RelationalExp: RelationalExp LESS AdditiveExp .
    37 AdditiveExp: AdditiveExp . PLUS MultiplicativeExp
@@ -1581,7 +1583,7 @@ State 114
     $default  reduce using rule 34 (RelationalExp)
 
 
-State 115
+State 117
 
    35 RelationalExp: RelationalExp LESS_EQUAL AdditiveExp .
    37 AdditiveExp: AdditiveExp . PLUS MultiplicativeExp
@@ -1593,7 +1595,7 @@ State 115
     $default  reduce using rule 35 (RelationalExp)
 
 
-State 116
+State 118
 
    38 AdditiveExp: AdditiveExp MINUS MultiplicativeExp .
    40 MultiplicativeExp: MultiplicativeExp . MULTIPLY UnaryExp
@@ -1605,7 +1607,7 @@ State 116
     $default  reduce using rule 38 (AdditiveExp)
 
 
-State 117
+State 119
 
    37 AdditiveExp: AdditiveExp PLUS MultiplicativeExp .
    40 MultiplicativeExp: MultiplicativeExp . MULTIPLY UnaryExp
@@ -1617,67 +1619,74 @@ State 117
     $default  reduce using rule 37 (AdditiveExp)
 
 
-State 118
+State 120
 
    41 MultiplicativeExp: MultiplicativeExp DIVIDE UnaryExp .
 
     $default  reduce using rule 41 (MultiplicativeExp)
 
 
-State 119
+State 121
 
    40 MultiplicativeExp: MultiplicativeExp MULTIPLY UnaryExp .
 
     $default  reduce using rule 40 (MultiplicativeExp)
 
 
-State 120
+State 122
+
+   50 Factor: LeftValue DOT LENGTH .
+
+    $default  reduce using rule 50 (Factor)
+
+
+State 123
 
    17 Statement: SYSTEM_OUT_PRINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON .
 
     $default  reduce using rule 17 (Statement)
 
 
-State 121
+State 124
 
    16 Statement: SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON .
 
     $default  reduce using rule 16 (Statement)
 
 
-State 122
+State 125
 
    22 Statement: WHILE OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement .
 
     $default  reduce using rule 22 (Statement)
 
 
-State 123
+State 126
 
-   57 Index: Index OPEN_BRACKET Exp CLOSED_BRACKET .
+   58 Index: Index OPEN_BRACKET Exp CLOSED_BRACKET .
 
-    $default  reduce using rule 57 (Index)
+    $default  reduce using rule 58 (Index)
 
 
-State 124
+State 127
 
     7 VarDeclTail: COMMA ID . VarInit VarDeclTail
 
-    EQUALS  shift, and go to state 74
+    EQUALS  shift, and go to state 73
 
     $default  reduce using rule 4 (VarInit)
 
-    VarInit  go to state 127
+    VarInit  go to state 130
 
 
-State 125
+State 128
 
     3 VarDecl: Type ID VarInit VarDeclTail SEMICOLON .
 
     $default  reduce using rule 3 (VarDecl)
 
 
-State 126
+State 129
 
    21 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE . Statement
 
@@ -1694,29 +1703,29 @@ State 126
     VarDecl    go to state 27
     PrimeType  go to state 28
     Type       go to state 29
-    Statement  go to state 128
+    Statement  go to state 131
     LeftValue  go to state 32
 
 
-State 127
+State 130
 
     7 VarDeclTail: COMMA ID VarInit . VarDeclTail
 
-    COMMA  shift, and go to state 102
+    COMMA  shift, and go to state 103
 
     $default  reduce using rule 6 (VarDeclTail)
 
-    VarDeclTail  go to state 129
+    VarDeclTail  go to state 132
 
 
-State 128
+State 131
 
    21 Statement: IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE Statement .
 
     $default  reduce using rule 21 (Statement)
 
 
-State 129
+State 132
 
     7 VarDeclTail: COMMA ID VarInit VarDeclTail .
 

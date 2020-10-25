@@ -1,7 +1,6 @@
 class Foo{
     public static void main(String[] args) {
-        String[][] test = new String[5][10];
-
-        
+        int[] a = new int[5];
+        a[0][0] = 1;
     }
 }

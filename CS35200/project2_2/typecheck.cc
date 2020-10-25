@@ -54,6 +54,7 @@ class typecheck {
     void checkStatement(node * statement) {
         // Get statement type
         string statementType = statement->nodeType;
+        // cout << statementType << "\n";
 
         // SYSTEM_OUT_PRINT(LN) OPEN_PARENTHESES Exp CLOSED_PARENTHESES SEMICOLON
         if (statementType.find("print") != string::npos) {
@@ -62,21 +63,30 @@ class typecheck {
         // VarDecl
         } else if (statementType == "Statement - VarDecl") {
             // Check variable declaration
-            // checkVarDecl(statement->children.at(0));
+            bool isCorrect = checkVarDecl(statement->children.at(0));
+            if (!isCorrect) {
+                error_set.insert(statement->line_no);
+            }
         // ID EQUALS Exp SEMICOLON
         } else if (statementType == "Statement - id_equals_exp") {
             // Check variable assignment
-            // checkVarAssignment(statement->data.value.stringValue, statement->children.at(0));
+            bool isCorrect = checkVarAssignment(statement->data.value.stringValue, statement->children.at(0));
+            if (!isCorrect) {
+                error_set.insert(statement->line_no);
+            }
         // LeftValue EQUALS Exp SEMICOLON
         } else if (statementType == "Statement - leftValue_equals_exp") {
-            // TODO: Check array assignment
-            // checkVarAssignment(statement->data.value.stringValue, statement->children.at(0));
+            // Check array assignment
+            bool isCorrect = checkArrayAssignment(statement->children.at(0), statement->children.at(1));
+            if (!isCorrect) {
+                error_set.insert(statement->line_no);
+            }
         // IF OPEN_PARENTHESES Exp CLOSED_PARENTHESES Statement ELSE Statement
         } else if (statementType == "Statement - if") {
             // if condition
             data d = checkAndGetExpType(statement->children.at(0));
             if (d.type != data::type_t::booleanType) {
-                error_set.insert(statement->line_no);
+                error_set.insert(statement->children.at(0)->line_no);
             }
 
             // Create a level for symbol table scope
@@ -103,7 +113,7 @@ class typecheck {
             // Check loop condition
             data d = checkAndGetExpType(statement->children.at(0));
             if (d.type != data::type_t::booleanType) {
-                error_set.insert(statement->line_no);
+                error_set.insert(statement->children.at(0)->line_no);
             }
 
             // Create a level for symbol table scope
@@ -126,87 +136,128 @@ class typecheck {
         }
     }
 
-    // bool checkVarDecl(node * varDecl) {
-    //     bool result = true;
+    bool checkVarDecl(node * varDecl) {
+        // Type ID VarInit VarDeclTail SEMICOLON
+        bool isCorrect = true;
 
-    //     // Get LHS type ([Type] ID VarInit VarDeclTail SEMICOLON)
-    //     data::type_t lhs_type = varDecl->children.at(0)->data.type;
+        // Get LHS type and variable name
+        struct data lhs_type = getLHSType(varDecl->children.at(0));
+        string id = varDecl->data.value.stringValue;
 
-    //     // Get first variable initialization
-    //     // Get name of variable
-    //     string id = varDecl->data.value.stringValue;
-    //     // Check if variable is initialized
-    //     node * varInit = varDecl->children.at(1);
-    //     if (varInit->nodeType != "Empty") {
-    //         bool isCorrect = checkAndComputeRHS(lhs_type, id, varInit->children.at(0));
-    //         if (!isCorrect) {
-    //             result = false;
-    //         }
-    //     } else {
-    //         if (isUniqueVariableName(id)) {
-    //             addToScope(id, lhs_type, 0);
-    //         } else {
-    //             result = false;
-    //         }
-    //     }
+        // Check if variable is initialized
+        node * varInit = varDecl->children.at(1);
+        if (isUniqueVariableName(id)) {
+            if (varInit->nodeType != "Empty") {
+                // cout << "Before Exp Check\n";
+                struct data rhs_type = checkAndGetExpType(varInit->children.at(0));
 
-    //     // Iterate through varDeclTail and check potential multi-declarations
-    //     node * varDeclTail = varDecl->children.at(2);
-    //     while (varDeclTail->nodeType != "Empty") {
-    //         // Get name of variable
-    //         id = varDeclTail->data.value.stringValue;
-    //         // Check if variable is initialized
-    //         varInit = varDeclTail->children.at(0);
-    //         if (varInit->nodeType != "Empty") {
-    //             bool isCorrect = checkAndComputeRHS(lhs_type, id, varInit->children.at(0));
-    //             if (!isCorrect) {
-    //                 result = false;
-    //             }
-    //         } else {
-    //             if (isUniqueVariableName(id)) {
-    //                 addToScope(id, lhs_type, 0);
-    //             } else {
-    //                 result = false;
-    //             }
-    //         }
+                // cout << "Before LHS and RHS type check\n";
+                if (lhs_type.type == rhs_type.type) {
+                    if (lhs_type.type == data::type_t::arrayType || lhs_type.type == data::type_t::multiArrayType) {
+                        // cout << "Before get LHS array value\n";
+                        data::type_t lhs_array_type = lhs_type.arrayValue[0].type;
+                        // cout << "Before get RHS array value\n";
+                        data::type_t rhs_array_type = rhs_type.arrayValue[0].type;
 
-    //         varDeclTail = varDeclTail->children.at(1);
-    //     }
+                        // cout << "Before array type check\n";
+                        if (lhs_array_type != rhs_array_type) {
+                            addToScope(id, lhs_type, -1, true);
+                            isCorrect = false;
+                        } else {
+                            addToScope(id, lhs_type, 1, true);
+                        }
+                    } else {
+                        addToScope(id, lhs_type, 1, true);
+                    }
+                } else {
+                    addToScope(id, lhs_type, -1, true);
+                    isCorrect = false;
+                }
+            } else {
+                addToScope(id, lhs_type, 0, true);
+            }
+        } else {
+            isCorrect = false;
+        }
 
-    //     return result;
-    // }
+        // Iterate through varDeclTail and check potential multi-declarations
+        node * varDeclTail = varDecl->children.at(2);
+        while (varDeclTail->nodeType != "Empty") {
+            // Get name of variable
+            id = varDeclTail->data.value.stringValue;
 
-    // /*
-    //  * Ensure variable is assigned correctly (ID EQUALS Exp SEMICOLON)
-    //  */
-    // bool checkVarAssignment(string id, node * exp) {
-    //     // Check if variable has been declared
-    //     if (integer_values.find(id) != integer_values.end()) {
-    //         data rhs = checkAndGetExpType(exp);
+            // Check if variable is initialized
+            varInit = varDeclTail->children.at(0);
 
-    //         if (data::type_t::integer == rhs.type && rhs.isCorrect) {
-    //             addToScope(id, rhs.type, 1);
-    //             return true;
-    //         } else {
-    //             addToScope(id, rhs.type, -1);
-    //             return false;
-    //         }
-    //     }
+            if (isUniqueVariableName(id)) {
+                if (varInit->nodeType != "Empty") {
+                    struct data rhs_type = checkAndGetExpType(varInit->children.at(0));
+                    if (lhs_type.type == rhs_type.type) {
+                        if (lhs_type.type == data::type_t::arrayType || lhs_type.type == data::type_t::multiArrayType) {
+                            data::type_t lhs_array_type = lhs_type.arrayValue[0].type;
+                            data::type_t rhs_array_type = rhs_type.arrayValue[0].type;
+                            if (lhs_array_type != rhs_array_type) {
+                                addToScope(id, lhs_type, -1, true);
+                                isCorrect = false;
+                            } else {
+                                addToScope(id, lhs_type, 1, true);
+                            }
+                        } else {
+                            addToScope(id, lhs_type, 1, true);
+                        }
+                    } else {
+                        addToScope(id, lhs_type, -1, true);
+                        isCorrect = false;
+                    }
+                } else {
+                    addToScope(id, lhs_type, 0, true);
+                }
+            } else {
+                isCorrect = false;
+            }
 
-    //     return false;
-    // }
+            varDeclTail = varDeclTail->children.at(1);
+        }
 
-    // bool checkAndComputeRHS(data::type_t lhs_type, string id, node * rhs_exp) {
-    //     data rhs = checkAndGetExpType(rhs_exp);
+        return isCorrect;
+    }
 
-    //     if (isUniqueVariableName(id) && lhs_type == rhs.type && rhs.isCorrect) {
-    //         addToScope(id, lhs_type, 1);
-    //         return true;
-    //     }
+    bool checkVarAssignment(string id, node * exp) {
+        data exp_data = checkAndGetExpType(exp);
 
-    //     addToScope(id, lhs_type, -1);
-    //     return false;
-    // }
+        if (!isUniqueVariableName(id) && exp_data.isCorrect) {
+            for (int i = scope_level; i >= 0; i--) {
+                if (symbol_table[i].find(id) != symbol_table[i].end()) {
+                    data id_data = symbol_table[i].find(id)->second;
+
+                    if (id_data.type == exp_data.type) {
+                        addToScope(id, exp_data, 1, false);
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    bool checkArrayAssignment(node * leftValue, node * exp) {
+        data leftValue_data = getLeftValue(leftValue);
+        data exp_data = checkAndGetExpType(exp);
+
+        if (leftValue_data.isCorrect && exp_data.isCorrect) {
+            if (leftValue_data.type == exp_data.type) {
+                return true;
+            } else {
+                // TODO: assign invalid to that index
+                return false;
+            }
+        }
+
+        return false;
+    }
 
     data checkAndGetExpType(node * exp) {
         // Get expression type and initialize return data struct
@@ -243,9 +294,49 @@ class typecheck {
         } else if (expType == "Factor - ID") {
             return getDataFromID(exp->data.value.stringValue);
         } else if (expType == "Factor - LeftValue") {
-            // TODO: Implement "Factor - LeftValue"
+            return getLeftValue(exp->children.at(0));
         } else if (expType == "Factor - new_primetype_index") {
-            // TODO: Implement "Factor - new_primetype_index"
+            data index = getIndex(exp->children.at(1));
+            if (index.isCorrect) {
+                struct data d_prime = {.type=exp->children.at(0)->data.type};
+                index.arrayValue.push_back(d_prime);
+                return index;
+            } else {
+                struct data d_prime = {.type=exp->children.at(0)->data.type};
+                index.arrayValue.push_back(d_prime);
+                index = {.isCorrect=false};
+                return index;
+            }
+        } else if (expType == "Factor - leftValue_dot_length") {
+            data leftValue = getLeftValue(exp->children.at(0));
+            if (leftValue.type == data::type_t::stringType || leftValue.type == data::type_t::arrayType || leftValue.type == data::type_t::multiArrayType) {
+                struct data d = {.type=data::type_t::intType, .isCorrect=true};
+                return d;
+            } else {
+                struct data d = {.type=data::type_t::intType, .isCorrect=false};
+                return d;
+            }
+        } else if (expType == "Factor - id_dot_length") {
+            string id = exp->data.value.stringValue;
+
+            if (isUniqueVariableName(id)) {
+                struct data d = {.type=data::type_t::intType, .isCorrect=false};
+                return d;
+            } else {
+                for (int i = scope_level; i >= 0; i--) {
+                    if (symbol_table[i].find(id) != symbol_table[i].end()) {
+                        data val1 = symbol_table[i].find(id)->second;
+                        if ((val1.type == data::type_t::stringType || val1.type == data::type_t::arrayType || val1.type == data::type_t::multiArrayType) &&
+                            val1.flag != 0) {
+                            struct data d = {.type=data::type_t::intType, .isCorrect=true};
+                            return d;
+                        } else {
+                            struct data d = {.type=data::type_t::intType, .isCorrect=false};
+                            return d;
+                        }
+                    }
+                }
+            }
         } else if (expType == "Factor - PARENTHESES") {
             return _checkAndGetExpType(exp->children.at(0));
         }
@@ -329,12 +420,137 @@ class typecheck {
         return val1;
     }
 
+    data getLHSType(node * type) {
+        struct data d;
+
+        // PrimeType
+        if (type->nodeType == "Type - PrimeType") {
+            node * primetype = type->children.at(0);
+            d.type = primetype->data.type;
+        // ID
+        } else if (type->nodeType == "Type - ID") {
+            //TODO: Implement custom objects
+        // Type OPEN_BRACKET CLOSED_BRACKET
+        } else if (type->nodeType == "Type - BRACKET") {
+            node * type_child = type->children.at(0);
+
+            // Check if array is multidimensional
+            if (type_child->nodeType == "Type - BRACKET") {
+                d.type = data::type_t::multiArrayType;
+                type_child = type_child->children.at(0);
+                if (type_child->nodeType == "Type - PrimeType") {
+                    struct data d_prime = {.type = type_child->children.at(0)->data.type};
+                    d.arrayValue.push_back(d_prime);
+                } else if (type_child->nodeType == "Type - ID") {
+                    //TODO: Implement custom objects
+                }
+            } else {
+                d.type = data::type_t::arrayType;
+                if (type_child->nodeType == "Type - PrimeType") {
+                    struct data d_prime = {.type = type_child->children.at(0)->data.type};
+                    d.arrayValue.push_back(d_prime);
+                } else if (type_child->nodeType == "Type - ID") {
+                    //TODO: Implement custom objects
+                }
+            }
+        } else {
+            cout << "   [typecheck.cc - getLHSType] Unexpected type.\n";
+        }
+
+        return d;
+    }
+
+    data getLeftValue(node * leftValue) {
+        string leftValueType = leftValue->nodeType;
+        struct data d;
+
+        if (leftValueType == "LeftValue - id_index") {
+            string id = leftValue->data.value.stringValue;
+
+            if (isUniqueVariableName(id)) {
+                d = {.type=data::type_t::arrayType, .isCorrect=false};
+                return d;
+            } else {
+                for (int i = scope_level; i >= 0; i--) {
+                    if (symbol_table[i].find(id) != symbol_table[i].end()) {
+                        data val1 = symbol_table[i].find(id)->second;
+                        if (val1.type == data::type_t::arrayType || val1.type == data::type_t::multiArrayType) {
+                            data index = getIndex(leftValue->children.at(0));
+
+                            if (index.isCorrect) {
+                                if (val1.type == data::type_t::arrayType && index.type == data::type_t::arrayType) {
+                                    d = {.type=val1.arrayValue[0].type, .isCorrect=true};
+                                    return d;
+                                } else if (val1.type == data::type_t::multiArrayType) {
+                                    if (index.type == data::type_t::arrayType) {
+                                        d = {.type=data::type_t::arrayType, .isCorrect=true};
+                                    } else {
+                                        d = {.type=val1.arrayValue[0].type, .isCorrect=true};
+                                    }
+                                    return d;
+                                } else {
+                                    d = {.type=val1.type, .isCorrect=false};
+                                    return d;
+                                }
+                            } else {
+                                d = {.type=val1.type, .isCorrect=false};
+                                return d;
+                            }
+                        } else {
+                            d = {.type=val1.type, .isCorrect=false};
+                            return d;
+                        }
+                    }
+                }
+            }
+        } else {
+            cout << "   [typecheck.cc - checkAndGetLeftValue] Unexpected LeftValue type.\n";
+        }
+
+        return d;
+    }
+
+    data getIndex(node * index) {
+        struct data d;
+
+        if (index->nodeType == "Index - BRACKET") {
+            d = checkAndGetExpType(index->children.at(0));
+
+            if (d.type == data::type_t::intType) {
+                d = {.type=data::type_t::arrayType, .isCorrect=true};
+                return d;
+            } else {
+                d = {.type=data::type_t::arrayType, .isCorrect=false};
+                return d;
+            }
+        } else if (index->nodeType == "Index - index_bracket") {
+            d = checkAndGetExpType(index->children.at(1));
+            if (d.type == data::type_t::intType) {
+                d = checkAndGetExpType(index->children.at(0)->children.at(0));
+                if (d.type == data::type_t::intType) {
+                    d = {.type=data::type_t::multiArrayType, .isCorrect=true};
+                    return d;
+                } else {
+                    d = {.type=data::type_t::multiArrayType, .isCorrect=false};
+                    return d;
+                }
+            } else {
+                d = {.type=data::type_t::multiArrayType, .isCorrect=false};
+                return d;
+            }
+        } else {
+            cout << "   [typecheck.cc - getIndex] Unexpected Index type.\n";
+        }
+
+        return d;
+    }
+
     data getDataFromID(string id) {
         // Initialize return data struct
         struct data d;
 
         // Iterate through symbol_table at each scope
-        for (int i = scope_level - 1; i >= 0; i--) {
+        for (int i = scope_level; i >= 0; i--) {
             if (symbol_table[i].find(id) != symbol_table[i].end()) {
                 data id_data = symbol_table[i].find(id)->second;
 
@@ -352,38 +568,35 @@ class typecheck {
         return d;
     }
 
-    // bool isUniqueVariableName(string id) {
-    //     if (integer_values.find(id) == integer_values.end() &&
-    //         string_values.find(id) == string_values.end() &&
-    //         boolean_values.find(id) == boolean_values.end()) {
-    //         return true;
-    //     }
-    //     else {
-    //         return false;
-    //     }
-    // }
+    bool isUniqueVariableName(string id) {
+        // Iterate through symbol_table at each scope
+        for (int i = scope_level; i >= 0; i--) {
+            if (symbol_table[i].find(id) != symbol_table[i].end()) {
+                return false;
+            }
+        }
 
-    // void addToScope(string id, data::type_t type, int flag) {
-    //     // Check if variable name already exists
-    //     if (isUniqueVariableName(id)) {
-    //         switch(type){
-    //         case 0:
-    //             string_values.insert(pair<string, int>(id, flag));
-    //             break;
-    //         case 1:
-    //             integer_values.insert(pair<string, int>(id, flag));
-    //             break;
-    //         case 2:
-    //             boolean_values.insert(pair<string, int>(id, flag));
-    //             break;
-    //         default:
-    //             printf("ERROR in typcheck.cc: addToScope(), invalid type found.\n");
-    //     }
-    //     // Otherwise update element in map
-    //     } else {
-    //         integer_values[id] = flag;
-    //     }
-    // }
+        return true;
+    }
+
+    void addToScope(string id, data info, int f, bool isNewVar) {
+        info.flag = f;
+
+        // Check if delcaring variable
+        if (isNewVar) {
+            symbol_table[scope_level].insert(pair<string, data>(id, info));
+        // Otherwise, variable is being reassigned.
+        } else {
+            for (int i = scope_level; i >= 0; i--) {
+                if (symbol_table[i].find(id) != symbol_table[i].end()) {
+                    data old_info = symbol_table[i].find(id)->second;
+                    old_info.flag = f;
+
+                    symbol_table[i][id] = old_info;
+                }
+            }
+        }
+    }
 
     void printErrors() {
         numErrors = error_set.size();

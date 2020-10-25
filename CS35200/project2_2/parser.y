@@ -338,6 +338,16 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                             $$->addChild($2);
                             $$->addChild($3);
                         }
+                    |   LeftValue DOT LENGTH
+                        {
+                            $$ = new node("Factor - leftValue_dot_length");
+                            $$->addChild($1);
+                        }
+                    |   ID DOT LENGTH
+                        {
+                            $$ = new node("Factor - id_dot_length");
+                            $$->setStringValue($1);
+                        }
                     |   STRING_LITERAL
                         {
                             $$ = new node("Factor - STRING_LITERAL");
@@ -359,13 +369,7 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                             $$->setBooleanValue(false);
                         }       
                     ;
-LeftValue:              LeftValue Index
-                        {
-                            $$ = new node("LeftValue - leftValue_index");
-                            $$->addChild($1);
-                            $$->addChild($2);
-                        }
-                    |   ID Index
+LeftValue:              ID Index
                         {
                             $$ = new node("LeftValue - id_index");
                             $$->setStringValue($1);
@@ -411,9 +415,8 @@ int main(int argc, char ** argv) {
 
     // Traverse the AST again to interpret the program if no semantic errors
     if(tc->numErrors == 0){
-        cout << "No errors\n";
-        // interpret * ic = new interpret();
-        // ic->interpretProgram(root);
+        interpret * ic = new interpret();
+        ic->interpretProgram(root);
     }
     return 0;
 }

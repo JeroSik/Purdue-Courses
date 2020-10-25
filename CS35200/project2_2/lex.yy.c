@@ -1106,33 +1106,37 @@ case 48:
 YY_RULE_SETUP
 #line 68 "parser.l"
 {
-                                                        yylval.string = strdup(yytext);
+                                                        char * p = strdup(yytext);
+                                                        p++;
+                                                        p[strlen(p) - 1] = '\0';
+                                                        yylval.string = p;
+
                                                         return STRING_LITERAL;
                                                     }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 73 "parser.l"
+#line 77 "parser.l"
 { } /* Single line comments */
 	YY_BREAK
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 74 "parser.l"
+#line 78 "parser.l"
 { } /* Multiline comments */
 	YY_BREAK
 case 51:
 /* rule 51 can match eol */
 YY_RULE_SETUP
-#line 76 "parser.l"
+#line 80 "parser.l"
 { } /* skip whitespace */
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 78 "parser.l"
+#line 82 "parser.l"
 ECHO;
 	YY_BREAK
-#line 1136 "lex.yy.c"
+#line 1140 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2149,7 +2153,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 78 "parser.l"
+#line 82 "parser.l"
 
 
 

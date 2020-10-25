@@ -66,7 +66,11 @@ while                                               { return WHILE;             
                                                         return ID;
                                                     }
 \"([^"\\]|\\.)*\"                                   {
-                                                        yylval.string = strdup(yytext);
+                                                        char * p = strdup(yytext);
+                                                        p++;
+                                                        p[strlen(p) - 1] = '\0';
+                                                        yylval.string = p;
+
                                                         return STRING_LITERAL;
                                                     }
 
