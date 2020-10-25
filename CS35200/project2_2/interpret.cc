@@ -103,19 +103,28 @@ class interpret{
             // Check loop condition
             data d = interpretExp(statement->children.at(0));
 
-            // Create a level for symbol table scope
-            map<string, data> temp_symbol_table;
-            symbol_table.push_back(temp_symbol_table);
-            scope_level++;
+            // // Create a level for symbol table scope
+            // map<string, data> temp_symbol_table;
+            // symbol_table.push_back(temp_symbol_table);
+            // scope_level++;
 
             while (d.value.booleanValue == true) {
+                // Create a level for symbol table scope
+                map<string, data> temp_symbol_table;
+                symbol_table.push_back(temp_symbol_table);
+                scope_level++;
+
                 interpretStatement(statement->children.at(1));
                 d = interpretExp(statement->children.at(0));
+
+                // Remove level for symbol table scope
+                symbol_table.pop_back();
+                scope_level--;
             }
 
-            // Remove level for symbol table scope
-            symbol_table.pop_back();
-            scope_level--;
+            // // Remove level for symbol table scope
+            // symbol_table.pop_back();
+            // scope_level--;
         // OPEN_CURLY StatementList CLOSED_CURLY
         } else if (statementType == "Statement - StatementList") {
             // Check statement list
@@ -220,7 +229,10 @@ class interpret{
                 for (int i = 0; i < array_indices[0]; i++) {
                     struct data array_element = {.type=array_type};
                     if (array_type == data::type_t::stringType) {
-                        char * result = const_cast<char *>(string("\"\"").c_str());
+                        string empty = "";
+                        char * result = new char[empty.length() + 1];
+                        strcpy(result, empty.c_str());
+                        // char * result = const_cast<char *>(string("\"\"").c_str());
                         array_element.value.stringValue = result;
                     } else if (array_type == data::type_t::intType) {
                         array_element.value.intValue = 0;
