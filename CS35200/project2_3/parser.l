@@ -18,6 +18,7 @@ extends                                             { return EXTENDS;           
 false                                               { return FALSE;                 }
 if                                                  { return IF;                    }
 int                                                 { return INT;                   }
+Integer.parseInt                                    { return INTEGER_DOT_PARSEINT;  }
 length                                              { return LENGTH;                }
 main                                                { return MAIN;                  }
 new                                                 { return NEW;                   }

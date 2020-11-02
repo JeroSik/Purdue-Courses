@@ -21,15 +21,16 @@
 }
 
 // Left hand non-terminals
-%type <node> Program MainClass VarDecl VarInit VarDeclTail
-%type <node> PrimeType Type StatementList Statement
+%type <node> Program MainClass ClassDeclList ClassDecl OptionalExtends VarDeclList MethodDeclList
+%type <node> VarDecl VarInit VarDeclTail MethodDecl OptionalFormatList FormalList FormalsTail
+%type <node> PrimeType Type StatementList Statement MethodCall OptionalExpList ExpList ExpTail
 %type <node> Exp LogicalOrExp LogicalAndExp EqualityExp RelationalExp AdditiveExp MultiplicativeExp UnaryExp Factor
 %type <node> LeftValue Index
 
 // Terminal symbols
 %token <node> AND BOOLEAN CLASS CLOSED_BRACKET CLOSED_CURLY CLOSED_PARENTHESES COMMA
 %token <node> DIVIDE DOT ELSE EQUALS EQUAL_EQUAL EXCLAMATION EXTENDS FALSE GREATER GREATER_EQUAL
-%token <node> IF INT LENGTH LESS LESS_EQUAL MAIN MINUS MINUS_MINUS MULTIPLY
+%token <node> IF INT INTEGER_DOT_PARSEINT LENGTH LESS LESS_EQUAL MAIN MINUS MINUS_MINUS MULTIPLY
 %token <node> NEW NOT_EQUAL OPEN_BRACKET OPEN_CURLY OPEN_PARENTHESES OR PLUS PLUS_PLUS PUBLIC
 %token <node> RETURN SEMICOLON STATIC STRING SYSTEM_OUT_PRINT SYSTEM_OUT_PRINTLN
 %token <node> THIS TRUE VOID WHILE
@@ -41,10 +42,11 @@
 
 %%
 
-Program:                MainClass
+Program:                MainClass ClassDeclList
                         {
                             $$ = new node("Program");
                             $$->addChild($1);
+                            $$->addChild($2);
                             root = $$;
                         }
                     ;
@@ -56,6 +58,58 @@ MainClass:              CLASS ID OPEN_CURLY PUBLIC STATIC VOID MAIN OPEN_PARENTH
                             main_argument->setStringValue($12);
                             $$->addChild(main_argument);
                             $$->addChild($15);
+                        }
+                    ;
+ClassDeclList:          %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   ClassDecl ClassDeclList
+                        {
+                            $$ = new node("ClassDeclList");
+                            $$->addChild($1);
+                            $$->addChild($2);
+                        }
+                    ;
+ClassDecl:              CLASS ID OptionalExtends OPEN_CURLY VarDeclList MethodDeclList CLOSED_CURLY
+                        {
+                            $$ = new node("ClassDecl");
+                            $$->setStringValue($2);
+                            $$->addChild($3);
+                            $$->addChild($5);
+                            $$->addChild($6);
+                        }
+                    ;
+OptionalExtends:        %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   EXTENDS ID
+                        {
+                            $$ = new node("OptionalExtends");
+                            $$->setStringValue($2);
+                        }
+                    ;
+VarDeclList:            %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   VarDeclList VarDecl
+                        {
+                            $$ = new node("VarDeclList");
+                            $$->addChild($1);
+                            $$->addChild($2);
+                        }
+                    ;
+MethodDeclList:         %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   MethodDecl MethodDeclList
+                        {
+                            $$ = new node("MethodDeclList");
+                            $$->addChild($1);
+                            $$->addChild($2);
                         }
                     ;
 VarDecl:                Type ID VarInit VarDeclTail SEMICOLON
@@ -86,6 +140,53 @@ VarDeclTail:            %empty
                             $$ = new node("VarDeclTail");
                             $$->setStringValue($2);
                             $$->addChild($3);
+                            $$->addChild($4);
+                        }
+                    ;
+MethodDecl:             Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+                        {
+                            $$ = new node("MethodDecl - private");
+                            $$->addChild($1);
+                            $$->setStringValue($2);
+                            $$->addChild($4);
+                            $$->addChild($7);
+                        }
+                    |   PUBLIC Type ID OPEN_PARENTHESES OptionalFormatList CLOSED_PARENTHESES OPEN_CURLY StatementList CLOSED_CURLY
+                        {
+                            $$ = new node("MethodDecl - public");
+                            $$->addChild($2);
+                            $$->setStringValue($3);
+                            $$->addChild($5);
+                            $$->addChild($8);
+                        }
+                    ;
+OptionalFormatList:     %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   FormalList
+                        {
+                            $$ = new node("OptionalFormatList");
+                            $$->addChild($1);
+                        }
+                    ;
+FormalList:             Type ID FormalsTail
+                        {
+                            $$ = new node("FormalList");
+                            $$->addChild($1);
+                            $$->setStringValue($2);
+                            $$->addChild($3);
+                        }
+                    ;
+FormalsTail:            %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   COMMA Type ID FormalsTail
+                        {
+                            $$ = new node("FormalsTail");
+                            $$->addChild($2);
+                            $$->setStringValue($3);
                             $$->addChild($4);
                         }
                     ;
@@ -179,11 +280,64 @@ Statement:              SYSTEM_OUT_PRINTLN OPEN_PARENTHESES Exp CLOSED_PARENTHES
                             $$->addChild($5);
                             $$->setLineNumber(yylineno);
                         }
+                    |   RETURN Exp SEMICOLON
+                        {
+                            $$ = new node("Statement - return");
+                            $$->addChild($2);
+                            $$->setLineNumber(yylineno);
+                        }
+                    |   MethodCall SEMICOLON
+                        {
+                            $$ = new node("Statement - MethodCall");
+                            $$->addChild($1);
+                            $$->setLineNumber(yylineno);
+                        }
                     |   OPEN_CURLY StatementList CLOSED_CURLY
                         {
                             $$ = new node("Statement - StatementList");
                             $$->addChild($2);
                             $$->setLineNumber(yylineno);
+                        }
+                    ;
+MethodCall:             LeftValue OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES
+                        {
+                            $$ = new node("MethodCall - LeftValue");
+                            $$->addChild($1);
+                            $$->addChild($3);
+                        }
+                    |   ID OPEN_PARENTHESES OptionalExpList CLOSED_PARENTHESES
+                        {
+                            $$ = new node("MethodCall - ID");
+                            $$->setStringValue($1);
+                            $$->addChild($3);
+                        }
+                    ;
+OptionalExpList:        %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   ExpList
+                        {
+                            $$ = new node("OptionalExpList");
+                            $$->addChild($1);
+                        }
+                    ;
+ExpList:                Exp ExpTail
+                        {
+                            $$ = new node("ExpList");
+                            $$->addChild($1);
+                            $$->addChild($2);
+                        }
+                    ;
+ExpTail:                %empty
+                        {
+                            $$ = new node("Empty");
+                        }
+                    |   COMMA Exp ExpTail
+                        {
+                            $$ = new node("ExpTail");
+                            $$->addChild($2);
+                            $$->addChild($3);
                         }
                     ;
 Exp:                    LogicalOrExp
@@ -311,6 +465,11 @@ UnaryExp:               PLUS Factor
                             $$ = new node("UnaryExp - MINUS");
                             $$->addChild($2);
                         }
+                    |   EXCLAMATION Factor
+                        {
+                            $$ = new node("UnaryExp - EXCLAMATION");
+                            $$->addChild($2);
+                        }
                     |   Factor
                         {
                             $$ = new node("Factor");
@@ -332,10 +491,31 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                             $$ = new node("Factor - LeftValue");
                             $$->addChild($1);
                         }
+                    |   MethodCall
+                        {
+                            $$ = new node("Factor - MethodCall");
+                            $$->addChild($1);
+                        }
+                    |   INTEGER_DOT_PARSEINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES
+                        {
+                            $$ = new node("Factor - Integer_dot_parseInt");
+                            $$->addChild($1);
+                        }
+                    |   NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES
+                        {
+                            $$ = new node("Factor - new_id");
+                            $$->setStringValue($2);
+                        }
                     |   NEW PrimeType Index
                         {
                             $$ = new node("Factor - new_primetype_index");
                             $$->addChild($2);
+                            $$->addChild($3);
+                        }
+                    |   NEW ID Index
+                        {
+                            $$ = new node("Factor - new_id_index");
+                            $$->setStringValue($2);
                             $$->addChild($3);
                         }
                     |   LeftValue DOT LENGTH
@@ -369,11 +549,44 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                             $$->setBooleanValue(false);
                         }       
                     ;
-LeftValue:              ID Index
+LeftValue:              LeftValue Index
+                        {
+                            $$ = new node("LeftValue - leftValue_index");
+                            $$->addChild($1);
+                            $$->addChild($2);
+                        }
+                    |   ID Index
                         {
                             $$ = new node("LeftValue - id_index");
                             $$->setStringValue($1);
                             $$->addChild($2);
+                        }
+                    |   LeftValue DOT ID
+                        {
+                            $$ = new node("LeftValue - leftValue_dot_id");
+                            $$->addChild($1);
+                            $$->setStringValue($3);
+                        }
+                    |   ID DOT ID
+                        {
+                            $$ = new node("LeftValue - id_dot_id");
+                            $$->setStringValue($1);
+                            node * dot_id = new node("dot_id");
+                            dot_id->setStringValue($3);
+                            $$->addChild(dot_id);
+                        }
+                    |   NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES DOT ID
+                        {
+                            $$ = new node("LeftValue - new_id_parentheses_dot_id");
+                            $$->setStringValue($2);
+                            node * dot_id = new node("dot_id");
+                            dot_id->setStringValue($6);
+                            $$->addChild(dot_id);
+                        }
+                    |   THIS DOT ID
+                        {
+                            $$ = new node("LeftValue - this_dot_id");
+                            $$->setStringValue($3);
                         }
                     ;
 Index:                  OPEN_BRACKET Exp CLOSED_BRACKET
@@ -410,13 +623,14 @@ int main(int argc, char ** argv) {
     }
 
     // Traverses AST to check for semantic errors if no syntax errors
-    typecheck * tc = new typecheck();
+    typecheck * tc = new typecheck(argc, argv);
     tc->checkProgram(root);
 
     // Traverse the AST again to interpret the program if no semantic errors
     if(tc->numErrors == 0){
-        interpret * ic = new interpret();
-        ic->interpretProgram(root);
+        printf("No errors.\n");
+        // interpret * ic = new interpret();
+        // ic->interpretProgram(root);
     }
     return 0;
 }
