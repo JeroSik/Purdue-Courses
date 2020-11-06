@@ -83,11 +83,13 @@ ClassDecl:              CLASS ID OptionalExtends OPEN_CURLY VarDeclList MethodDe
 OptionalExtends:        %empty
                         {
                             $$ = new node("Empty");
+                            $$->setLineNumber(yylineno);
                         }
                     |   EXTENDS ID
                         {
                             $$ = new node("OptionalExtends");
                             $$->setStringValue($2);
+                            $$->setLineNumber(yylineno);
                         }
                     ;
 VarDeclList:            %empty
@@ -119,6 +121,7 @@ VarDecl:                Type ID VarInit VarDeclTail SEMICOLON
                             $$->setStringValue($2);
                             $$->addChild($3);
                             $$->addChild($4);
+                            $$->setLineNumber(yylineno);
                         }
                     ;
 VarInit:                %empty
@@ -210,16 +213,19 @@ Type:                   PrimeType
                         {
                             $$ = new node("Type - PrimeType");
                             $$->addChild($1);
+                            $$->setLineNumber(yylineno);
                         }
                     |   ID
                         {
                             $$ = new node("Type - ID");
                             $$->setStringValue($1);
+                            $$->setLineNumber(yylineno);
                         }
                     |   Type OPEN_BRACKET CLOSED_BRACKET
                         {
                             $$ = new node("Type - BRACKET");
                             $$->addChild($1);
+                            $$->setLineNumber(yylineno);
                         }
                     ;
 StatementList:          %empty
@@ -499,7 +505,7 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                     |   INTEGER_DOT_PARSEINT OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                         {
                             $$ = new node("Factor - Integer_dot_parseInt");
-                            $$->addChild($1);
+                            $$->addChild($3);
                         }
                     |   NEW ID OPEN_PARENTHESES CLOSED_PARENTHESES
                         {
@@ -510,12 +516,6 @@ Factor:                 OPEN_PARENTHESES Exp CLOSED_PARENTHESES
                         {
                             $$ = new node("Factor - new_primetype_index");
                             $$->addChild($2);
-                            $$->addChild($3);
-                        }
-                    |   NEW ID Index
-                        {
-                            $$ = new node("Factor - new_id_index");
-                            $$->setStringValue($2);
                             $$->addChild($3);
                         }
                     |   LeftValue DOT LENGTH
@@ -623,14 +623,13 @@ int main(int argc, char ** argv) {
     }
 
     // Traverses AST to check for semantic errors if no syntax errors
-    typecheck * tc = new typecheck(argc, argv);
+    typecheck * tc = new typecheck();
     tc->checkProgram(root);
 
     // Traverse the AST again to interpret the program if no semantic errors
     if(tc->numErrors == 0){
-        printf("No errors.\n");
-        // interpret * ic = new interpret();
-        // ic->interpretProgram(root);
+        interpret * ic = new interpret(argc, argv);
+        ic->interpretProgram(root);
     }
     return 0;
 }

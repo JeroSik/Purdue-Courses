@@ -1,3 +1,4 @@
+#include <map>
 #include <stdlib.h>
 #include <string>
 #include <vector>
@@ -7,13 +8,14 @@ using namespace std;
 
 struct data {
     enum type_t{
-        stringType, intType, booleanType, arrayType, multiArrayType
+        stringType, intType, booleanType, arrayType, multiArrayType, objType
     } type;
     union value_t{
         char * stringValue;
         int intValue;
         bool booleanValue;
     } value;
+    string objValue;
     vector<data> arrayValue;
     int flag;
     bool isCorrect;
@@ -56,4 +58,20 @@ class node{
             data.value.booleanValue = b;
             data.type = data::type_t::booleanType;
         }
+};
+
+struct m_data {
+    data returnType;
+    vector<data> arguments;
+    vector<string> argument_ids;
+    node * statementLocation;
+
+    bool isValid = true;
+};
+
+struct c_data {
+    map<string,data> varMap;
+    map<string,m_data> methodMap;
+
+    bool isValid = true;
 };
