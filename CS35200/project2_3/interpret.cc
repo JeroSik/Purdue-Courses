@@ -340,6 +340,8 @@ class interpret{
 
         // Check method call type
         string methodCallType = methodCall->nodeType;
+
+        cout << "   " << methodCallType << "\n";
         if (methodCallType == "MethodCall - ID") {
             // Get relevant info
             string method_id = methodCall->data.value.stringValue;
@@ -375,6 +377,7 @@ class interpret{
         } else if (methodCallType == "MethodCall - LeftValue") {
             node * leftValue = methodCall->children.at(0);
             vector<data> user_args = interpretOptionalExpList(methodCall->children.at(1));
+            cout << "   " << leftValue->nodeType << "\n";
 
             if (leftValue->nodeType == "LeftValue - leftValue_dot_id") {
                 // Get relevant info
@@ -536,7 +539,7 @@ class interpret{
     data _interpretExp(node * exp) {
         // Get expression type
         string expType = exp->nodeType;
-        // cout << expType << "\n";
+        cout << expType << "\n";
 
         // Base case reaching FACTOR
         if (expType == "Factor - INTEGER_LITERAL") {
@@ -769,6 +772,8 @@ class interpret{
 
     data getLeftValue(node * leftValue) {
         string leftValueType = leftValue->nodeType;
+        cout << "   LMAO" << leftValueType << "\n";
+
         if (leftValueType == "LeftValue - leftValue_index") {
             data leftValue_data = getLeftValue(leftValue->children.at(0));
             vector<int> array_indices = getIndex(leftValue->children.at(1));
