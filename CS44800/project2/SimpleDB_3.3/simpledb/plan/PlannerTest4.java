@@ -4,9 +4,9 @@ import simpledb.server.SimpleDB;
 import simpledb.tx.Transaction;
 import simpledb.query.Scan;
 
-public class PlannerTest3 {
+public class PlannerTest4 {
    public static void main(String[] args) {
-      SimpleDB db = new SimpleDB("plannertest3");
+      SimpleDB db = new SimpleDB("plannertest4");
       Transaction tx = db.newTx();
       Planner planner = db.planner();
       
@@ -41,19 +41,11 @@ public class PlannerTest3 {
          planner.executeUpdate(cmd, tx);
       }
 
-      String qry = "select B,D from T1,T2 where A=C";
+      String qry = "select B,D,F from T1,T2,T3 where A=C and C=E";
       Plan p = planner.createQueryPlan(qry, tx);
       Scan s = p.open();
       while (s.next())
-         System.out.println(s.getString("b") + " " + s.getString("d")); 
-      s.close();
-      
-      
-      qry = "select D,F from T2,T3 where C=E";
-      p = planner.createQueryPlan(qry, tx);
-      s = p.open();
-      while (s.next())
-    	  System.out.println(s.getString("d") + " " + s.getString("f")); 
+         System.out.println(s.getString("b") + " " + s.getString("d") + " " + s.getString("f")); 
       s.close();
 
       tx.commit();

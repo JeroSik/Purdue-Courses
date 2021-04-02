@@ -41,7 +41,7 @@ public class OptimizedProductPlan implements Plan {
 		} else {
 			bestplan = prod3;
 		}
-		bestplan = prod3;
+//		bestplan = prod3;
 	}
 
 	public Scan open() {
