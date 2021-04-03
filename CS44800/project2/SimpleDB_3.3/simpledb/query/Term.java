@@ -22,10 +22,18 @@ public class Term {
 		this.rhs = rhs;
 	}
 	
+	/**
+	 * Getter method for the LHS expression.
+	 * @return lhs  the LHS expression
+	 */
 	public Expression getLHS() {
 		return lhs;
 	}
 	
+	/**
+	 * Getter method for the RHS expression.
+	 * @return rhs  the RHS expression
+	 */
 	public Expression getRHS() {
 		return rhs;
 	}

@@ -42,12 +42,6 @@ public class BasicQueryPlanner implements QueryPlanner {
          System.out.println(p.blocksAccessed());
       }
      
-      
-      //Step 3: Add a selection plan for the predicate
-//      p = new SelectPlan(p, data.pred());
-      
-      //Step 4: Project on the field names
-//      p = new ProjectPlan(p, data.fields());
       return p;
    }
 }

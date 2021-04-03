@@ -27,7 +27,8 @@ public class Predicate {
 	}
 	
 	/**
-	 * Created a getter method
+	 * Getter method for terms
+	 * @return terms		the list of Term objects
 	 */
 	public List<Term> getTerms() {
 		return terms;

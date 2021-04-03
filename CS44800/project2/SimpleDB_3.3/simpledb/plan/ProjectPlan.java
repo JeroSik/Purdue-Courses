@@ -21,6 +21,7 @@ public class ProjectPlan implements Plan {
    public ProjectPlan(Plan p, List<String> fieldlist) {
       this.p = p;
       for (String fldname : fieldlist) {
+    	  // Skip field name if current plan schema does not contain it
     	  if (!p.schema().hasField(fldname))
     		  continue;
     	  schema.add(fldname, p.schema());

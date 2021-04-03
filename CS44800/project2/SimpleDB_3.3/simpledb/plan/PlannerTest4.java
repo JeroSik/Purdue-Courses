@@ -44,8 +44,9 @@ public class PlannerTest4 {
       String qry = "select B,D,F from T1,T2,T3 where A=C and C=E";
       Plan p = planner.createQueryPlan(qry, tx);
       Scan s = p.open();
-      while (s.next())
-         System.out.println(s.getString("b") + " " + s.getString("d") + " " + s.getString("f")); 
+      while (s.next()) {
+         System.out.println(s.getString("b") + " " + s.getString("d") + " " + s.getString("f"));
+      }
       s.close();
 
       tx.commit();
